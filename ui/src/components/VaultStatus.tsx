@@ -1,5 +1,7 @@
 import { FolderOpen, RefreshCw, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { syncVault } from "../App";
+
 
 const VaultStatus = () => {
   return (
@@ -33,7 +35,12 @@ const VaultStatus = () => {
         variant="outline" 
         size="sm" 
         className="w-full gap-2 bg-slate-800/50 border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white hover:border-primary/50"
+        onClick={async () => {
+          const data = await syncVault();
+          console.log("Vault synced:", data);
+        }}
       >
+
         <RefreshCw className="h-3.5 w-3.5" />
         Sync Vault
       </Button>
@@ -42,6 +49,11 @@ const VaultStatus = () => {
         Files are read locally. Nothing is uploaded.
       </p>
     </div>
+  );
+};
+
+export default VaultStatus;
+
   );
 };
 
