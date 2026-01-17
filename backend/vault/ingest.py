@@ -47,31 +47,50 @@ def scan_vault():
     all_chunks = []
 
     if not VAULT_PATH.exists():
-        return {"error": "Vault folder not found"}
+        return {
+            "vault_path": str(VAULT_PATH),
+            "file_count": 0,
+            "empty_files": 0,
+            "indexed_files": 0,
+            "files": [],
+        }
 
     for path in VAULT_PATH.rglob("*"):
-        if path.suffix.lower() not in [".txt", ".md"]:
+        if not path.is_file():
+            continue
+
+        if path.suffix.lower() not in [".txt", ".md", ".pdf"]:
             continue
 
         content = read_text_file(path)
-        chunks = chunk_text(content)
+        has_content = bool(content.strip())
+
+        chunks = chunk_text(content) if has_content else []
 
         files.append({
             "name": path.name,
             "path": str(path),
-            "extension": path.suffix,
-            "chunks": chunks
+            "extension": path.suffix.lower(),
+            "empty": not has_content,
+            "chunk_count": len(chunks),
+            "chunks": chunks,
         })
 
         all_chunks.extend(chunks)
 
-    # 🔥 build embeddings here
-    vector_store.build(all_chunks)
+    # build embeddings ONLY from real chunks
+    if all_chunks:
+        vector_store.build(all_chunks)
+
+    empty_files = sum(1 for f in files if f["empty"])
+    indexed_files = sum(1 for f in files if not f["empty"])
 
     return {
         "vault_path": str(VAULT_PATH),
-        "file_count": len(files),
-        "files": files
+        "file_count": len(files),          # filesystem truth
+        "empty_files": empty_files,         # UX truth
+        "indexed_files": indexed_files,     # knowledge truth
+        "files": files,
     }
 
 

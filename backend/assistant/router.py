@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 import ollama
 import re
+import time
 
 from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
@@ -107,9 +108,18 @@ def vault_has_changed():
 @router.post("/sync")
 def sync_vault():
     global current_vault_data, last_vault_mtime
+
     current_vault_data = scan_vault()
-    last_vault_mtime = get_latest_vault_mtime()
-    return {"status": "vault synced"}
+    indexed_at = time.time()
+
+    return {
+        "vault_path": current_vault_data["vault_path"],
+        "file_count": current_vault_data["file_count"],
+        "empty_files": current_vault_data["empty_files"],
+        "indexed_files": current_vault_data["indexed_files"],
+        "last_indexed": indexed_at
+    }
+
 
 
 # =========================
