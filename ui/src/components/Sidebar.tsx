@@ -2,7 +2,7 @@ import { Bot } from "lucide-react";
 import VaultStatus from "./VaultStatus";
 import PrivacyChecklist from "./PrivacyChecklist";
 
-const Sidebar = () => {
+const Sidebar = ({ vaultStatus, setVaultStatus }) => {
   return (
     <aside className="w-80 flex-shrink-0 sidebar-gradient h-screen overflow-y-auto border-r border-white/10">
       <div className="p-5 space-y-6">
@@ -16,14 +16,17 @@ const Sidebar = () => {
             <p className="text-xs text-slate-400">Private & Offline</p>
           </div>
         </div>
-        
+
         <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-        
+
         {/* Vault Status */}
-        <VaultStatus />
-        
+        <VaultStatus
+          vaultStatus={vaultStatus}
+          setVaultStatus={setVaultStatus}
+        />
+
         <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-        
+
         {/* Privacy Checklist */}
         <PrivacyChecklist />
       </div>
