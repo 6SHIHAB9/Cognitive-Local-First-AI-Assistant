@@ -1,22 +1,19 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import Optional
 import ollama
 import re
 import time
 
 from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
-from memory.context import get_context_block, update_context
-from memory.extractor import extract_context_facts
+from context_manager import context_manager
 
 # =========================
 # Global vault state
 # =========================
 current_vault_data = None
 last_vault_mtime = None
-
-# Global context state (workaround for context storage issues)
-active_subject_cache = None
 
 router = APIRouter()
 
@@ -110,6 +107,7 @@ def sync_vault():
     global current_vault_data, last_vault_mtime
 
     current_vault_data = scan_vault()
+    last_vault_mtime = get_latest_vault_mtime()
     indexed_at = time.time()
 
     return {
@@ -121,7 +119,6 @@ def sync_vault():
     }
 
 
-
 # =========================
 # Subject Extraction
 # =========================
@@ -130,21 +127,14 @@ def extract_subject_tokens(question: str) -> list[str]:
         "what","whats","is","are","does","do","did","explain","define","describe",
         "tell","me","about","in","of","the","simple","terms","please",
         "how","why","when","where","which","again","it","that","this",
-        "can","you","could","would","should","will","may","might"
+        "can","you","could","would","should","will","may","might","say"
     }
     return [w for w in tokenize(question) if w not in STOP]
 
 
-def get_active_subject():
-    global active_subject_cache
-    # Try context storage first
-    ctx = get_context_block()
-    if isinstance(ctx, dict):
-        subject = ctx.get("active_subject")
-        if subject:
-            return subject
-    # Fall back to cache
-    return active_subject_cache
+def get_active_subject() -> Optional[str]:
+    """Get active subject from context manager"""
+    return context_manager.get_active_subject()
 
 
 # =========================
@@ -161,15 +151,12 @@ def ask(req: AskRequest):
 
         question = req.question.strip()
         
-        # Global declaration must come first
-        global active_subject_cache
-        
         # 1. Intent
         intent = classify_intent(question)
         
-        # Clear cache for new factual queries to avoid cross-conversation pollution
+        # Clear context for new factual queries to avoid cross-conversation pollution
         if intent == "factual":
-            active_subject_cache = None
+            context_manager.clear_session()
 
         # 2. Casual
         if intent == "casual":
@@ -236,9 +223,9 @@ Response:
 
         # 5. Anchor check - ensure the primary subject (first/most specific token) exists
         # This prevents false positives from generic words like "operating", "systems"
-
+        # Only check for factual queries; continuations already resolved their subject
         if intent == "factual":
-            primary_subject = subjects[0]
+            primary_subject = subjects[0]  # First extracted subject is usually most specific
             if primary_subject not in vault_text:
                 return {"answer": "I don't have that information in my vault yet."}
 
@@ -248,9 +235,15 @@ Response:
         for chunk in chunks:
             for sent in re.split(r'(?<=[.!?])\s+', chunk):
                 sent_l = sent.lower()
-                if any(s in sent_l for s in subjects):
-                    allowed.append(sent.strip())
-
+                sent_words = set(tokenize(sent_l))
+                
+                # Check if any subject's words appear in the sentence
+                for s in subjects:
+                    subject_words = tokenize(s)
+                    if all(w in sent_words for w in subject_words):
+                        allowed.append(sent.strip())
+                        break
+        
         allowed = list(dict.fromkeys(allowed))
         if not allowed:
             return {"answer": "I don't have that information in my vault yet."}
@@ -295,31 +288,19 @@ ANSWER:
 
         answer = response["response"].strip()
 
-        # 8. Context memory
-        # Save the subject based on what was actually discussed
-        # Priority: query subjects (if they anchored as phrase) > allowed_subjects > None
+        # 8. Context memory - save active subject for continuation queries
+        # Priority: allowed_subjects (core concepts) > query_subjects (may be redundant)
         
-        # Check if query subjects actually anchored to vault as a meaningful phrase
-        # We need the full subject phrase to anchor, not just individual words
-        query_subject_phrase = " ".join(subjects) if subjects else ""
-        query_subjects_anchored = query_subject_phrase and subject_anchored(query_subject_phrase, vault_text)
-        
-        if query_subjects_anchored:
-            # Use the query subjects since they successfully matched the vault
-            active_subject = " ".join(subjects)
-        elif allowed_subjects:
-            # Query subjects were noise words, use what was actually in the answer
+        if allowed_subjects:
+            # Use the core concepts from vault (e.g., "round robin" not "round robin scheduling")
             active_subject = " ".join(allowed_subjects[:2])
         else:
-            active_subject = None
+            # Fallback to query subjects if we can't extract from answer
+            query_subject_phrase = " ".join(subjects) if subjects else ""
+            active_subject = query_subject_phrase if query_subject_phrase else None
         
-        facts = extract_context_facts(question, answer)
-        ctx = {"active_subject": active_subject}
-        if isinstance(facts, dict):
-            ctx.update(facts)
-        update_context(ctx)
-        # Also cache it globally as a backup
-        active_subject_cache = active_subject
+        if active_subject:
+            context_manager.set_active_subject(active_subject)
 
         return {"answer": answer}
 
