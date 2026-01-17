@@ -15,29 +15,19 @@ export default function App() {
   const [vaultStatus, setVaultStatus] = useState<any>(null);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const sync = async () => {
+    // ✅ Sync once when app loads
+    const initialSync = async () => {
       try {
         const data = await syncVault();
-        if (isMounted) {
-          setVaultStatus(data);
-        }
+        setVaultStatus(data);
       } catch (err) {
-        console.error("Vault polling sync failed", err);
+        console.error("Initial vault sync failed", err);
       }
     };
 
-    // 🔥 initial sync
-    sync();
-
-    // 🔁 poll every 3 seconds
-    const interval = setInterval(sync, 3000);
-
-    return () => {
-      isMounted = false;
-      clearInterval(interval);
-    };
+    initialSync();
+    
+    // ✅ No polling! Backend auto-syncs on each /ask request when vault changes
   }, []);
 
   return (

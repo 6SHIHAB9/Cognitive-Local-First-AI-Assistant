@@ -9,7 +9,7 @@ export default function Index({ vaultStatus, setVaultStatus }) {
         setVaultStatus={setVaultStatus}
       />
       <main className="flex-1">
-        <ChatArea />
+        <ChatArea setVaultStatus={setVaultStatus} />
       </main>
     </div>
   );

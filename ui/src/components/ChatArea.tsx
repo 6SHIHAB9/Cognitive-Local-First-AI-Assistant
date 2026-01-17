@@ -10,7 +10,12 @@ type Message = {
   content: string;
 };
 
-const ChatArea = () => {
+// Add this prop type
+type ChatAreaProps = {
+  setVaultStatus?: (status: any) => void;
+};
+
+const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +35,11 @@ const ChatArea = () => {
     try {
       const res = await sendMessage(userText);
       const answer = res?.answer ?? "No response from assistant.";
+
+      // ✅ Update vault status from response
+      if (res?.vault_status && setVaultStatus) {
+        setVaultStatus(res.vault_status);
+      }
 
       setMessages((prev) => [
         ...prev,
@@ -51,7 +61,13 @@ const ChatArea = () => {
   const handleSync = async () => {
     setLoading(true);
     try {
-      await syncVault();
+      const data = await syncVault();
+      
+      // ✅ Update vault status from sync
+      if (setVaultStatus) {
+        setVaultStatus(data);
+      }
+      
       setMessages((prev) => [
         ...prev,
         {
