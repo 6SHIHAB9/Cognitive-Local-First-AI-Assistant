@@ -52,15 +52,30 @@ def classify_intent(question: str) -> str:
         prompt=f"""
 Classify the user's message into ONE category.
 
-- factual
-- continuation
-- casual
+Categories:
+- factual: Asking for information or explanation about a specific topic
+- continuation: Referring to previous context (uses "it", "that", "again", "more")
+- casual: Casual chat, greetings, or general conversation
 
-Respond with ONLY the category name.
+Rules:
+- If the message contains "it", "that", "again", or "more" → continuation
+- If asking to explain/rephrase something differently → continuation
+- If asking about a new specific topic → factual
+- If greeting or chatting → casual
+
+Examples:
+"What is CPU scheduling?" → factual
+"Explain it again" → continuation
+"Tell me more" → continuation
+"In simpler terms" → continuation
+"Explain it in simpler terms" → continuation
+"What does the A stand for?" → factual
+"Hello" → casual
 
 Message:
 {question}
-""",
+
+Category:""",
         options={"temperature": 0.0, "num_predict": 5},
     )
     return res["response"].strip().lower()
@@ -102,9 +117,10 @@ def sync_vault():
 # =========================
 def extract_subject_tokens(question: str) -> list[str]:
     STOP = {
-        "what","is","are","does","do","did","explain","define","describe",
+        "what","whats","is","are","does","do","did","explain","define","describe",
         "tell","me","about","in","of","the","simple","terms","please",
-        "how","why","when","where","which","again","it","that","this"
+        "how","why","when","where","which","again","it","that","this",
+        "can","you","could","would","should","will","may","might"
     }
     return [w for w in tokenize(question) if w not in STOP]
 

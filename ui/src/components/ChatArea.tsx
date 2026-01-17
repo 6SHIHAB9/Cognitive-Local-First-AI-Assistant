@@ -187,7 +187,7 @@ const ChatArea = () => {
         </div>
       </header>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scan {
           0%, 100% {
             transform: translateY(-100%);
@@ -222,73 +222,95 @@ const ChatArea = () => {
             </div>
           </div>
         ) : (
-          messages.map((msg, i) => (
-            <div
-              key={i}
-              className={`group relative ${
-                msg.role === "user" ? "flex justify-end" : "flex justify-start"
-              }`}
-            >
-              {/* Message container */}
+          <>
+            {messages.map((msg, i) => (
               <div
-                className={`relative max-w-[85%] ${
-                  msg.role === "user"
-                    ? "ml-auto"
-                    : "mr-auto"
+                key={i}
+                className={`group relative ${
+                  msg.role === "user" ? "flex justify-end" : "flex justify-start"
                 }`}
               >
-                {/* Glow effect */}
-                {msg.role === "assistant" && (
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                )}
-                
-                <div className="relative flex gap-3">
-                  {/* Avatar */}
-                  {msg.role === "assistant" && (
+                {/* Message container */}
+                <div
+                  className={`relative max-w-[85%] ${
+                    msg.role === "user"
+                      ? "ml-auto"
+                      : "mr-auto"
+                  }`}
+                >
+                  <div className="relative flex gap-3">
+                    {/* Avatar */}
+                    {msg.role === "assistant" && (
+                      <div className="flex-shrink-0 mt-1">
+                        <div className="relative">
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-lg blur-md" />
+                          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500/20 to-blue-500/20 backdrop-blur-sm flex items-center justify-center border border-emerald-500/30">
+                            <svg className="w-4 h-4 text-emerald-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Message content */}
+                    <div
+                      className={`relative flex-1 rounded-2xl px-4 py-3 ${
+                        msg.role === "user"
+                          ? "bg-gradient-to-br from-indigo-500/90 to-purple-500/90 text-white shadow-lg shadow-indigo-500/25"
+                          : "bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 text-slate-200"
+                      }`}
+                    >
+                      <p className="text-sm leading-relaxed whitespace-pre-wrap break-words break-all">{msg.content}</p>
+                    </div>
+                    
+                    {/* User avatar */}
+                    {msg.role === "user" && (
+                      <div className="flex-shrink-0 mt-1">
+                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
+                          <svg className="w-4 h-4 text-white" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                          </svg>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {/* Typing indicator */}
+            {loading && (
+              <div className="group relative flex justify-start">
+                <div className="relative max-w-[85%] mr-auto">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-50" />
+                  
+                  <div className="relative flex gap-3">
+                    {/* Avatar */}
                     <div className="flex-shrink-0 mt-1">
                       <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-lg blur-md" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-lg blur-md animate-pulse" />
                         <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500/20 to-blue-500/20 backdrop-blur-sm flex items-center justify-center border border-emerald-500/30">
-                          <svg className="w-4 h-4 text-emerald-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className="w-4 h-4 text-emerald-400 animate-pulse" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
                           </svg>
                         </div>
                       </div>
                     </div>
-                  )}
-                  
-                  {/* Message content */}
-                  <div
-                    className={`relative flex-1 rounded-2xl px-4 py-3 ${
-                      msg.role === "user"
-                        ? "bg-gradient-to-br from-indigo-500/90 to-purple-500/90 text-white shadow-lg shadow-indigo-500/25"
-                        : "bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 text-slate-200"
-                    }`}
-                  >
-                    <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">{msg.content}</p>
-                  </div>
-                  
-                  {/* User avatar */}
-                  {msg.role === "user" && (
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-                        <svg className="w-4 h-4 text-white" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                        </svg>
+                    
+                    {/* Typing animation */}
+                    <div className="relative flex-1 rounded-2xl px-4 py-3 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                       </div>
                     </div>
-                  )}
-                </div>
-                
-                {/* Timestamp - shown on hover */}
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mt-1 px-2">
-                  <span className={`text-[10px] text-slate-500 ${msg.role === "user" ? "text-right block" : "text-left block"}`}>
-                    Just now
-                  </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            )}
+          </>
         )}
       </div>
 
@@ -305,24 +327,42 @@ const ChatArea = () => {
               
               <Textarea
                 value={input}
-                onChange={(e) => setInput(e.target.value)}
+                onChange={(e) => {
+                  setInput(e.target.value);
+                  // Auto-resize logic
+                  e.target.style.height = 'auto';
+                  e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
+                }}
                 placeholder="Ask something from your vault..."
-                className="relative min-h-[52px] max-h-[200px] resize-none bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 focus:border-emerald-500/50 rounded-xl px-4 py-3 text-slate-200 placeholder:text-slate-500 focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                className="relative min-h-[52px] max-h-[200px] resize-none bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 focus:border-emerald-500/50 rounded-xl px-4 py-3.5 text-slate-200 placeholder:text-slate-500 focus:ring-2 focus:ring-emerald-500/20 transition-all overflow-y-auto"
                 rows={1}
-                disabled={loading}
+                disabled={false}
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" && !e.shiftKey) {
-                    e.preventDefault();
-                    handleSend();
-                  }
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSend();
+
+                  // Reset height after sending
+                  setTimeout(() => {
+                    const el = e.currentTarget;
+                    el.style.height = "auto";
+                  }, 0);
+                }
                 }}
               />
             </div>
             
             <Button
-              onClick={handleSend}
+              onClick={() => {
+                handleSend();
+                // Reset textarea height
+                const textarea = document.querySelector('textarea');
+                if (textarea) {
+                  textarea.style.height = 'auto';
+                }
+              }}
               disabled={loading || !input.trim()}
-              className="h-[52px] w-[52px] rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-700 disabled:to-slate-800 border-0 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:shadow-none transition-all duration-200 group"
+              className="h-[52px] w-[52px] flex-shrink-0 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-700 disabled:to-slate-800 border-0 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:shadow-none transition-all duration-200 group"
             >
               {loading ? (
                 <svg className="h-5 w-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
