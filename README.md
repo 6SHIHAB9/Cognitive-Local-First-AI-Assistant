@@ -1,4 +1,4 @@
-# Local-First AI Assistant
+#Local-First AI Assistant
 
 A local-first AI assistant that answers questions **strictly using information from user-provided files**.
 
@@ -40,35 +40,46 @@ The system is designed to:
 
 ---
 
-## Question Processing & Validation
+## Internal Question Processing
 
-Before answering, every user question goes through an **internal processing pipeline**:
+Before any retrieval or answer generation occurs, each user question goes through an **internal processing and validation pipeline**.
 
-1. **Intent classification**  
-   The system determines whether the question is:
-   - a new factual query  
-   - a continuation of a previous question  
-   - casual or non-informational  
+### 1. Intent Classification
+The system determines whether the input is:
+- a new factual question
+- a continuation of a previous question
+- casual or non-informational input
 
-2. **Subject resolution**  
-   Core subject terms are extracted from the question and validated against retrieved vault content.
+This ensures that unrelated or conversational inputs do not trigger unnecessary retrieval.
 
-3. **Sub-question generation (internal)**  
-   For complex or multi-part questions, the system internally breaks the query into **simpler sub-questions** to:
-   - better align retrieval with the user’s intent
-   - avoid missing relevant information due to phrasing differences
-   - improve grounding accuracy
+---
 
-   These sub-questions are **not shown to the user** and are used only for internal retrieval and validation.
+### 2. Subject Resolution
+The system extracts the core subject(s) of the question and normalizes them internally.  
+This step helps anchor the question to concrete concepts that must be present in the vault.
 
-4. **Grounding check**  
-   Retrieved content is verified to ensure it directly supports the resolved subject and sub-questions.  
-   If sufficient grounding is not found, the system refuses to answer.
+---
 
-This process prevents:
-- answering loosely related questions
-- leaking partially relevant information
-- hallucinations caused by semantic overlap
+### 3. Sub-Question Generation (Internal)
+For complex, comparative, or explanatory queries, the system internally refines the original question into **simpler sub-questions or retrieval queries**.
+
+These sub-questions are used to:
+- improve alignment between the question and stored documents
+- reduce dependency on the user’s exact phrasing
+- avoid missing relevant information due to linguistic variation
+
+Sub-questions are **not exposed to the user** and exist only for internal processing.
+
+---
+
+### 4. Retrieval & Grounding
+Only after sub-question generation does the system perform retrieval:
+
+- Refined queries are embedded
+- Relevant document chunks are retrieved using vector similarity search
+- Retrieved content is validated to ensure it directly supports the question
+
+If sufficient grounding is not found, the system **refuses to answer**.
 
 ---
 
@@ -77,28 +88,28 @@ This process prevents:
 The assistant maintains a **lightweight, controlled context memory** to support follow-up questions.
 
 - The system tracks the **active subject** of the conversation
-- Follow-up queries such as *“explain it again”* or *“explain it simply”* reuse the validated subject
-- Context is **cleared automatically** when a new, unrelated factual question is asked
+- Follow-up queries such as “explain it again” reuse the validated subject
+- Context is automatically cleared when a new, unrelated factual question is asked
 
-This ensures:
+This design ensures:
 - continuity without long-term memory accumulation
 - no cross-topic contamination
-- predictable, bounded behavior
+- predictable and bounded behavior
 
 ---
 
 ## Answer Generation
 
-When a question passes validation:
+When a question passes validation and grounding checks:
 
-1. Relevant chunks are retrieved using vector similarity
-2. Individual sentences are filtered, cleaned, and deduplicated
-3. A language model rewrites the allowed sentences
+1. Retrieved sentences are filtered and deduplicated
+2. Partial fragments and list headers are removed
+3. A language model rewrites the remaining content
 
 **Rules:**
-- The model may rephrase, merge, and simplify sentences
+- Rephrasing and merging are allowed
 - No new information may be introduced
-- All facts must be directly supported by the vault content
+- Every fact must be directly supported by vault content
 
 If a valid answer cannot be produced, the assistant responds with:
 
@@ -153,7 +164,7 @@ I don't have that information in my vault yet.
 
 The project implements a fully working local Retrieval-Augmented Generation (RAG) system with:
 - internal question validation
-- sub-question decomposition
+- sub-question refinement before retrieval
 - controlled context memory
 - grounded answer generation
 - safe refusals and comparisons
