@@ -40,33 +40,41 @@ The system is designed to:
 
 ---
 
-### Question Processing & Validation
+## Question Processing & Validation
 
-Before answering, every user question goes through an **internal validation pipeline**:
+Before answering, every user question goes through an **internal processing pipeline**:
 
 1. **Intent classification**  
    The system determines whether the question is:
    - a new factual query  
    - a continuation of a previous question  
-   - casual / non-informational  
+   - casual or non-informational  
 
 2. **Subject resolution**  
-   The system extracts the core subject(s) of the question and verifies that they are present in the retrieved vault content.
+   Core subject terms are extracted from the question and validated against retrieved vault content.
 
-3. **Grounding check**  
-   Retrieved document chunks are validated to ensure they actually support the question being asked.  
-   If no valid grounding exists, the question is rejected.
+3. **Sub-question generation (internal)**  
+   For complex or multi-part questions, the system internally breaks the query into **simpler sub-questions** to:
+   - better align retrieval with the user’s intent
+   - avoid missing relevant information due to phrasing differences
+   - improve grounding accuracy
 
-This validation step prevents:
-- answering unrelated questions
-- leaking loosely related information
-- accidental hallucinations due to semantic overlap
+   These sub-questions are **not shown to the user** and are used only for internal retrieval and validation.
+
+4. **Grounding check**  
+   Retrieved content is verified to ensure it directly supports the resolved subject and sub-questions.  
+   If sufficient grounding is not found, the system refuses to answer.
+
+This process prevents:
+- answering loosely related questions
+- leaking partially relevant information
+- hallucinations caused by semantic overlap
 
 ---
 
-### Context Memory (Controlled)
+## Context Memory (Controlled)
 
-The assistant maintains a **lightweight internal context memory** to support follow-up questions.
+The assistant maintains a **lightweight, controlled context memory** to support follow-up questions.
 
 - The system tracks the **active subject** of the conversation
 - Follow-up queries such as *“explain it again”* or *“explain it simply”* reuse the validated subject
@@ -79,23 +87,25 @@ This ensures:
 
 ---
 
-### Answer Generation
+## Answer Generation
 
 When a question passes validation:
 
 1. Relevant chunks are retrieved using vector similarity
-2. Individual sentences are filtered and cleaned
+2. Individual sentences are filtered, cleaned, and deduplicated
 3. A language model rewrites the allowed sentences
 
 **Rules:**
-- The model may rephrase and merge sentences
+- The model may rephrase, merge, and simplify sentences
 - No new information may be introduced
-- All facts must come directly from the vault
+- All facts must be directly supported by the vault content
 
 If a valid answer cannot be produced, the assistant responds with:
 
 I don't have that information in my vault yet.
 
+yaml
+Copy code
 
 ---
 
@@ -145,11 +155,10 @@ I don't have that information in my vault yet.
 **Stable and complete.**
 
 The project implements a fully working local Retrieval-Augmented Generation (RAG) system with:
-- grounded answers
 - internal question validation
+- sub-question decomposition
 - controlled context memory
-- safe refusals
-- intent-preserving continuations
-- controlled comparisons
+- grounded answer generation
+- safe refusals and comparisons
 
-Further improvements (UI polish, analytics, visualizations) are possible, but the **core system behavior is intentionally locked** to preserve correctness.
+Further improvements are possible, but the **core system behavior is intentionally locked** to preserve correctness.
