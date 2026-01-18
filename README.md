@@ -1,4 +1,4 @@
-## Local-First AI Assistant
+## Cognitive Local-First AI Assistant with Grounded Retrieval and Context Memory
 
 A local-first AI assistant that answers questions **strictly using information from user-provided files**.
 
