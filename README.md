@@ -1,4 +1,4 @@
-#Local-First AI Assistant
+## Local-First AI Assistant
 
 A local-first AI assistant that answers questions **strictly using information from user-provided files**.
 
