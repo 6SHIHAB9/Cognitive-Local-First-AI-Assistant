@@ -2,7 +2,7 @@ import faiss
 import ollama
 
 class VectorStore:
-    def __init__(self, model_name="nomic-embed-text:latest"):
+    def __init__(self, model_name="bge-large:latest"):
         self.model_name = model_name
         self.index = None
         self.chunks = []
