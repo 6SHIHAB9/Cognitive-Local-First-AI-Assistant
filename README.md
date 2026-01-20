@@ -31,55 +31,63 @@ The system is designed to:
 
 ### Vault Ingestion
 
-- Users place text files (`.txt`, `.md`) inside a local `vault/` directory
+- Users place text files (`.txt`, `.md`, `.pdf`) inside a local `vault/` directory
 - Files are:
   - read locally
-  - chunked into smaller segments
-  - embedded using a local embedding model
-  - stored in a local vector database
+  - chunked into 600-word segments (preserves paragraph context)
+  - embedded using BGE-Large (state-of-the-art local embedding model)
+  - stored in a FAISS vector database
 
 ---
 
 ## Internal Question Processing
 
-Before any retrieval or answer generation occurs, each user question goes through an **internal processing and validation pipeline**.
+Before any retrieval or answer generation occurs, each user question goes through an **LLM-driven processing and validation pipeline**.
 
 ### 1. Intent Classification
-The system determines whether the input is:
+The system uses an LLM with **3-turn conversation history** to determine whether the input is:
 - a new factual question
 - a continuation of a previous question
 - casual or non-informational input
+
+The LLM analyzes conversation context to detect:
+- pronoun references (it, that, this)
+- cross-references (the first one, the second one)
+- continuation signals (again, more, elaborate)
 
 This ensures that unrelated or conversational inputs do not trigger unnecessary retrieval.
 
 ---
 
-### 2. Subject Resolution
-The system extracts the core subject(s) of the question and normalizes them internally.  
-This step helps anchor the question to concrete concepts that must be present in the vault.
+### 2. Pronoun Resolution
+For continuation queries, the system uses an LLM to resolve pronouns before retrieval.
+
+The LLM transforms ambiguous questions into explicit retrieval queries by replacing pronouns with their referents from conversation history.
+
+This ensures semantic search retrieves the correct context.
 
 ---
 
-### 3. Sub-Question Generation (Internal)
-For complex, comparative, or explanatory queries, the system internally refines the original question into **simpler sub-questions or retrieval queries**.
+### 3. Semantic Retrieval
+The system performs retrieval using the resolved query:
 
-These sub-questions are used to:
-- improve alignment between the question and stored documents
-- reduce dependency on the user’s exact phrasing
-- avoid missing relevant information due to linguistic variation
-
-Sub-questions are **not exposed to the user** and exist only for internal processing.
-
----
-
-### 4. Retrieval & Grounding
-Only after sub-question generation does the system perform retrieval:
-
-- Refined queries are embedded
+- Queries are embedded using BGE-Large
 - Relevant document chunks are retrieved using vector similarity search
-- Retrieved content is validated to ensure it directly supports the question
+- Hybrid scoring combines semantic similarity (70%) and keyword overlap (30%)
+- Retrieved chunks are ranked by relevance score
 
-If sufficient grounding is not found, the system **refuses to answer**.
+---
+
+### 4. LLM-Based Grounding
+Retrieved chunks are passed to an LLM for sentence extraction.
+
+The grounding LLM:
+- receives the question and conversation context
+- extracts sentences that could answer the question
+- understands implicit answers (benefits = importance, outcomes = reasons)
+- is instructed to be inclusive rather than exclusive
+
+If no relevant sentences are found, the system **refuses to answer**.
 
 ---
 
@@ -87,14 +95,15 @@ If sufficient grounding is not found, the system **refuses to answer**.
 
 The assistant maintains a **lightweight, controlled context memory** to support follow-up questions.
 
-- The system tracks the **active subject** of the conversation
-- Follow-up queries such as “explain it again” reuse the validated subject
+- The system tracks the **last 3 question-answer pairs**
+- Follow-up queries reuse validated context from previous turns
 - Context is automatically cleared when a new, unrelated factual question is asked
 
 This design ensures:
 - continuity without long-term memory accumulation
 - no cross-topic contamination
 - predictable and bounded behavior
+- support for cross-references across multiple turns
 
 ---
 
@@ -102,9 +111,8 @@ This design ensures:
 
 When a question passes validation and grounding checks:
 
-1. Retrieved sentences are filtered and deduplicated
-2. Partial fragments and list headers are removed
-3. A language model rewrites the remaining content
+1. Extracted sentences are validated and deduplicated
+2. An LLM transforms the sentences into a natural language answer
 
 **Rules:**
 - Rephrasing and merging are allowed
@@ -113,7 +121,7 @@ When a question passes validation and grounding checks:
 
 If a valid answer cannot be produced, the assistant responds with:
 
-I don't have that information in my vault yet.
+> I don't have that information in my vault yet.
 
 ---
 
@@ -129,7 +137,7 @@ I don't have that information in my vault yet.
   The model is not allowed to invent or infer missing information
 
 - **Intent-aware follow-ups**  
-  Follow-up queries preserve the original intent (WHY vs WHAT)
+  Follow-up queries preserve the original intent (WHY vs WHAT vs HOW)
 
 - **Safe comparisons**  
   Comparisons are allowed only when all compared topics exist in the vault
@@ -137,14 +145,49 @@ I don't have that information in my vault yet.
 - **Deterministic behavior**  
   No cloud calls, no hidden state, no nondeterminism
 
+- **Adaptive understanding**  
+  No hardcoded keywords or patterns - LLMs handle semantic understanding
+
+---
+
+## Architecture Principles
+
+### LLM-Driven, Not Rule-Based
+
+The system uses **LLMs at every decision point** instead of hardcoded rules:
+
+- **Intent classification:** LLM analyzes question + conversation history
+- **Pronoun resolution:** LLM resolves references to previous topics
+- **Grounding:** LLM extracts relevant sentences with semantic understanding
+- **Answer generation:** LLM transforms grounded sentences
+
+This approach:
+- eliminates brittleness from keyword matching
+- adapts to any domain without configuration
+- handles natural language variation
+- understands implicit questions and indirect answers
+
+### No Hardcoded Logic
+
+Zero hardcoded:
+- keyword lists
+- stop words
+- pattern matching rules
+- question templates
+
+The system generalizes through LLM reasoning, not brittle heuristics.
+
 ---
 
 ## Tech Stack
 
 - **Backend:** FastAPI (Python)
 - **Frontend:** React + TypeScript
-- **LLM:** Ollama (local models)
-- **Embeddings:** nomic-embed-text (Ollama, local embedding model)
+- **LLM Runtime:** Ollama (local)
+- **Models:**
+  - Qwen 2.5:7B (intent classification, grounding, generation)
+  - Mistral 7B Instruct (casual conversation)
+- **Embeddings:** BGE-Large (local, state-of-the-art semantic search)
 - **Vector Search:** FAISS (local vector database)
 
 ---
@@ -155,6 +198,7 @@ I don't have that information in my vault yet.
 - Works offline
 - No API costs
 - Complete user control over the knowledge source
+- No latency from network calls
 
 ---
 
@@ -163,10 +207,30 @@ I don't have that information in my vault yet.
 **Stable and complete.**
 
 The project implements a fully working local Retrieval-Augmented Generation (RAG) system with:
-- internal question validation
-- sub-question refinement before retrieval
+- LLM-driven intent classification with 3-turn history
+- pronoun resolution for continuation queries
+- semantic retrieval with BGE-Large embeddings
+- LLM-based sentence grounding
 - controlled context memory
 - grounded answer generation
 - safe refusals and comparisons
+- zero hardcoded patterns or keywords
 
 Further improvements are possible, but the **core system behavior is intentionally locked** to preserve correctness.
+
+---
+
+## Design Philosophy
+
+**Correctness over fluency.**
+
+The system would rather refuse than guess.  
+The system would rather be precise than be helpful.  
+The system would rather say "I don't know" than hallucinate.
+
+This makes it suitable for:
+- personal knowledge bases
+- research notes
+- study materials
+- sensitive documents
+- any domain where accuracy matters more than coverage
