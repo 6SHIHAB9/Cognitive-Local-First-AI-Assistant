@@ -1,0 +1,11 @@
+{"text": "What does the document say about encryption?", "label": "factual"}
+{"text": "Explain the authentication flow", "label": "factual"}
+{"text": "List the limitations mentioned in the paper", "label": "factual"}
+
+{"text": "What about its drawbacks?", "label": "continuation"}
+{"text": "Does it support that?", "label": "continuation"}
+{"text": "Why did they choose this approach?", "label": "continuation"}
+
+{"text": "hey", "label": "casual"}
+{"text": "thanks bro", "label": "casual"}
+{"text": "how are you doing?", "label": "casual"}
