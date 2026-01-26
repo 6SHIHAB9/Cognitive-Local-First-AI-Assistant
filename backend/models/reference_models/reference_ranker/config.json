@@ -1,0 +1,10 @@
+{
+  "model_type": "reference_ranker",
+  "base_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "description": "Pairwise-trained reference scorer with scalar head",
+  "input": [
+    "query",
+    "context"
+  ],
+  "output": "relevance_score"
+}
