@@ -4,6 +4,8 @@ from typing import Optional
 import ollama
 import re
 import time
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+import torch
 
 from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
@@ -16,6 +18,28 @@ current_vault_data = None
 last_vault_mtime = None
 
 router = APIRouter()
+
+# =========================
+# Model 1: Intent classifier
+# =========================
+INTENT_LABEL_MAP = {
+    "LABEL_0": "factual",
+    "LABEL_1": "continuation",
+    "LABEL_2": "casual"
+}
+
+intent_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+intent_model = AutoModelForSequenceClassification.from_pretrained(
+    "models/intent_models/intent_model/final"
+).to(intent_device)
+
+intent_tokenizer = AutoTokenizer.from_pretrained(
+    "models/intent_models/intent_model/final"
+)
+
+intent_model.eval()
+
 
 # =========================
 # Models
@@ -41,62 +65,22 @@ def normalize_chunks(results) -> list[str]:
 # Intent Classification
 # =========================
 def classify_intent(question: str) -> str:
-    """
-    Classify user intent with conversation history (last 3 questions).
-    """
-    # Get last 3 questions for context
-    history = context_manager.get_last_n_questions(n=3)
-    
-    # Build context for the LLM
-    context_text = ""
-    if history:
-        context_lines = []
-        for i, prev_q in enumerate(history):
-            # Most recent = position 1
-            position = i + 1
-            context_lines.append(f"Question {position} (most recent): {prev_q}")
-        context_text = "\nCONVERSATION HISTORY:\n" + "\n".join(context_lines)
-    
-    res = ollama.generate(
-        model="qwen2.5:7b",
-        prompt=f"""Classify the user's message into ONE category.
-{context_text}
-
-Categories:
-- factual: Asking for new information about a specific topic
-- continuation: Referring to any previous question (follow-up, clarification, rephrasing request)
-- casual: Casual chat, greetings, or general conversation
-
-CRITICAL RULES FOR DETECTING CONTINUATION:
-1. If the message contains pronouns (it, that, this, them, they) AND there's conversation history → ALWAYS continuation
-2. If asking "why/how/what" + pronoun (e.g., "Why is it important?") → ALWAYS continuation
-3. Words like "again", "more", "further", "elaborate" → ALWAYS continuation
-4. If the message only makes sense in context of previous questions → continuation
-5. ONLY classify as factual if asking about a completely NEW topic with NO pronouns
-
-Examples WITH history showing PRONOUNS = CONTINUATION:
-History: "What is Stoicism?"
-Current: "Why is it important?" → continuation (contains "it")
-Current: "Tell me more about it" → continuation (contains "it")
-Current: "How does that work?" → continuation (contains "that")
-Current: "Explain this better" → continuation (contains "this")
-
-History: "What is caramelization?"
-Current: "Why shouldn't you rush it?" → continuation (contains "it")
-
-History: "What is mycelium?"  
-Current: "What is photosynthesis?" → factual (new topic, no pronouns)
-
-IMPORTANT: If you see "it", "that", "this" in the current message → It's ALWAYS a continuation!
-
-CURRENT MESSAGE:
-{question}
-
-Category:""",
-        options={"temperature": 0.0, "num_predict": 5},
+    inputs = intent_tokenizer(
+        question,
+        return_tensors="pt",
+        truncation=True,
+        padding=True,
+        max_length=512
     )
-    
-    return res["response"].strip().lower()
+
+    inputs = {k: v.to(intent_device) for k, v in inputs.items()}
+
+    with torch.inference_mode():
+        logits = intent_model(**inputs).logits
+        pred_id = torch.argmax(logits, dim=-1).item()
+
+    return INTENT_LABEL_MAP.get(f"LABEL_{pred_id}", "factual")
+
 
 
 # =========================
