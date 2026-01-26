@@ -14,6 +14,9 @@ from config import VAULT_PATH
 from context_manager import context_manager
 
 from models.grounding_models.loader import GroundingScorer
+
+from models.sufficiency_models.scorer import SufficiencyScorer
+
 # =========================
 # Global vault state
 # =========================
@@ -60,6 +63,15 @@ grounding_scorer = GroundingScorer(
     "models/grounding_models/grounding_model"
 )
 
+# =========================
+# Model 4: Sufficiency Scorer
+# =========================
+sufficiency_scorer = SufficiencyScorer(
+    model_path="models/sufficiency_models",
+    base_model="sentence-transformers/all-MiniLM-L6-v2"
+)
+
+SUFFICIENCY_THRESHOLD = 0.95
 
 # =========================
 # Models
@@ -293,7 +305,7 @@ Response:
         allowed = ml_ground_sentences(question, chunks)
         print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
 
-        # 🔒 HARD REFUSAL - Check BEFORE trying to answer
+        # 🔒 HARD REFUSAL - no grounded sentences
         if not allowed:
             print("❌ NO GROUNDED SENTENCES - REFUSING")
             response_data = {"answer": "I don't have that information in my vault yet."}
@@ -301,11 +313,40 @@ Response:
                 response_data["sync_performed"] = sync_info
             return response_data
 
+
+        # =========================
+        # Model 4: SUFFICIENCY CHECK (HARD GATE)
+        # =========================
+        suff_score = sufficiency_scorer.score(
+            question=question,
+            sentences=allowed,
+            intent=intent
+        )
+
+        print(f"🧪 SUFFICIENCY SCORE: {suff_score:.4f}")
+
+        if suff_score < SUFFICIENCY_THRESHOLD:
+            print("🚫 INSUFFICIENT EVIDENCE — REFUSING")
+            response_data = {
+                "answer": "I don't have enough information in my vault to answer that confidently.",
+                "metadata": {
+                    "intent": intent,
+                    "sentences_grounded": len(allowed),
+                    "sufficiency_score": suff_score
+                }
+            }
+            if sync_info:
+                response_data["sync_performed"] = sync_info
+            return response_data
+
+
+        # ⬇️ ONLY reaches here if grounding + sufficiency passed
         print(f"📄 ALLOWED SENTENCES:")
         for i, s in enumerate(allowed, 1):
             print(f"  {i}. {s}")
 
         allowed_text = "\n".join(f"- {s}" for s in allowed)
+
 
         # 5. ANSWER GENERATION
         # Build context for continuation
