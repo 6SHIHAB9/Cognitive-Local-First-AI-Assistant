@@ -6,6 +6,7 @@ import re
 import time
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
+from models.reference_models.reference_ranker.loader import ReferenceRanker
 
 from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
@@ -40,6 +41,12 @@ intent_tokenizer = AutoTokenizer.from_pretrained(
 
 intent_model.eval()
 
+# =========================
+# Model 2: Reference Ranker
+# =========================
+reference_ranker = ReferenceRanker(
+    "models/reference_models/reference_ranker"
+)
 
 # =========================
 # Models
@@ -59,6 +66,19 @@ def normalize_chunks(results) -> list[str]:
         elif isinstance(r, str):
             chunks.append(r)
     return chunks
+
+
+def rerank_chunks(question: str, chunks: list[str], top_k: int = 5) -> list[str]:
+    if not chunks:
+        return []
+
+    scored = []
+    for chunk in chunks:
+        score = reference_ranker.score(question, chunk)
+        scored.append((score, chunk))
+
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return [chunk for _, chunk in scored[:top_k]]
 
 
 # =========================
@@ -84,57 +104,18 @@ def classify_intent(question: str) -> str:
 
 
 # =========================
-# LLM-BASED RETRIEVAL
+# ML BASED RETRIEVAL
 # =========================
 def retrieve_for_question(question: str, intent: str, vault_data: dict) -> list[str]:
-    """
-    Retrieve chunks using semantic search.
-    For continuations, resolve pronouns using previous context.
-    """
-    retrieval_query = question
-    
+    results = retrieve_relevant_chunks(question, vault_data, limit=10)
+    chunks = normalize_chunks(results)
+
+    # 🔹 ONLY for continuation
     if intent == "continuation":
-        previous_q = context_manager.get_previous_question()
-        if previous_q:
-            # Extract the topic from the previous question
-            # This helps resolve pronouns like "it", "that", "this"
-            
-            # Simple pronoun resolution using LLM
-            res = ollama.generate(
-                model="qwen2.5:7b",
-                prompt=f"""Resolve the pronouns in the current question using the previous question's topic.
+        chunks = rerank_chunks(question, chunks, top_k=5)
 
-PREVIOUS QUESTION: {previous_q}
-CURRENT QUESTION: {question}
+    return chunks[:5]
 
-TASK:
-Replace pronouns (it, that, this, them) in the current question with the actual topic from the previous question.
-
-Examples:
-Previous: "What is caramelization?"
-Current: "Why shouldn't you rush it?"
-Output: "Why shouldn't you rush caramelization?"
-
-Previous: "What is mycelium?"
-Current: "Tell me more"
-Output: "Tell me more about mycelium"
-
-Previous: "What is Stoicism?"
-Current: "Explain it again"
-Output: "Explain Stoicism again"
-
-Output ONLY the resolved question, nothing else.
-
-Resolved question:""",
-                options={"temperature": 0.0, "num_predict": 20},
-            )
-            
-            resolved = res["response"].strip()
-            if resolved and len(resolved) > 3:
-                retrieval_query = resolved
-    
-    results = retrieve_relevant_chunks(retrieval_query, vault_data, limit=5)
-    return normalize_chunks(results)
 
 
 # =========================
