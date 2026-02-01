@@ -259,7 +259,7 @@ def ml_ground_sentences(
     sentences: list[str],
     intent: str,
     top_k: int = 8,
-    min_relevance: float = 0.25,  # NEW: relevance threshold
+    min_relevance: float = 0.25,
     min_grounding: float = 0.35
 ) -> list[str]:
 
@@ -270,8 +270,20 @@ def ml_ground_sentences(
     for s in sentences:
         print("  >", s)
 
+    # ============================================================
+    # 🔥 NEW: Combine questions for continuation context
+    # ============================================================
+    relevance_query = question
+    if intent == "continuation":
+        prev_q = context_manager.get_previous_question()
+        if prev_q:
+            relevance_query = prev_q + " " + question
+            print(f"🔄 Combined context: '{relevance_query}'")
+            min_relevance = 0.20  # Lower threshold for continuation
+    # ============================================================
+
     # Calculate relevance scores for all sentences at once
-    q_embed = topic_embedder.encode(question, convert_to_tensor=True)
+    q_embed = topic_embedder.encode(relevance_query, convert_to_tensor=True)  # ← CHANGED: was 'question'
     s_embeds = topic_embedder.encode(sentences, convert_to_tensor=True)
     relevance_scores = util.cos_sim(q_embed, s_embeds)[0]
 
