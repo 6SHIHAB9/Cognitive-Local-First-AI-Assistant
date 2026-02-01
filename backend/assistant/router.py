@@ -376,22 +376,26 @@ def ask(req: AskRequest):
         # Topic + Explanation Continuity
         # =========================
         if intent == "continuation" and previous_q:
-            topic_score = topic_scorer.score(previous_q, question)
-            explanation_score = topic_scorer.score(
-                previous_q,
-                previous_q + " " + question
-            )
+            # Use cosine similarity for question-to-question comparison
+            prev_embed = topic_embedder.encode(previous_q, convert_to_tensor=True)
+            curr_embed = topic_embedder.encode(question, convert_to_tensor=True)
+            
+            # Topic similarity: how similar are the two questions?
+            topic_score = float(util.cos_sim(prev_embed, curr_embed)[0][0])
+            
+            # Explanation similarity: does current question expand on previous?
+            combined = previous_q + " " + question
+            combined_embed = topic_embedder.encode(combined, convert_to_tensor=True)
+            explanation_score = float(util.cos_sim(prev_embed, combined_embed)[0][0])
 
             print(f"🧠 TOPIC SCORE: {topic_score:.4f}")
             print(f"🧠 EXPLANATION SCORE: {explanation_score:.4f}")
 
-            if topic_score >= 0.45 or explanation_score >= 0.55:
+            if topic_score >= 0.30 or explanation_score >= 0.50:
                 use_previous_context = True
             else:
                 print("🔁 Topic drift detected → re-anchoring topic")
                 use_previous_context = False
-
-                # establish NEW topic anchor
                 context_manager.clear_session()
                 context_manager.set_topic_anchor(question)
                 intent = "factual"
@@ -405,8 +409,12 @@ def ask(req: AskRequest):
         if intent == "factual":
             previous_q = context_manager.get_previous_question()
             if previous_q:
-                topic_score = topic_scorer.score(previous_q, question)
-                if topic_score < 0.35:
+                # Use cosine similarity here too
+                prev_embed = topic_embedder.encode(previous_q, convert_to_tensor=True)
+                curr_embed = topic_embedder.encode(question, convert_to_tensor=True)
+                topic_score = float(util.cos_sim(prev_embed, curr_embed)[0][0])
+                
+                if topic_score < 0.25:
                     context_manager.clear_session()
 
         # 2. Casual Chat
