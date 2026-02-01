@@ -16,13 +16,30 @@ def read_text_file(path: Path) -> str:
         return ""
 
 
-def chunk_text(text: str, chunk_size: int = 600):
+def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50):
+    """
+    Chunk text by words with overlap.
+    Reduced from 600 to 300 words to avoid embedding model context limits.
+    
+    Args:
+        text: Text to chunk
+        chunk_size: Number of words per chunk (default 300 = ~400 tokens)
+        overlap: Number of words to overlap between chunks
+    """
     words = text.split()
     chunks = []
 
-    for i in range(0, len(words), chunk_size):
+    if not words:
+        return chunks
+
+    for i in range(0, len(words), chunk_size - overlap):
         chunk = " ".join(words[i:i + chunk_size])
-        chunks.append(chunk)
+        if chunk.strip():  # Only add non-empty chunks
+            chunks.append(chunk)
+        
+        # Break if we're at the end
+        if i + chunk_size >= len(words):
+            break
 
     return chunks
 
@@ -55,6 +72,8 @@ def scan_vault():
             "files": [],
         }
 
+    print(f"📂 Scanning vault: {VAULT_PATH}")
+
     for path in VAULT_PATH.rglob("*"):
         if not path.is_file():
             continue
@@ -77,13 +96,23 @@ def scan_vault():
         })
 
         all_chunks.extend(chunks)
+        
+        if chunks:
+            print(f"  ✅ {path.name}: {len(chunks)} chunks")
 
     # build embeddings ONLY from real chunks
     if all_chunks:
         vector_store.build(all_chunks)
+    else:
+        print("⚠️ No content found to index")
 
     empty_files = sum(1 for f in files if f["empty"])
     indexed_files = sum(1 for f in files if not f["empty"])
+
+    print(f"\n📊 Scan complete:")
+    print(f"  Files found: {len(files)}")
+    print(f"  Indexed: {indexed_files}")
+    print(f"  Total chunks: {len(all_chunks)}")
 
     return {
         "vault_path": str(VAULT_PATH),
