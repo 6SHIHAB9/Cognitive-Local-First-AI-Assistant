@@ -91,6 +91,26 @@ class AskRequest(BaseModel):
 # =========================
 # Helpers
 # =========================
+
+def deduplicate_sentences(sentences: list[str]) -> list[str]:
+    """
+    Remove duplicate sentences while preserving order.
+    Uses normalized comparison to catch near-duplicates.
+    """
+    seen = set()
+    unique = []
+    
+    for sentence in sentences:
+        # Normalize for comparison (lowercase, strip whitespace)
+        normalized = sentence.strip().lower()
+        
+        if normalized and normalized not in seen:
+            seen.add(normalized)
+            unique.append(sentence)
+    
+    return unique
+
+
 def normalize_chunks(results) -> list[str]:
     chunks = []
     for r in results:
@@ -458,7 +478,8 @@ Response:
 
         # 4a. Split chunks into sentences
         sentences = split_into_sentences(chunks)
-        print(f"🧪 SENTENCES BEFORE TOPIC FILTER: {len(sentences)}")
+        sentences = deduplicate_sentences(sentences)  # ← ADD THIS LINE
+        print(f"🧪 SENTENCES AFTER DEDUP & BEFORE TOPIC FILTER: {len(sentences)}")
 
         # STEP 1: Topic anchor
         topic_anchor = (
