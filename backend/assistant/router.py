@@ -219,9 +219,15 @@ def split_into_sentences(chunks: list[str]) -> list[str]:
 # =========================
 # Intent Classification
 # =========================
-def classify_intent(question: str) -> str:
+def classify_intent(question: str, previous_q: str = None) -> str:
+
+    if previous_q:
+        text = f"[PREV] {previous_q} [SEP] [CURR] {question}"
+    else:
+        text = f"[PREV]  [SEP] [CURR] {question}"
+    
     inputs = intent_tokenizer(
-        question,
+        text,  
         return_tensors="pt",
         truncation=True,
         padding=True,
@@ -398,7 +404,7 @@ def ask(req: AskRequest):
         # =========================
         # 1. Intent Classification
         # =========================
-        intent = classify_intent(question)
+        intent = classify_intent(question, context_manager.get_previous_question())
         print(f"🎯 INTENT: {intent}")
 
         previous_q = context_manager.get_previous_question()
