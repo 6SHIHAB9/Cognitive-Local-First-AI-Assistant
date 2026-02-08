@@ -912,3 +912,132 @@
 {"previous": "What is eventual consistency?", "current": "What are the disadvantages?", "label": 1}
 {"previous": "What is SQL injection?", "current": "What is MongoDB?", "label": 0}
 {"previous": "Explain cloud computing", "current": "What is vertical scaling?", "label": 0}
+{"previous": "What is blockchain?", "current": "How does it prevent tampering?", "label": 1}
+{"previous": "What is the CAP theorem?", "current": "How is it used in MongoDB?", "label": 1}
+{"previous": "What is photosynthesis?", "current": "How does it work?", "label": 1}
+{"previous": "What is deforestation?", "current": "Why is that bad?", "label": 1}
+{"previous": "What is overfitting?", "current": "Why is that an issue?", "label": 1}
+{"previous": "What is encryption?", "current": "How does it protect data?", "label": 1}
+{"previous": "What is machine learning?", "current": "How does it learn?", "label": 1}
+{"previous": "What is a neural network?", "current": "How is it trained?", "label": 1}
+{"previous": "What is distributed computing?", "current": "How does it scale?", "label": 1}
+{"previous": "What is REST API?", "current": "How does it work?", "label": 1}
+{"previous": "What is Docker?", "current": "How is it used in production?", "label": 1}
+{"previous": "What is TCP?", "current": "How does it ensure reliability?", "label": 1}
+{"previous": "What is caching?", "current": "How does it improve performance?", "label": 1}
+{"previous": "What is indexing?", "current": "How is it used in databases?", "label": 1}
+{"previous": "What is sharding?", "current": "How does it distribute data?", "label": 1}
+{"previous": "What is OAuth?", "current": "How does it authenticate users?", "label": 1}
+{"previous": "What is Git?", "current": "How does it track changes?", "label": 1}
+{"previous": "What is virtualization?", "current": "How is it used in cloud?", "label": 1}
+{"previous": "What is GraphQL?", "current": "How does it differ from REST?", "label": 1}
+{"previous": "What is microservices?", "current": "How do they communicate?", "label": 1}
+{"previous": "What is a hash function?", "current": "How does it prevent collisions?", "label": 1}
+{"previous": "What is HTTPS?", "current": "How does it secure connections?", "label": 1}
+{"previous": "What is asynchronous programming?", "current": "How does it improve responsiveness?", "label": 1}
+{"previous": "What is MapReduce?", "current": "How is it used for big data?", "label": 1}
+{"previous": "What is eventual consistency?", "current": "How is it implemented?", "label": 1}
+{"previous": "What is a VPN?", "current": "How does it protect privacy?", "label": 1}
+{"previous": "What is serverless?", "current": "How does it reduce costs?", "label": 1}
+{"previous": "What is WebSocket?", "current": "How does it enable real-time updates?", "label": 1}
+{"previous": "What is two-phase commit?", "current": "How does it ensure atomicity?", "label": 1}
+{"previous": "What is rate limiting?", "current": "How is it enforced?", "label": 1}
+{"previous": "What is consistent hashing?", "current": "How is it used in DynamoDB?", "label": 1}
+{"previous": "Explain the concept of a Bloom filter.", "current": "How does it prevent cache misses?", "label": 1}
+{"previous": "I'm seeing high latency in my API calls.", "current": "Why is that bad for user retention?", "label": 1}
+{"previous": "Tell me about Docker containers.", "current": "What are its main benefits over VMs?", "label": 1}
+{"previous": "We are deploying a new microservice.", "current": "What happens if the service fails to start?", "label": 1}
+{"previous": "Describe the raft consensus algorithm.", "current": "Can you explain the leader election phase?", "label": 1}
+{"previous": "What is a load balancer?", "current": "What does it do exactly?", "label": 1}
+{"previous": "We implemented a circuit breaker pattern.", "current": "How does that help with system stability?", "label": 1}
+{"previous": "What is JSON Web Token?", "current": "How is it used in stateless authentication?", "label": 1}
+{"previous": "Explain the TCP three-way handshake.", "current": "How does it establish a connection?", "label": 1}
+{"previous": "The database is not normalized.", "current": "Why is that an issue for data integrity?", "label": 1}
+{"previous": "What is the purpose of a reverse proxy?", "current": "What are its security drawbacks?", "label": 1}
+{"previous": "I want to use a greedy algorithm here.", "current": "What happens when the local optimum isn't global?", "label": 1}
+{"previous": "Let's discuss gradient descent.", "current": "Can you explain the learning rate parameter?", "label": 1}
+{"previous": "What is an index in a database?", "current": "What does it do to write performance?", "label": 1}
+{"previous": "We added a caching layer with Redis.", "current": "How does that help reduce database load?", "label": 1}
+{"previous": "What is Kubernetes?", "current": "How is it used in cloud orchestration?", "label": 1}
+{"previous": "Explain public key cryptography.", "current": "How does it protect data in transit?", "label": 1}
+{"previous": "My model is overfitting the training data.", "current": "Why is that dangerous for production?", "label": 1}
+{"previous": "What is horizontal scaling?", "current": "What are its limitations compared to vertical scaling?", "label": 1}
+{"previous": "We are migrating to IPv6.", "current": "What happens if legacy devices don't support it?", "label": 1}
+{"previous": "Describe the CAP theorem.", "current": "Can you explain partition tolerance?", "label": 1}
+{"previous": "What is a garbage collector in Java?", "current": "What does it do with unreferenced objects?", "label": 1}
+{"previous": "We switched to asynchronous processing.", "current": "How does that help throughput?", "label": 1}
+{"previous": "What is BGP in networking?", "current": "How is it used in routing between AS?", "label": 1}
+{"previous": "Explain the concept of sharding.", "current": "How does it scale write operations?", "label": 1}
+{"previous": "The code has a race condition.", "current": "Why is that difficult to debug?", "label": 1}
+{"previous": "What is a neural network?", "current": "What are its applications in image recognition?", "label": 1}
+{"previous": "I'm setting up a firewall ruleset.", "current": "What happens if I block port 80?", "label": 1}
+{"previous": "Let's talk about MapReduce.", "current": "Can you explain the shuffle step?", "label": 1}
+{"previous": "What is a CDN?", "current": "What does it do for static assets?", "label": 1}
+{"previous": "We are using Terraform for IaC.", "current": "How does that help with infrastructure consistency?", "label": 1}
+{"previous": "What is GraphQL?", "current": "How is it used in fetching nested data?", "label": 1}
+{"previous": "Explain how DNS works.", "current": "How does it resolve a domain name?", "label": 1}
+{"previous": "The server is responding with 500 errors.", "current": "Why is that critical to fix immediately?", "label": 1}
+{"previous": "What is a NoSQL database?", "current": "What are its advantages for unstructured data?", "label": 1}
+{"previous": "We plan to use Kafka for streaming.", "current": "What happens when a consumer lags behind?", "label": 1}
+{"previous": "Describe the OAuth 2.0 flow.", "current": "Can you explain the authorization code grant?", "label": 1}
+{"previous": "What is a hypervisor?", "current": "What does it do to hardware resources?", "label": 1}
+{"previous": "We implemented strict typing in Python.", "current": "How does that help catch bugs early?", "label": 1}
+{"previous": "What is Memcached?", "current": "How is it used in session storage?", "label": 1}
+{"previous": "Explain the concept of a VPN.", "current": "How does it mask the user's IP?", "label": 1}
+{"previous": "This algorithm has O(n^2) complexity.", "current": "Why is that bad for large datasets?", "label": 1}
+{"previous": "What is Transfer Learning?", "current": "What are its benefits for small datasets?", "label": 1}
+{"previous": "I'm deploying to AWS Lambda.", "current": "What happens if the execution times out?", "label": 1}
+{"previous": "Tell me about SQL injection.", "current": "Can you explain how prepared statements prevent it?", "label": 1}
+{"previous": "What is a service mesh?", "current": "What does it do for observability?", "label": 1}
+{"previous": "We are optimizing the critical rendering path.", "current": "How does that help improve LCP?", "label": 1}
+{"previous": "What is Elasticsearch?", "current": "How is it used in log analysis?", "label": 1}
+{"previous": "Explain the sliding window protocol.", "current": "How does it manage flow control?", "label": 1}
+{"previous": "The system is single point of failure.", "current": "Why is that risky for availability?", "label": 1}
+{"previous": "What is React?", "current": "What are its key features regarding the virtual DOM?", "label": 1}
+{"previous": "We are using a blue-green deployment strategy.", "current": "What happens if the green environment fails?", "label": 1}
+{"previous": "Describe a DDoS attack.", "current": "Can you explain the amplification technique?", "label": 1}
+{"previous": "What is a compiler?", "current": "What does it do during the optimization phase?", "label": 1}
+{"previous": "We added unit tests to the pipeline.", "current": "How does that help with refactoring?", "label": 1}
+{"previous": "What is gRPC?", "current": "How is it used in microservices communication?", "label": 1}
+{"previous": "Explain the concept of deadlocks.", "current": "How does it freeze the application?", "label": 1}
+{"previous": "The API is deprecated.", "current": "Why is that important for developers to know?", "label": 1}
+{"previous": "What is Reinforcement Learning?", "current": "What are its applications in robotics?", "label": 1}
+{"previous": "I'm configuring a VPC peering connection.", "current": "What happens if CIDR blocks overlap?", "label": 1}
+{"previous": "Let's discuss Git branching strategies.", "current": "Can you explain Git Flow?", "label": 1}
+{"previous": "What is a mutex?", "current": "What does it do to shared resources?", "label": 1}
+{"previous": "We are using a message queue.", "current": "How does that help decouple services?", "label": 1}
+{"previous": "What is Hadoop?", "current": "How is it used in big data processing?", "label": 1}
+{"previous": "Explain HTTPS encryption.", "current": "How does it function with TLS certificates?", "label": 1}
+{"previous": "The latency is spiking significantly.", "current": "Why is that unexpected for this load?", "label": 1}
+{"previous": "What is edge computing?", "current": "What are its benefits for IoT devices?", "label": 1}
+{"previous": "We are using optimistic locking.", "current": "What happens when a version conflict occurs?", "label": 1}
+{"previous": "Describe the SOLID principles.", "current": "Can you explain the Liskov Substitution Principle?", "label": 1}
+{"previous": "What is a WebAssembly module?", "current": "What does it do in the browser?", "label": 1}
+{"previous": "We implemented continuous integration.", "current": "How does that help merge code faster?", "label": 1}
+{"previous": "What is Apache Spark?", "current": "How is it used in real-time analytics?", "label": 1}
+{"previous": "Explain packet switching.", "current": "How does it route data chunks?", "label": 1}
+{"previous": "The certificate has expired.", "current": "Why is that a security risk?", "label": 1}
+{"previous": "What is serverless computing?", "current": "What are its cost implications?", "label": 1}
+{"previous": "I deleted the production database.", "current": "What happens if we don't have backups?", "label": 1}
+{"previous": "Let's talk about normalization forms.", "current": "Can you explain 3NF?", "label": 1}
+{"previous": "What is a daemon process?", "current": "What does it do in the background?", "label": 1}
+{"previous": "We are using data augmentation.", "current": "How does that help the model generalize?", "label": 1}
+{"previous": "What is RabbitMQ?", "current": "How is it used in task distribution?", "label": 1}
+{"previous": "Explain the Bellman-Ford algorithm.", "current": "How does it handle negative weights?", "label": 1}
+{"previous": "The disk usage is at 99%.", "current": "Why is that a problem for the OS?", "label": 1}
+{"previous": "What is computer vision?", "current": "What are its use cases in healthcare?", "label": 1}
+{"previous": "We are rotating our API keys.", "current": "What happens to the old keys immediately?", "label": 1}
+{"previous": "Describe the observer pattern.", "current": "Can you explain how subscribers are notified?", "label": 1}
+{"previous": "What is a rootkit?", "current": "What does it do to system binaries?", "label": 1}
+{"previous": "We enabled gzip compression.", "current": "How does that help load times?", "label": 1}
+{"previous": "What is Ansible?", "current": "How is it used in configuration management?", "label": 1}
+{"previous": "Explain the concept of entropy in information theory.", "current": "How does it measure uncertainty?", "label": 1}
+{"previous": "The p-value is 0.05.", "current": "Why is that significant statistically?", "label": 1}
+{"previous": "What is a blockchain fork?", "current": "What are its consequences for miners?", "label": 1}
+{"previous": "I'm running a penetration test.", "current": "What happens if I find a vulnerability?", "label": 1}
+{"previous": "Let's discuss polymorphism.", "current": "Can you explain runtime polymorphism?", "label": 1}
+{"previous": "What is a GPU?", "current": "What does it do differently than a CPU?", "label": 1}
+{"previous": "We are using A/B testing.", "current": "How does that help with feature validation?", "label": 1}
+{"previous": "What is MongoDB?", "current": "How is it used in storing document data?", "label": 1}
+{"previous": "Explain collision resolution in hashmaps.", "current": "How does it function using chaining?", "label": 1}
+{"previous": "The algorithm is non-deterministic.", "current": "Why is that an issue for debugging?", "label": 1}
