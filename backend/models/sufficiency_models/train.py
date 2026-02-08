@@ -10,7 +10,7 @@ from model import SufficiencyModel
 # CONFIG
 # =========================
 BASE_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-DATA_PATH = "data/sufficiency_train.jsonl"
+DATA_PATH = "data/sufficiency_train.jsonl"  # Changed filename
 SAVE_PATH = "model.pt"
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -27,16 +27,31 @@ class SufficiencyDataset(Dataset):
         self.samples = []
         with open(path, "r", encoding="utf-8") as f:
             for line in f:
-                self.samples.append(json.loads(line))
+                obj = json.loads(line)
+                # Format: Question + Intent + Sentences
+                text = self._format(obj["question"], obj["sentences"], obj["intent"])
+                self.samples.append((text, float(obj["label"])))
+        
+        print(f"✅ Loaded {len(self.samples)} examples")
         self.tokenizer = tokenizer
+
+    def _format(self, question: str, sentences: list[str], intent: str) -> str:
+        lines = [
+            f"Question: {question}",
+            f"Intent: {intent}",
+            "Evidence:"
+        ]
+        for i, s in enumerate(sentences, 1):
+            lines.append(f"{i}. {s}")
+        return "\n".join(lines)
 
     def __len__(self):
         return len(self.samples)
 
     def __getitem__(self, idx):
-        item = self.samples[idx]
+        text, label = self.samples[idx]
         enc = self.tokenizer(
-            item["text"],
+            text,
             truncation=True,
             padding="max_length",
             max_length=512,
@@ -46,7 +61,7 @@ class SufficiencyDataset(Dataset):
         return {
             "input_ids": enc["input_ids"].squeeze(0),
             "attention_mask": enc["attention_mask"].squeeze(0),
-            "label": torch.tensor(item["label"], dtype=torch.float)
+            "label": torch.tensor(label, dtype=torch.float)
         }
 
 # =========================
@@ -62,7 +77,7 @@ def train():
 
     loader = DataLoader(
         dataset,
-        batch_size=16,          # 🔥 GPU-friendly
+        batch_size=16,
         shuffle=True,
         pin_memory=(DEVICE.type == "cuda")
     )
@@ -70,7 +85,7 @@ def train():
     model = SufficiencyModel(BASE_MODEL).to(DEVICE)
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
-    loss_fn = torch.nn.SmoothL1Loss()
+    loss_fn = torch.nn.MSELoss()  # MSE for regression (0.0-1.0)
 
     model.train()
 
@@ -96,7 +111,7 @@ def train():
             total_loss += loss.item()
 
         avg_loss = total_loss / len(loader)
-        print(f"Epoch {epoch+1} | avg loss = {avg_loss:.4f}")
+        print(f"📉 Epoch {epoch+1}/4 | avg loss = {avg_loss:.4f}")
 
     torch.save(model.state_dict(), SAVE_PATH)
     print(f"✅ Model saved to {SAVE_PATH}")
