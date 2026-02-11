@@ -73,7 +73,7 @@ sufficiency_scorer = SufficiencyScorer(
     base_model="sentence-transformers/all-MiniLM-L6-v2"
 )
 
-SUFFICIENCY_THRESHOLD = 0.70
+SUFFICIENCY_THRESHOLD = 0.65
 
 # =========================
 # Model 5: Topic Coherence Scorer
@@ -405,7 +405,6 @@ def ask(req: AskRequest):
         # 1. Intent Classification
         # =========================
         intent = classify_intent(question, context_manager.get_previous_question())
-        print(f"🎯 INTENT: {intent}")
 
         previous_q = context_manager.get_previous_question()
         use_previous_context = False
@@ -437,7 +436,7 @@ def ask(req: AskRequest):
                 context_manager.clear_session()
                 context_manager.set_topic_anchor(question)
                 intent = "factual"
-
+        print(f"🎯 INTENT: {intent}")
         # Continuation without history is invalid
         if intent == "continuation" and not previous_q:
             print("🚫 Continuation without history → refusing")
