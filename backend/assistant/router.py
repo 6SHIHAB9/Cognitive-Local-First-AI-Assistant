@@ -623,6 +623,9 @@ RULES:
   → Do NOT simply restate the sentences
 - Do NOT add external facts
 - Keep the answer concise and explanatory
+- Answer ONLY what is asked
+- Do NOT add solutions, alternatives, or extra context
+- Stick to the specific question
 
 {context_instruction}
 
