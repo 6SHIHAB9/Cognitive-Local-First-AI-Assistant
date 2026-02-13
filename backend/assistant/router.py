@@ -527,7 +527,7 @@ Response:
             intent=intent,
             top_k=12,
             min_relevance=0.25,  # tune this if needed
-            min_grounding=0.50
+            min_grounding=0.90
         )
 
         print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
