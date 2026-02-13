@@ -246,15 +246,19 @@ def classify_intent(question: str, previous_q: str = None) -> str:
 # =========================
 # ML BASED RETRIEVAL
 # =========================
+# =========================
+# ML BASED RETRIEVAL
+# =========================
 def retrieve_for_question(question: str, intent: str, vault_data: dict) -> list[str]:
-    results = retrieve_relevant_chunks(question, vault_data, limit=10)
+    results = retrieve_relevant_chunks(question, vault_data, limit=15) 
     chunks = normalize_chunks(results)
 
     # 🔹 ONLY for continuation
     if intent == "continuation":
-        chunks = rerank_chunks(question, chunks, top_k=5)
+        
+        chunks = rerank_chunks(question, chunks, top_k=8) 
 
-    return chunks[:5]
+    return chunks[:8] 
 
 
 # =========================
@@ -505,7 +509,7 @@ Response:
             else question
         )
 
-        topic_k = 12 if intent == "continuation" else 10
+        topic_k = 20 if intent == "continuation" else 15
 
         # 4b. Topic coherence filtering
         sentences = filter_by_topic_coherence(
@@ -521,9 +525,9 @@ Response:
             question=question,
             sentences=sentences,
             intent=intent,
-            top_k=8,
+            top_k=12,
             min_relevance=0.25,  # tune this if needed
-            min_grounding=0.35 if intent == "factual" else 0.25
+            min_grounding=0.50
         )
 
         print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
