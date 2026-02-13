@@ -1,3 +1,4 @@
+import os
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from pathlib import Path
@@ -11,12 +12,12 @@ class GroundingScorer:
         model_path = str(Path(model_dir).resolve()).replace('\\', '/')
 
         self.tokenizer = AutoTokenizer.from_pretrained(
-            model_path,
+            os.path.join(model_path, "final"),
             local_files_only=True
         )
 
         self.model = AutoModelForSequenceClassification.from_pretrained(
-            model_path,
+            model_path + "/final",
             local_files_only=True
         )
 
