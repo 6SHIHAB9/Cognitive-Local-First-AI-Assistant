@@ -460,10 +460,27 @@ def ask(req: AskRequest):
 
         # 2. Casual Chat
         if intent == "casual":
+            # Get conversation context for more natural responses
+            previous_q = context_manager.get_previous_question()
+            previous_a = None
+            
+            # Get previous answer if available
+            if previous_q and hasattr(context_manager, 'conversation_history') and context_manager.conversation_history:
+                previous_a = context_manager.conversation_history[-1].get('answer', '')
+            
+            context_info = ""
+            if previous_q and previous_a:
+                # Include brief context for continuity
+                context_info = f"""
+Previous conversation:
+User: {previous_q}
+You: {previous_a[:150]}...
+"""
+            
             res = ollama.generate(
                 model="qwen2.5:7b",
                 prompt=f"""You are a friendly conversational assistant.
-Keep it casual and short.
+Keep it casual and short.{context_info}
 
 User:
 {question}
