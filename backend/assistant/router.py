@@ -308,7 +308,7 @@ def ml_ground_sentences(
             continue
         
         # FILTER 2: Grounding check
-        ground_score = grounding_scorer.score(question, sentence)
+        ground_score = grounding_scorer.score(relevance_query, sentence)
         
         if ground_score < min_grounding:
             print(f"  ❌ NOT GROUNDED ({ground_score:.3f}): {sentence[:60]}...")
@@ -527,7 +527,7 @@ Response:
             intent=intent,
             top_k=12,
             min_relevance=0.25,  # tune this if needed
-            min_grounding=0.90
+            min_grounding=0.90 if intent == "factual" else 0.70
         )
 
         print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
