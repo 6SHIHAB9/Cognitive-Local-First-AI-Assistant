@@ -38,7 +38,7 @@ INTENT_LABEL_MAP = {
 
 intent_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-intent_model_path = os.path.abspath("models/intent_models/intent_model/final")
+intent_model_path = os.path.abspath("models/intent_models/models/intent_models/final")
 intent_model = AutoModelForSequenceClassification.from_pretrained(
     intent_model_path,
     local_files_only=True
