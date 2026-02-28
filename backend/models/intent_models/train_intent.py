@@ -14,10 +14,10 @@ from transformers import (
 # =========================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
-DATA_PATH = os.path.join(BASE_DIR, "intent_data.jsonl")
-OUTPUT_DIR = os.path.join(BASE_DIR, "intent_model")
-FINAL_DIR = os.path.join(OUTPUT_DIR, "final")
+MODEL_NAME = "microsoft/deberta-v3-base"
+DATA_PATH = os.path.join(BASE_DIR, "intent_data.jsonl")  # ✅ Combined file
+OUTPUT_DIR = os.path.join(BASE_DIR, "intent_model_output")
+FINAL_DIR = os.path.join(BASE_DIR, "models", "intent_models", "final")  # ✅ Match router.py path
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -39,18 +39,21 @@ class IntentDataset(Dataset):
     def __getitem__(self, idx):
         item = self.samples[idx]
         
-        # 🔧 NEW: Format with previous context
+        # Format with previous context
         prev = item.get("previous", "")
         curr = item["current"]
         
-        # Combine previous and current with special tokens
-        text = f"[PREV] {prev} [SEP] [CURR] {curr}"
+        # Simple format - let DeBERTa figure out the pattern
+        if prev:
+            text = f"Previous: {prev} Current: {curr}"
+        else:
+            text = f"Current: {curr}"
         
         enc = self.tokenizer(
-            text,  # ✅ NEW FORMAT
+            text,
             truncation=True,
             padding="max_length",
-            max_length=128,  # Increased from 64
+            max_length=128,
             return_tensors="pt",
         )
         return {
@@ -66,6 +69,7 @@ class IntentDataset(Dataset):
 def main():
     print("📂 DATA PATH:", DATA_PATH)
     print("💾 FINAL MODEL PATH:", FINAL_DIR)
+    print("🔥 DEVICE:", DEVICE)
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModelForSequenceClassification.from_pretrained(
@@ -74,16 +78,19 @@ def main():
     ).to(DEVICE)
 
     dataset = IntentDataset(DATA_PATH, tokenizer)
+    print(f"📊 Dataset size: {len(dataset)} examples")
 
     args = TrainingArguments(
         output_dir=OUTPUT_DIR,
-        per_device_train_batch_size=32,
-        num_train_epochs=6,
-        learning_rate=2e-5,
+        per_device_train_batch_size=16,  # ✅ Reduced from 32 (safer for memory)
+        num_train_epochs=5,  # ✅ Reduced from 6 (5k examples is enough)
+        learning_rate=3e-5,  # ✅ Standard DeBERTa learning rate
         fp16=torch.cuda.is_available(),
-        logging_steps=20,
+        logging_steps=50,
         save_strategy="epoch",
-        report_to="none"
+        save_total_limit=2,  # ✅ Keep only best 2 checkpoints
+        report_to="none",
+        warmup_steps=100,  # ✅ Warmup for stable training
     )
 
     trainer = Trainer(
@@ -93,10 +100,11 @@ def main():
         tokenizer=tokenizer
     )
 
+    print("🚀 Starting training...")
     trainer.train()
 
     # =========================
-    # SAVE FINAL MODEL (ONLY HERE)
+    # SAVE FINAL MODEL
     # =========================
     os.makedirs(FINAL_DIR, exist_ok=True)
     trainer.save_model(FINAL_DIR)
