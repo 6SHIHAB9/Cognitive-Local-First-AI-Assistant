@@ -18,28 +18,27 @@ def read_text_file(path: Path) -> str:
 
 def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50):
     """
-    Chunk text by words with overlap.
-    Reduced from 600 to 300 words to avoid embedding model context limits.
-    
-    Args:
-        text: Text to chunk
-        chunk_size: Number of words per chunk (default 300 = ~400 tokens)
-        overlap: Number of words to overlap between chunks
+    Chunk by markdown/document sections first, then by word count if sections are too large.
     """
-    words = text.split()
+    # Split on markdown headers (##, ###) or double newlines
+    section_pattern = re.compile(r'(?=^#{1,3}\s)', re.MULTILINE)
+    sections = section_pattern.split(text)
+    sections = [s.strip() for s in sections if s.strip()]
+
     chunks = []
-
-    if not words:
-        return chunks
-
-    for i in range(0, len(words), chunk_size - overlap):
-        chunk = " ".join(words[i:i + chunk_size])
-        if chunk.strip():  # Only add non-empty chunks
-            chunks.append(chunk)
-        
-        # Break if we're at the end
-        if i + chunk_size >= len(words):
-            break
+    for section in sections:
+        words = section.split()
+        if len(words) <= chunk_size:
+            # Section fits in one chunk
+            chunks.append(section)
+        else:
+            # Section too large, split by word count with overlap
+            for i in range(0, len(words), chunk_size - overlap):
+                chunk = " ".join(words[i:i + chunk_size])
+                if chunk.strip():
+                    chunks.append(chunk)
+                if i + chunk_size >= len(words):
+                    break
 
     return chunks
 
