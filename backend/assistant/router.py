@@ -253,10 +253,6 @@ def retrieve_for_question(question: str, intent: str, vault_data: dict) -> list[
     results = retrieve_relevant_chunks(question, vault_data, limit=15) 
     chunks = normalize_chunks(results)
 
-    # 🔹 ONLY for continuation
-    if intent == "continuation":
-        
-        chunks = rerank_chunks(question, chunks, top_k=8) 
 
     return chunks[:8] 
 
@@ -308,7 +304,7 @@ def ml_ground_sentences(
             continue
         
         # FILTER 2: Grounding check
-        ground_score = grounding_scorer.score(relevance_query, sentence)
+        ground_score = grounding_scorer.score(question, sentence)
         
         if ground_score < min_grounding:
             print(f"  ❌ NOT GROUNDED ({ground_score:.3f}): {sentence[:60]}...")
