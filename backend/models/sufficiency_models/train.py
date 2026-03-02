@@ -70,7 +70,8 @@ class SufficiencyDataset(Dataset):
 def train():
     tokenizer = AutoTokenizer.from_pretrained(
         BASE_MODEL,
-        local_files_only=True
+        local_files_only=True,
+        fix_mistral_regex=True
     )
 
     dataset = SufficiencyDataset(DATA_PATH, tokenizer)
