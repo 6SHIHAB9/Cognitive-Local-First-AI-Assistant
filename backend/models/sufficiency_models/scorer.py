@@ -10,7 +10,8 @@ class SufficiencyScorer:
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             base_model,
-            local_files_only=True
+            local_files_only=True,
+            fix_mistral_regex=True
         )
 
         self.model = SufficiencyModel(base_model)
