@@ -46,7 +46,8 @@ intent_model = AutoModelForSequenceClassification.from_pretrained(
 
 intent_tokenizer = AutoTokenizer.from_pretrained(
     intent_model_path,
-    local_files_only=True
+    local_files_only=True,
+    fix_mistral_regex=True
 )
 
 intent_model.eval()
@@ -428,7 +429,10 @@ def ask(req: AskRequest):
             print(f"🧠 TOPIC SCORE: {topic_score:.4f}")
             print(f"🧠 EXPLANATION SCORE: {explanation_score:.4f}")
 
-            if topic_score >= 0.30 or explanation_score >= 0.50:
+            if topic_score >= 0.30:
+                use_previous_context = True
+            elif explanation_score >= 0.80:
+                # Only allow explanation-style continuation if it's VERY strong
                 use_previous_context = True
             else:
                 print("🔁 Topic drift detected → re-anchoring topic")
