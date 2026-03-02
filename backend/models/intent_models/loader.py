@@ -8,7 +8,10 @@ class IntentClassifier:
     def __init__(self, model_dir: str):
         model_dir = Path(model_dir)
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_dir,
+            fix_mistral_regex=True
+        )
         self.model = AutoModelForSequenceClassification.from_pretrained(model_dir)
         self.model.to(DEVICE)
         self.model.eval()

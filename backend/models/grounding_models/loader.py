@@ -13,7 +13,8 @@ class GroundingScorer:
 
         self.tokenizer = AutoTokenizer.from_pretrained(
             os.path.join(model_path, "final"),
-            local_files_only=True
+            local_files_only=True,
+            fix_mistral_regex=True
         )
 
         self.model = AutoModelForSequenceClassification.from_pretrained(
