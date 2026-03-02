@@ -13,7 +13,7 @@ from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
 from context_manager import context_manager
 
-from models.grounding_models.loader import GroundingScorer
+from models.reranker.loader import Reranker
 
 from models.sufficiency_models.scorer import SufficiencyScorer
 
@@ -60,11 +60,9 @@ reference_ranker = ReferenceRanker(
 )
 
 # =========================
-# Model 3: Grounding Scorer
+# Model 3: Reranker (replaces binary grounding scorer)
 # =========================
-grounding_scorer = GroundingScorer(
-    "models/grounding_models/grounding_model"
-)
+reranker = Reranker()
 
 # =========================
 # Model 4: Sufficiency Scorer
@@ -267,61 +265,63 @@ def ml_ground_sentences(
     intent: str,
     top_k: int = 8,
     min_relevance: float = 0.25,
-    min_grounding: float = 0.35
 ) -> list[str]:
 
     if not sentences:
         return []
 
-    print("🧪 SENTENCES BEFORE GROUNDING:")
+    print("🧪 SENTENCES BEFORE RERANKING:")
     for s in sentences:
-        print("  >", s)
+        print("  >", s[:80])
 
-    # ============================================================
-    # 🔥 NEW: Combine questions for continuation context
-    # ============================================================
+    # Build relevance query (combined context for continuation)
     relevance_query = question
+
+    # Lower threshold for short/pronoun questions
+    if len(question.split()) <= 6:
+        min_relevance = 0.20
+        print(f"📏 Short question detected → min_relevance=0.20")
+
     if intent == "continuation":
         prev_q = context_manager.get_previous_question()
         if prev_q:
-            relevance_query = prev_q + " " + question
-            print(f"🔄 Combined context: '{relevance_query}'")
-            min_relevance = 0.20  # Lower threshold for continuation
-    # ============================================================
+            prev_embed = topic_embedder.encode(prev_q, convert_to_tensor=True)
+            curr_embed = topic_embedder.encode(question, convert_to_tensor=True)
+            topic_sim = float(util.cos_sim(prev_embed, curr_embed)[0][0])
 
-    # Calculate relevance scores for all sentences at once
-    q_embed = topic_embedder.encode(relevance_query, convert_to_tensor=True)  # ← CHANGED: was 'question'
+            if topic_sim >= 0.30:
+                relevance_query = prev_q + " " + question
+                print(f"🔄 Combined context (sim={topic_sim:.3f}): '{relevance_query}'")
+            else:
+                print(f"⚠️ Topics differ (sim={topic_sim:.3f}) → using current question only")
+            min_relevance = 0.20
+
+    # Step 1: Cosine relevance pre-filter (removes clearly off-topic sentences)
+    q_embed = topic_embedder.encode(relevance_query, convert_to_tensor=True)
     s_embeds = topic_embedder.encode(sentences, convert_to_tensor=True)
     relevance_scores = util.cos_sim(q_embed, s_embeds)[0]
 
-    scored = []
-
+    candidates = []
     for sentence, rel_score in zip(sentences, relevance_scores):
         rel_score = float(rel_score)
-        
-        # FILTER 1: Relevance check
         if rel_score < min_relevance:
-            print(f"  ❌ NOT RELEVANT ({rel_score:.3f}): {sentence[:60]}...")
+            print(f"  ❌ BELOW RELEVANCE ({rel_score:.3f}): {sentence[:60]}...")
             continue
-        
-        # FILTER 2: Grounding check
-        ground_score = grounding_scorer.score(question, sentence)
-        
-        if ground_score < min_grounding:
-            print(f"  ❌ NOT GROUNDED ({ground_score:.3f}): {sentence[:60]}...")
-            continue
-        
-        # Combine scores: relevance × grounding
-        combined_score = rel_score * ground_score
-        scored.append((combined_score, sentence))
-        print(f"  ✅ KEPT (rel={rel_score:.3f}, ground={ground_score:.3f}, combined={combined_score:.3f})")
+        candidates.append(sentence)
 
-    if not scored:
+    if not candidates:
         return []
 
-    scored.sort(key=lambda x: x[0], reverse=True)
-    return [sentence for _, sentence in scored[:top_k]]
+    # Step 2: Rerank candidates with cross-encoder (no threshold, just ranking)
+    ranked = reranker.rerank(relevance_query, candidates)
 
+    print(f"📊 RERANKED SENTENCES:")
+    for s, score in ranked:
+        print(f"  ({score:.3f}): {s[:80]}...")
+
+    # Step 3: Return top K — no hard threshold
+    top = [s for s, _ in ranked[:top_k]]
+    return top
 
 
 # =========================
@@ -442,9 +442,10 @@ def ask(req: AskRequest):
                 intent = "factual"
         print(f"🎯 INTENT: {intent}")
         # Continuation without history is invalid
+        # Force factual if continuation but no history
         if intent == "continuation" and not previous_q:
-            print("🚫 Continuation without history → refusing")
-            return {"answer": "I don't have that information in my vault yet."}
+            print("🔄 No history → forcing factual")
+            intent = "factual"
 
         # Clear history only for fresh factual questions
         if intent == "factual":
@@ -543,8 +544,7 @@ Response:
             sentences=sentences,
             intent=intent,
             top_k=12,
-            min_relevance=0.25,  # tune this if needed
-            min_grounding=0.90 if intent == "factual" else 0.70
+            min_relevance=0.25,
         )
 
         print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
