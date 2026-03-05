@@ -4753,3 +4753,871 @@
 {"previous":"","current":"Conferring","label":2}
 {"previous":"","current":"Awarding","label":2}
 {"previous":"","current":"Presenting","label":2}
+{"previous": "", "current": "Heyy how are you?", "label": 2}
+{"previous": "", "current": "Hey! How are you doing?", "label": 2}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "", "current": "How are you doing today?", "label": 2}
+{"previous": "", "current": "How's it going?", "label": 2}
+{"previous": "", "current": "How's everything going?", "label": 2}
+{"previous": "", "current": "How are things?", "label": 2}
+{"previous": "", "current": "Hey, how are you?", "label": 2}
+{"previous": "", "current": "Hi, how are you?", "label": 2}
+{"previous": "", "current": "Hello, how are you doing?", "label": 2}
+{"previous": "", "current": "Hey there, how are you?", "label": 2}
+{"previous": "", "current": "Thanks a lot!", "label": 2}
+{"previous": "", "current": "Thank you so much!", "label": 2}
+{"previous": "", "current": "Thanks, that was really helpful!", "label": 2}
+{"previous": "", "current": "That was very helpful, thank you!", "label": 2}
+{"previous": "", "current": "Awesome, thanks!", "label": 2}
+{"previous": "", "current": "Great, thanks!", "label": 2}
+{"previous": "", "current": "Perfect, thanks!", "label": 2}
+{"previous": "", "current": "Thanks so much for that!", "label": 2}
+{"previous": "", "current": "Thank you, that makes sense!", "label": 2}
+{"previous": "", "current": "Hey! Thanks a lot!", "label": 2}
+{"previous": "", "current": "Heyy! Thanks!", "label": 2}
+{"previous": "", "current": "Hi! Thanks for the help!", "label": 2}
+{"previous": "", "current": "Hello! Thank you!", "label": 2}
+{"previous": "", "current": "Hey thanks!", "label": 2}
+{"previous": "", "current": "Okay got it!", "label": 2}
+{"previous": "", "current": "Ok got it, thanks!", "label": 2}
+{"previous": "", "current": "Got it, thank you!", "label": 2}
+{"previous": "", "current": "Understood, thanks!", "label": 2}
+{"previous": "", "current": "Alright, got it!", "label": 2}
+{"previous": "", "current": "Makes sense, thanks!", "label": 2}
+{"previous": "", "current": "That makes sense!", "label": 2}
+{"previous": "", "current": "Okay that makes sense!", "label": 2}
+{"previous": "", "current": "Ahh okay!", "label": 2}
+{"previous": "", "current": "Ohhh I see!", "label": 2}
+{"previous": "", "current": "I see, thanks!", "label": 2}
+{"previous": "", "current": "Ohh okay got it!", "label": 2}
+{"previous": "", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "", "current": "Cool!", "label": 2}
+{"previous": "", "current": "Cool, thanks!", "label": 2}
+{"previous": "", "current": "Awesome!", "label": 2}
+{"previous": "", "current": "Awesome, got it!", "label": 2}
+{"previous": "", "current": "Great!", "label": 2}
+{"previous": "", "current": "Great, that helps!", "label": 2}
+{"previous": "", "current": "Nice!", "label": 2}
+{"previous": "", "current": "Nice, thanks!", "label": 2}
+{"previous": "", "current": "Perfect!", "label": 2}
+{"previous": "", "current": "That's perfect!", "label": 2}
+{"previous": "", "current": "Brilliant, thanks!", "label": 2}
+{"previous": "", "current": "Wonderful, thank you!", "label": 2}
+{"previous": "", "current": "Bye!", "label": 2}
+{"previous": "", "current": "Bye bye!", "label": 2}
+{"previous": "", "current": "Goodbye!", "label": 2}
+{"previous": "", "current": "See you later!", "label": 2}
+{"previous": "", "current": "See ya!", "label": 2}
+{"previous": "", "current": "Take care!", "label": 2}
+{"previous": "", "current": "Have a good day!", "label": 2}
+{"previous": "", "current": "Have a great day!", "label": 2}
+{"previous": "", "current": "Talk to you later!", "label": 2}
+{"previous": "", "current": "Catch you later!", "label": 2}
+{"previous": "", "current": "Good morning!", "label": 2}
+{"previous": "", "current": "Good afternoon!", "label": 2}
+{"previous": "", "current": "Good evening!", "label": 2}
+{"previous": "", "current": "Good night!", "label": 2}
+{"previous": "", "current": "Morning!", "label": 2}
+{"previous": "", "current": "Evening!", "label": 2}
+{"previous": "", "current": "Heyyy!", "label": 2}
+{"previous": "", "current": "Hiii!", "label": 2}
+{"previous": "", "current": "Hiiii!", "label": 2}
+{"previous": "", "current": "Heyyyy!", "label": 2}
+{"previous": "", "current": "Helloooo!", "label": 2}
+{"previous": "", "current": "Yoo!", "label": 2}
+{"previous": "", "current": "Yo!", "label": 2}
+{"previous": "", "current": "Wassup!", "label": 2}
+{"previous": "", "current": "What's up!", "label": 2}
+{"previous": "", "current": "Sup!", "label": 2}
+{"previous": "", "current": "Heyy! How's it going?", "label": 2}
+{"previous": "", "current": "Hi there! How are you?", "label": 2}
+{"previous": "", "current": "Hey! Good to see you!", "label": 2}
+{"previous": "", "current": "Hello there!", "label": 2}
+{"previous": "", "current": "Hey, what's up?", "label": 2}
+{"previous": "", "current": "Thanks, I appreciate it!", "label": 2}
+{"previous": "", "current": "I appreciate your help!", "label": 2}
+{"previous": "", "current": "Really appreciate it!", "label": 2}
+{"previous": "", "current": "Much appreciated!", "label": 2}
+{"previous": "", "current": "That's very helpful, thanks!", "label": 2}
+{"previous": "", "current": "You're very helpful!", "label": 2}
+{"previous": "", "current": "This is very helpful!", "label": 2}
+{"previous": "", "current": "Okay, thank you!", "label": 2}
+{"previous": "", "current": "Alright, thank you!", "label": 2}
+{"previous": "", "current": "Sure, thanks!", "label": 2}
+{"previous": "", "current": "Noted, thanks!", "label": 2}
+{"previous": "", "current": "Noted!", "label": 2}
+{"previous": "", "current": "Sounds good!", "label": 2}
+{"previous": "", "current": "Sounds great!", "label": 2}
+{"previous": "", "current": "Sounds perfect!", "label": 2}
+{"previous": "", "current": "That's great, thank you!", "label": 2}
+{"previous": "", "current": "That's awesome, thanks!", "label": 2}
+{"previous": "", "current": "Heyy thanks so much!", "label": 2}
+{"previous": "", "current": "Heyy how are you?", "label": 2}
+{"previous": "", "current": "Hey! How are you doing?", "label": 2}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "", "current": "How are you doing today?", "label": 2}
+{"previous": "", "current": "How's it going?", "label": 2}
+{"previous": "", "current": "How's everything going?", "label": 2}
+{"previous": "", "current": "How are things?", "label": 2}
+{"previous": "", "current": "Hey, how are you?", "label": 2}
+{"previous": "", "current": "Hi, how are you?", "label": 2}
+{"previous": "", "current": "Hello, how are you doing?", "label": 2}
+{"previous": "", "current": "Hey there, how are you?", "label": 2}
+{"previous": "", "current": "Thanks a lot!", "label": 2}
+{"previous": "", "current": "Thank you so much!", "label": 2}
+{"previous": "", "current": "Thanks, that was really helpful!", "label": 2}
+{"previous": "", "current": "That was very helpful, thank you!", "label": 2}
+{"previous": "", "current": "Awesome, thanks!", "label": 2}
+{"previous": "", "current": "Great, thanks!", "label": 2}
+{"previous": "", "current": "Perfect, thanks!", "label": 2}
+{"previous": "", "current": "Thanks so much for that!", "label": 2}
+{"previous": "", "current": "Thank you, that makes sense!", "label": 2}
+{"previous": "", "current": "Hey! Thanks a lot!", "label": 2}
+{"previous": "", "current": "Heyy! Thanks!", "label": 2}
+{"previous": "", "current": "Hi! Thanks for the help!", "label": 2}
+{"previous": "", "current": "Hello! Thank you!", "label": 2}
+{"previous": "", "current": "Hey thanks!", "label": 2}
+{"previous": "", "current": "Okay got it!", "label": 2}
+{"previous": "", "current": "Ok got it, thanks!", "label": 2}
+{"previous": "", "current": "Got it, thank you!", "label": 2}
+{"previous": "", "current": "Understood, thanks!", "label": 2}
+{"previous": "", "current": "Alright, got it!", "label": 2}
+{"previous": "", "current": "Makes sense, thanks!", "label": 2}
+{"previous": "", "current": "That makes sense!", "label": 2}
+{"previous": "", "current": "Okay that makes sense!", "label": 2}
+{"previous": "", "current": "Ahh okay!", "label": 2}
+{"previous": "", "current": "Ohhh I see!", "label": 2}
+{"previous": "", "current": "I see, thanks!", "label": 2}
+{"previous": "", "current": "Ohh okay got it!", "label": 2}
+{"previous": "", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "", "current": "Cool!", "label": 2}
+{"previous": "", "current": "Cool, thanks!", "label": 2}
+{"previous": "", "current": "Awesome!", "label": 2}
+{"previous": "", "current": "Awesome, got it!", "label": 2}
+{"previous": "", "current": "Great!", "label": 2}
+{"previous": "", "current": "Great, that helps!", "label": 2}
+{"previous": "", "current": "Nice!", "label": 2}
+{"previous": "", "current": "Nice, thanks!", "label": 2}
+{"previous": "", "current": "Perfect!", "label": 2}
+{"previous": "", "current": "That's perfect!", "label": 2}
+{"previous": "", "current": "Brilliant, thanks!", "label": 2}
+{"previous": "", "current": "Wonderful, thank you!", "label": 2}
+{"previous": "", "current": "Bye!", "label": 2}
+{"previous": "", "current": "Bye bye!", "label": 2}
+{"previous": "", "current": "Goodbye!", "label": 2}
+{"previous": "", "current": "See you later!", "label": 2}
+{"previous": "", "current": "See ya!", "label": 2}
+{"previous": "", "current": "Take care!", "label": 2}
+{"previous": "", "current": "Have a good day!", "label": 2}
+{"previous": "", "current": "Have a great day!", "label": 2}
+{"previous": "", "current": "Talk to you later!", "label": 2}
+{"previous": "", "current": "Catch you later!", "label": 2}
+{"previous": "", "current": "Good morning!", "label": 2}
+{"previous": "", "current": "Good afternoon!", "label": 2}
+{"previous": "", "current": "Good evening!", "label": 2}
+{"previous": "", "current": "Good night!", "label": 2}
+{"previous": "", "current": "Morning!", "label": 2}
+{"previous": "", "current": "Evening!", "label": 2}
+{"previous": "", "current": "Heyyy!", "label": 2}
+{"previous": "", "current": "Hiii!", "label": 2}
+{"previous": "", "current": "Hiiii!", "label": 2}
+{"previous": "", "current": "Heyyyy!", "label": 2}
+{"previous": "", "current": "Helloooo!", "label": 2}
+{"previous": "", "current": "Yoo!", "label": 2}
+{"previous": "", "current": "Yo!", "label": 2}
+{"previous": "", "current": "Wassup!", "label": 2}
+{"previous": "", "current": "What's up!", "label": 2}
+{"previous": "", "current": "Sup!", "label": 2}
+{"previous": "", "current": "Heyy! How's it going?", "label": 2}
+{"previous": "", "current": "Hi there! How are you?", "label": 2}
+{"previous": "", "current": "Hey! Good to see you!", "label": 2}
+{"previous": "", "current": "Hello there!", "label": 2}
+{"previous": "", "current": "Hey, what's up?", "label": 2}
+{"previous": "", "current": "Thanks, I appreciate it!", "label": 2}
+{"previous": "", "current": "I appreciate your help!", "label": 2}
+{"previous": "", "current": "Really appreciate it!", "label": 2}
+{"previous": "", "current": "Much appreciated!", "label": 2}
+{"previous": "", "current": "That's very helpful, thanks!", "label": 2}
+{"previous": "", "current": "You're very helpful!", "label": 2}
+{"previous": "", "current": "This is very helpful!", "label": 2}
+{"previous": "", "current": "Okay, thank you!", "label": 2}
+{"previous": "", "current": "Alright, thank you!", "label": 2}
+{"previous": "", "current": "Sure, thanks!", "label": 2}
+{"previous": "", "current": "Noted, thanks!", "label": 2}
+{"previous": "", "current": "Noted!", "label": 2}
+{"previous": "", "current": "Sounds good!", "label": 2}
+{"previous": "", "current": "Sounds great!", "label": 2}
+{"previous": "", "current": "Sounds perfect!", "label": 2}
+{"previous": "", "current": "That's great, thank you!", "label": 2}
+{"previous": "", "current": "That's awesome, thanks!", "label": 2}
+{"previous": "", "current": "Heyy thanks so much!", "label": 2}
+{"previous": "How much PTO do I get?", "current": "Thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "Got it, thanks!", "label": 2}
+{"previous": "How does photosynthesis work?", "current": "That makes sense!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Okay I understand now!", "label": 2}
+{"previous": "How do I reset my password?", "current": "Perfect, thank you!", "label": 2}
+{"previous": "What is blockchain?", "current": "Awesome, got it!", "label": 2}
+{"previous": "How do I file expenses?", "current": "Makes sense, thanks!", "label": 2}
+{"previous": "What is compound interest?", "current": "Cool, thanks!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Wow okay!", "label": 2}
+{"previous": "What is deforestation?", "current": "I see, thanks!", "label": 2}
+{"previous": "How much does the company contribute?", "current": "Great, appreciate it!", "label": 2}
+{"previous": "What is overfitting?", "current": "Ahh okay got it!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thanks a lot!", "label": 2}
+{"previous": "What is the vesting schedule?", "current": "Understood!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Noted, thanks!", "label": 2}
+{"previous": "What is eventual consistency?", "current": "Ohhh I see!", "label": 2}
+{"previous": "How does MongoDB scale?", "current": "That helps, thanks!", "label": 2}
+{"previous": "What are the effects of climate change?", "current": "Scary stuff!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Sounds good!", "label": 2}
+{"previous": "What is a lambda function?", "current": "Got it!", "label": 2}
+{"previous": "", "current": "Perfect thanks!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Cheers!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "", "current": "See you!", "label": 2}
+{"previous": "", "current": "Ahh okay!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Perfect thanks!", "label": 2}
+{"previous": "", "current": "Good afternoon!", "label": 2}
+{"previous": "What is blockchain?", "current": "Thank you!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "", "current": "That's helpful!", "label": 2}
+{"previous": "", "current": "Wassup!", "label": 2}
+{"previous": "", "current": "Awesome thanks!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Cool thanks!", "label": 2}
+{"previous": "", "current": "Hey there!", "label": 2}
+{"previous": "", "current": "Hey good to see you!", "label": 2}
+{"previous": "", "current": "Good evening!", "label": 2}
+{"previous": "", "current": "Ohhh I see!", "label": 2}
+{"previous": "What are macronutrients?", "current": "That clears it up!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Good to know!", "label": 2}
+{"previous": "What is compound interest?", "current": "Good to know thanks!", "label": 2}
+{"previous": "", "current": "Great thanks!", "label": 2}
+{"previous": "What is blockchain?", "current": "Cool thanks!", "label": 2}
+{"previous": "", "current": "That makes sense thanks!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Ahh okay!", "label": 2}
+{"previous": "", "current": "Hi how are you?", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Perfect!", "label": 2}
+{"previous": "", "current": "You are very helpful!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Brilliant!", "label": 2}
+{"previous": "", "current": "Hi!", "label": 2}
+{"previous": "When did World War II end?", "current": "Cool!", "label": 2}
+{"previous": "When did World War II end?", "current": "Cheers!", "label": 2}
+{"previous": "", "current": "I see!", "label": 2}
+{"previous": "", "current": "How's it going?", "label": 2}
+{"previous": "", "current": "This is really helpful thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Good to know!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Ah I see!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "That makes sense!", "label": 2}
+{"previous": "", "current": "Really appreciate it!", "label": 2}
+{"previous": "", "current": "Hey!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "", "current": "Sure!", "label": 2}
+{"previous": "", "current": "Hey! How are you doing today?", "label": 2}
+{"previous": "How do I file an expense report?", "current": "That makes sense!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thanks!", "label": 2}
+{"previous": "", "current": "Thanks!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Much appreciated!", "label": 2}
+{"previous": "What is compound interest?", "current": "Cheers!", "label": 2}
+{"previous": "What is compound interest?", "current": "Okay got it!", "label": 2}
+{"previous": "", "current": "Ah I see!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Wonderful thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Perfect!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Noted thanks!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "That clears it up!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "", "current": "That's great!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "Ohhh I see!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Perfect!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Good to know thanks!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "That's helpful!", "label": 2}
+{"previous": "What is deforestation?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "", "current": "Noted!", "label": 2}
+{"previous": "", "current": "Thank you very much!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Brilliant!", "label": 2}
+{"previous": "What is machine learning?", "current": "That's helpful!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Cheers!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Got it thanks!", "label": 2}
+{"previous": "", "current": "Many thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thank you so much!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Got it!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Noted thanks!", "label": 2}
+{"previous": "", "current": "Good night!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thanks!", "label": 2}
+{"previous": "", "current": "That makes sense!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Awesome!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Cool thanks!", "label": 2}
+{"previous": "", "current": "Take care!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Thank you!", "label": 2}
+{"previous": "", "current": "Hello how are you?", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Got it!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Awesome!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "", "current": "Morning!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Much appreciated!", "label": 2}
+{"previous": "", "current": "How's your day going?", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Great thanks!", "label": 2}
+{"previous": "", "current": "Cool!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Cheers!", "label": 2}
+{"previous": "", "current": "Catch you later!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Thank you so much!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Wonderful thanks!", "label": 2}
+{"previous": "", "current": "How are you today?", "label": 2}
+{"previous": "", "current": "What's up!", "label": 2}
+{"previous": "", "current": "How are you doing?", "label": 2}
+{"previous": "", "current": "Hi! How's everything going?", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thank you!", "label": 2}
+{"previous": "", "current": "Night!", "label": 2}
+{"previous": "", "current": "Nice!", "label": 2}
+{"previous": "", "current": "Bye bye!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Thank you!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Perfect thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "That was very helpful!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Brilliant!", "label": 2}
+{"previous": "What is blockchain?", "current": "Good to know thanks!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Makes sense!", "label": 2}
+{"previous": "How does the immune system work?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is machine learning?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Got it thanks!", "label": 2}
+{"previous": "", "current": "Hiii!", "label": 2}
+{"previous": "When did World War II end?", "current": "Wonderful thanks!", "label": 2}
+{"previous": "", "current": "How's everything?", "label": 2}
+{"previous": "", "current": "That's awesome!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Perfect thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Perfect thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Cheers!", "label": 2}
+{"previous": "", "current": "Hey what's up?", "label": 2}
+{"previous": "", "current": "See you later!", "label": 2}
+{"previous": "", "current": "Great!", "label": 2}
+{"previous": "What is compound interest?", "current": "Thank you so much!", "label": 2}
+{"previous": "", "current": "Brilliant!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Good to know!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thanks a lot!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Much appreciated!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Ah I see!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Got it!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "I appreciate it!", "label": 2}
+{"previous": "How do I request PTO?", "current": "That makes sense!", "label": 2}
+{"previous": "What is blockchain?", "current": "Alright got it!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Brilliant!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Ah I see!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Sounds good!", "label": 2}
+{"previous": "What is blockchain?", "current": "That was very helpful!", "label": 2}
+{"previous": "What is blockchain?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Awesome!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Makes sense!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Noted!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Ah I see!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Much appreciated!", "label": 2}
+{"previous": "", "current": "Thanks that was helpful!", "label": 2}
+{"previous": "", "current": "Ohh okay!", "label": 2}
+{"previous": "", "current": "Heyy how are you?", "label": 2}
+{"previous": "How does the digestive system work?", "current": "I see!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "That's helpful!", "label": 2}
+{"previous": "", "current": "That's perfect!", "label": 2}
+{"previous": "", "current": "Hey how are you?", "label": 2}
+{"previous": "", "current": "Thanks so much!", "label": 2}
+{"previous": "What is compound interest?", "current": "That clears it up!", "label": 2}
+{"previous": "", "current": "Ok got it!", "label": 2}
+{"previous": "", "current": "Alright thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Understood!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "That makes sense!", "label": 2}
+{"previous": "What is compound interest?", "current": "That's helpful!", "label": 2}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "What is compound interest?", "current": "Ah I see!", "label": 2}
+{"previous": "When did World War II end?", "current": "Ah I see!", "label": 2}
+{"previous": "", "current": "Thank you so much!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Cheers!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Understood!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Great!", "label": 2}
+{"previous": "", "current": "Ok!", "label": 2}
+{"previous": "", "current": "Bye!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Cool thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Understood!", "label": 2}
+{"previous": "", "current": "Okay!", "label": 2}
+{"previous": "", "current": "Sounds good!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Understood!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Great thanks!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Awesome thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Brilliant!", "label": 2}
+{"previous": "What is deforestation?", "current": "That was very helpful!", "label": 2}
+{"previous": "", "current": "Hello!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Brilliant!", "label": 2}
+{"previous": "", "current": "I see thanks!", "label": 2}
+{"previous": "", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "", "current": "Hi nice to meet you!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Awesome!", "label": 2}
+{"previous": "", "current": "How are things?", "label": 2}
+{"previous": "", "current": "Sounds great!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Alright got it!", "label": 2}
+{"previous": "What is deforestation?", "current": "Perfect!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Makes sense!", "label": 2}
+{"previous": "", "current": "Okay that makes sense!", "label": 2}
+{"previous": "How does the immune system work?", "current": "That was very helpful!", "label": 2}
+{"previous": "", "current": "Hello! How are you doing?", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Sure thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Noted!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Ah I see!", "label": 2}
+{"previous": "What is compound interest?", "current": "Great!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Okay I understand now!", "label": 2}
+{"previous": "What is compound interest?", "current": "Perfect thanks!", "label": 2}
+{"previous": "", "current": "Hello there!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Ahh okay!", "label": 2}
+{"previous": "What is deforestation?", "current": "Interesting thanks!", "label": 2}
+{"previous": "", "current": "Sup!", "label": 2}
+{"previous": "", "current": "Have a good day!", "label": 2}
+{"previous": "", "current": "Nice thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Awesome!", "label": 2}
+{"previous": "", "current": "Talk to you later!", "label": 2}
+{"previous": "What is deforestation?", "current": "Noted thanks!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Interesting thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Thank you!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Thank you!", "label": 2}
+{"previous": "", "current": "Perfect!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Awesome thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Thank you so much!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Good to know!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Interesting thanks!", "label": 2}
+{"previous": "", "current": "Alright!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "", "current": "Heyyy!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Great!", "label": 2}
+{"previous": "", "current": "Thank you for your help!", "label": 2}
+{"previous": "", "current": "How's your day?", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "That makes sense!", "label": 2}
+{"previous": "When did World War II end?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Thank you so much!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Understood!", "label": 2}
+{"previous": "What is machine learning?", "current": "Great!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Okay got it!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Noted thanks!", "label": 2}
+{"previous": "", "current": "Noted thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Alright got it!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Okay I understand now!", "label": 2}
+{"previous": "What are macronutrients?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Thanks!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Good to know!", "label": 2}
+{"previous": "What is machine learning?", "current": "Perfect!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Good to know thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Makes sense!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "I see!", "label": 2}
+{"previous": "", "current": "Understood!", "label": 2}
+{"previous": "", "current": "Much appreciated!", "label": 2}
+{"previous": "", "current": "Understood thanks!", "label": 2}
+{"previous": "What is blockchain?", "current": "Sure thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Noted thanks!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Much appreciated!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Thanks a lot!", "label": 2}
+{"previous": "What is machine learning?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Ahh okay!", "label": 2}
+{"previous": "", "current": "Wonderful!", "label": 2}
+{"previous": "", "current": "Heyy how's it going?", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Interesting thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Interesting thanks!", "label": 2}
+{"previous": "", "current": "See ya!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Ahh okay!", "label": 2}
+{"previous": "", "current": "I appreciate it!", "label": 2}
+{"previous": "What is deforestation?", "current": "Great!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "", "current": "Excellent!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Ohh okay got it!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "", "current": "Thanks a ton!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Perfect!", "label": 2}
+{"previous": "", "current": "Yo!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Thank you!", "label": 2}
+{"previous": "", "current": "Awesome!", "label": 2}
+{"previous": "What is blockchain?", "current": "I see!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Got it!", "label": 2}
+{"previous": "", "current": "Good morning!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Good to know!", "label": 2}
+{"previous": "", "current": "Thanks a lot!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "That makes sense!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Good to know!", "label": 2}
+{"previous": "What is deforestation?", "current": "Thanks!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Makes sense!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Noted!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "", "current": "Sounds perfect!", "label": 2}
+{"previous": "", "current": "Cool thanks!", "label": 2}
+{"previous": "", "current": "Okay got it!", "label": 2}
+{"previous": "What is blockchain?", "current": "Noted!", "label": 2}
+{"previous": "", "current": "Hi there!", "label": 2}
+{"previous": "When did World War II end?", "current": "Wow okay!", "label": 2}
+{"previous": "", "current": "Got it!", "label": 2}
+{"previous": "What is machine learning?", "current": "Brilliant!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Interesting thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Ahh okay!", "label": 2}
+{"previous": "When did World War II end?", "current": "Ohhh I see!", "label": 2}
+{"previous": "What is blockchain?", "current": "Okay got it!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Cheers!", "label": 2}
+{"previous": "", "current": "Makes sense!", "label": 2}
+{"previous": "", "current": "Have a great day!", "label": 2}
+{"previous": "", "current": "Thanks for the help!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thanks!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Awesome thanks!", "label": 2}
+{"previous": "", "current": "Thank you!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Great!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Got it!", "label": 2}
+{"previous": "", "current": "Cheers!", "label": 2}
+{"previous": "", "current": "Goodbye!", "label": 2}
+{"previous": "", "current": "That was very helpful thank you!", "label": 2}
+{"previous": "What is compound interest?", "current": "Awesome!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Wow okay!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Perfect thanks!", "label": 2}
+{"previous": "", "current": "Got it thanks!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "", "current": "Oh I see!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Noted!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "What is the performance review process?", "current": "I see!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Noted!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Good to know thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Great!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Interesting thanks!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "Perfect that helps!", "label": 2}
+{"previous": "What is deforestation?", "current": "Noted will do!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "How do I request PTO?", "current": "That was very helpful!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Noted!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "That was very helpful!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Okay got it!", "label": 2}
+{"previous": "How does the immune system work?", "current": "That makes sense!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Noted will do!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Helpful thanks!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Perfect that helps!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Cool!", "label": 2}
+{"previous": "What is blockchain?", "current": "Ohhh I see!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Appreciate the help!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Sure thanks!", "label": 2}
+{"previous": "What are macronutrients?", "current": "You are so helpful!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Great!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Cool thanks!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Perfect!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Thank you!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Awesome!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Noted will do!", "label": 2}
+{"previous": "What is blockchain?", "current": "Okay that helps!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Sure thanks!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Awesome thanks!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Interesting thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Brilliant!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Sounds good!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Wonderful thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Awesome thanks!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Understood will do!", "label": 2}
+{"previous": "What are macronutrients?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Okay I understand now!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "Helpful thanks!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Cheers!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Great thanks!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Ohh okay got it!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Understood will do!", "label": 2}
+{"previous": "What is compound interest?", "current": "Awesome!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Appreciate the help!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Okay got it!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Ah I see!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Okay that helps!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Understood will do!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Thanks that helps a lot!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "How does the immune system work?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Thank you!", "label": 2}
+{"previous": "How does parental leave work?", "current": "That makes sense!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Wonderful thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Brilliant!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Cool thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Thanks that helps a lot!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Okay will do!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Sure will do!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Awesome thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Thank you so much!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Awesome!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Perfect!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Okay will do!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Cool!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Brilliant!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Good to know thanks!", "label": 2}
+{"previous": "What is compound interest?", "current": "Thank you!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Got it all clear now!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is compound interest?", "current": "Cool!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Noted!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Alright got it!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Great thanks!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "That clears it up!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Awesome thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Good to know thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Okay that helps!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Ah I see!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Thank you so much!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "All clear thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Thank you!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "That was very helpful!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is compound interest?", "current": "Ohh okay got it!", "label": 2}
+{"previous": "What is deforestation?", "current": "Thank you so much!", "label": 2}
+{"previous": "What is deforestation?", "current": "Interesting thanks!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "Super helpful thanks!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "That clears it up!", "label": 2}
+{"previous": "What is compound interest?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Sure thanks!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Sure thanks!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Got it!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Got it all clear now!", "label": 2}
+{"previous": "What is compound interest?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Makes sense!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "That was very helpful!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Ah I see!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Ohhh I see!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Cool thanks!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Noted!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Understood will do!", "label": 2}
+{"previous": "What is machine learning?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Got it thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Super helpful thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Helpful thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Okay I understand now!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Great!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Alright got it!", "label": 2}
+{"previous": "What is machine learning?", "current": "Got it all clear now!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Cool!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Okay got it!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Noted will do!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "Alright got it!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Thanks that helps a lot!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Got it!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Good to know!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Makes sense!", "label": 2}
+{"previous": "What is blockchain?", "current": "Got it thanks!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Got it!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "I see!", "label": 2}
+{"previous": "What is machine learning?", "current": "Sounds good!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Cool thanks!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Thank you!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Helpful thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Good to know!", "label": 2}
+{"previous": "What is deforestation?", "current": "Great!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Super helpful thanks!", "label": 2}
+{"previous": "How do I get promoted?", "current": "All clear thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Noted!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Brilliant!", "label": 2}
+{"previous": "What is deforestation?", "current": "Perfect that helps!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "That is helpful!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thanks a lot!", "label": 2}
+{"previous": "What is machine learning?", "current": "Great thanks!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Thank you!", "label": 2}
+{"previous": "What is compound interest?", "current": "Understood!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Interesting thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Awesome!", "label": 2}
+{"previous": "What is machine learning?", "current": "Much appreciated!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Noted thanks!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Okay I understand now!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Great!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "All clear thanks!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Okay got it!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Wow okay!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Thank you so much!", "label": 2}
+{"previous": "What is compound interest?", "current": "Perfect!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Appreciate the help!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Understood will do!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Thanks for the clarification!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "That clears it up!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Perfect thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thank you so much!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "That makes sense!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Cool!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Understood will do!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Okay got it!", "label": 2}
+{"previous": "What is blockchain?", "current": "Perfect that helps!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Great thanks!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What is the Renaissance?", "current": "Good to know!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Okay will do!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Okay that helps!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Cheers!", "label": 2}
+{"previous": "What is blockchain?", "current": "Sounds good!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "You are so helpful!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Perfect that helps!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Perfect that helps!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Understood!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Interesting thanks!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "That is helpful!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Awesome!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "I see!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Much appreciated!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Great!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Perfect thanks!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Perfect that helps!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thank you so much!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "That is very clear thanks!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Good to know thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Got it!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Okay that helps!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Ah I see!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Okay will do!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Ohhh I see!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "I see!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Much appreciated!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "That is helpful!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Perfect!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Alright got it!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "All clear thanks!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "That is helpful!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Perfect!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Awesome!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Sure will do!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Super helpful thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Thanks!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Brilliant!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Noted will do!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Thank you!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "I see!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Noted!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Perfect thanks!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Perfect that helps!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Thanks!", "label": 2}
+{"previous": "What are macronutrients?", "current": "That is very clear thanks!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "I appreciate it!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Brilliant!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Sounds good!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Thank you!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Sure will do!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Got it all clear now!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Noted!", "label": 2}
+{"previous": "How does parental leave work?", "current": "That clears it up!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Perfect!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Ohhh I see!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Really helpful thanks!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Makes sense!", "label": 2}
+{"previous": "What is deforestation?", "current": "Thank you!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thanks!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Sounds good!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How does parental leave work?", "current": "Got it thanks!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Cheers!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "I appreciate it!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "What is a lambda function in Python?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Wow okay!", "label": 2}
+{"previous": "How does the immune system work?", "current": "That is helpful!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Ahh okay!", "label": 2}
+{"previous": "When did World War II end?", "current": "That clears it up!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Sounds good!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "All clear thanks!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "Noted will do!", "label": 2}
+{"previous": "What is deforestation?", "current": "All clear thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Great!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Much appreciated!", "label": 2}
+{"previous": "How much does the company contribute to health insurance?", "current": "Awesome!", "label": 2}
+{"previous": "What is blockchain?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "That makes sense!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Understood!", "label": 2}
+{"previous": "How does the vesting schedule work?", "current": "That was very helpful!", "label": 2}
+{"previous": "What is deforestation?", "current": "Noted thanks!", "label": 2}
+{"previous": "What are macronutrients?", "current": "Wow okay!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Understood!", "label": 2}
+{"previous": "What is the vesting schedule for 401k?", "current": "That makes sense!", "label": 2}
+{"previous": "How do I request PTO?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "How do I request PTO?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "How do I file an expense report?", "current": "Awesome thanks!", "label": 2}
+{"previous": "What is machine learning?", "current": "That is very clear thanks!", "label": 2}
+{"previous": "What is blockchain?", "current": "Cheers!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Ahh okay!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Ah I see!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Thanks!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "Okay that helps!", "label": 2}
+{"previous": "What are macronutrients?", "current": "That is helpful!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thanks that helps a lot!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Helpful thanks!", "label": 2}
+{"previous": "What is the performance review process?", "current": "That clears things up thanks!", "label": 2}
+{"previous": "When did World War II end?", "current": "Noted thanks!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "That is helpful!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Sounds good!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Good to know!", "label": 2}
+{"previous": "How do I enroll in health insurance?", "current": "Okay will do!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Cheers!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Thank you so much!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Cool!", "label": 2}
+{"previous": "How do I submit an expense report?", "current": "Ohhh I see!", "label": 2}
+{"previous": "How does the digestive system work?", "current": "Okay will do!", "label": 2}
+{"previous": "What is machine learning?", "current": "Thanks for explaining!", "label": 2}
+{"previous": "How does overfitting occur?", "current": "You are so helpful!", "label": 2}
+{"previous": "What is blockchain?", "current": "Ahhh makes sense!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Oh I see thanks!", "label": 2}
+{"previous": "What is the 401k match policy?", "current": "Got it all clear now!", "label": 2}
+{"previous": "How do I request PTO?", "current": "That makes sense!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "Cheers!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "What is tuition reimbursement?", "current": "Thanks for the clarification!", "label": 2}
+{"previous": "How do I add a dependent to my health insurance?", "current": "Good to know!", "label": 2}
+{"previous": "How does the immune system work?", "current": "Super helpful!", "label": 2}
+{"previous": "What is blockchain?", "current": "Thanks a lot!", "label": 2}
+{"previous": "How do I request PTO?", "current": "That is helpful!", "label": 2}
+{"previous": "How do I get promoted?", "current": "Cool!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Thank you!", "label": 2}
+{"previous": "What is the CAP theorem?", "current": "Got it thanks!", "label": 2}
+{"previous": "What is deforestation?", "current": "Appreciate the help!", "label": 2}
+{"previous": "What is deforestation?", "current": "Ohh okay got it!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Makes sense!", "label": 2}
+{"previous": "What are the carryover rules for PTO?", "current": "Cool!", "label": 2}
+{"previous": "What is the performance review process?", "current": "Much appreciated!", "label": 2}
+{"previous": "When did World War II end?", "current": "Thank you for clarifying!", "label": 2}
+{"previous": "What is deforestation?", "current": "Makes sense thanks!", "label": 2}
+{"previous": "How much PTO do I get per year?", "current": "Perfect thanks!", "label": 2}
+{"previous": "What is the remote work policy?", "current": "You are so helpful!", "label": 2}
+{"previous": "When did World War II end?", "current": "You are so helpful!", "label": 2}
+{"previous": "What is photosynthesis?", "current": "Okay will do!", "label": 2}
+{"previous": "How do I handle errors in Python?", "current": "Noted will do!", "label": 2}

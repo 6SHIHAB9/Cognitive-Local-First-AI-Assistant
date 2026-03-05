@@ -39,7 +39,7 @@ INTENT_LABEL_MAP = {
 
 intent_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-intent_model_path = os.path.abspath("models/intent_models/models/intent_models/final")
+intent_model_path = os.path.abspath("models/intent_models/intent_model_output/final")
 intent_model = AutoModelForSequenceClassification.from_pretrained(
     intent_model_path,
     local_files_only=True
@@ -221,19 +221,40 @@ def split_into_sentences(chunks: list[str]) -> list[str]:
 # =========================
 def classify_intent(question: str, previous_q: str = None) -> str:
 
-    if previous_q:
-        text = f"[PREV] {previous_q} [SEP] [CURR] {question}"
-    else:
-        text = f"[PREV]  [SEP] [CURR] {question}"
-    
+    # First pass: classify WITHOUT previous context
+    text_solo = f"Current: {question}"
     inputs = intent_tokenizer(
-        text,  
+        text_solo,
         return_tensors="pt",
         truncation=True,
         padding=True,
         max_length=512
     )
+    inputs = {k: v.to(intent_device) for k, v in inputs.items()}
 
+    with torch.inference_mode():
+        logits = intent_model(**inputs).logits
+        probs = torch.softmax(logits, dim=-1)[0]
+        casual_confidence = probs[2].item()
+
+    print(f"🎲 PROBS — factual:{probs[0]:.3f} continuation:{probs[1]:.3f} casual:{probs[2]:.3f}")
+
+    if casual_confidence > 0.6:
+        return "casual"
+
+    # Second pass: classify WITH previous context
+    if previous_q:
+        text = f"Previous: {previous_q} Current: {question}"
+    else:
+        text = f"Current: {question}"
+
+    inputs = intent_tokenizer(
+        text,
+        return_tensors="pt",
+        truncation=True,
+        padding=True,
+        max_length=512
+    )
     inputs = {k: v.to(intent_device) for k, v in inputs.items()}
 
     with torch.inference_mode():
@@ -241,7 +262,6 @@ def classify_intent(question: str, previous_q: str = None) -> str:
         pred_id = torch.argmax(logits, dim=-1).item()
 
     return INTENT_LABEL_MAP.get(f"LABEL_{pred_id}", "factual")
-
 
 # =========================
 # ML BASED RETRIEVAL
@@ -462,39 +482,42 @@ def ask(req: AskRequest):
 
         # 2. Casual Chat
         if intent == "casual":
-            # Get conversation context for more natural responses
             previous_q = context_manager.get_previous_question()
             previous_a = None
-            
-            # Get previous answer if available
             if previous_q and hasattr(context_manager, 'conversation_history') and context_manager.conversation_history:
                 previous_a = context_manager.conversation_history[-1].get('answer', '')
-            
+
             context_info = ""
             if previous_q and previous_a:
-                # Include brief context for continuity
-                context_info = f"""
-Previous conversation:
-User: {previous_q}
-You: {previous_a[:150]}...
-"""
-            
-            res = ollama.generate(
-                model="gemma2:2b-instruct-q4_K_M",
-                prompt=f"""You are a friendly conversational assistant.
-Keep it casual and short.{context_info}
+                context_info = f"\nPrevious conversation:\nUser: {previous_q}\nYou: {previous_a[:150]}...\n"
 
-User:
-{question}
+            casual_prompt = f"""You are a friendly conversational assistant.
+        Keep it casual and short.{context_info}
 
-Response:
-""",
-                options={"temperature": 0.7, "num_predict": 80},
+        User:
+        {question}
+
+        Response:
+        """
+
+            def generate_casual():
+                stream = ollama.generate(
+                    model="gemma2:2b-instruct-q4_K_M",
+                    prompt=casual_prompt,
+                    stream=True,
+                    options={"temperature": 0.7, "num_predict": 80},
+                )
+                for chunk in stream:
+                    token = chunk.get("response", "")
+                    if token:
+                        yield f"data: {json.dumps({'token': token})}\n\n"
+                yield f"data: {json.dumps({'done': True, 'metadata': None, 'sync_info': sync_info})}\n\n"
+
+            return StreamingResponse(
+                generate_casual(),
+                media_type="text/event-stream",
+                headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
             )
-            response_data = {"answer": res["response"].strip()}
-            if sync_info:
-                response_data["sync_performed"] = sync_info
-            return response_data
 
         # 3. RETRIEVAL
         effective_question = question

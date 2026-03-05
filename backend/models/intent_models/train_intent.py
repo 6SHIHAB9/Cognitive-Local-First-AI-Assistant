@@ -1,6 +1,7 @@
 import os
 import json
 import torch
+from torch.nn import CrossEntropyLoss
 from torch.utils.data import Dataset
 from transformers import (
     AutoTokenizer,
@@ -9,22 +10,16 @@ from transformers import (
     TrainingArguments
 )
 
-# =========================
-# PATHS (ABSOLUTE, SAFE)
-# =========================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 MODEL_NAME = "microsoft/deberta-v3-base"
-DATA_PATH = os.path.join(BASE_DIR, "intent_data.jsonl")  # ✅ Combined file
+DATA_PATH = os.path.join(BASE_DIR, "intent_data.jsonl")
 OUTPUT_DIR = os.path.join(BASE_DIR, "intent_model_output")
-FINAL_DIR = os.path.join(BASE_DIR, "models", "intent_models", "final")  # ✅ Match router.py path
+FINAL_DIR = os.path.join(BASE_DIR, "intent_model_output", "final")
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 
-# =========================
-# Dataset
-# =========================
 class IntentDataset(Dataset):
     def __init__(self, path, tokenizer):
         self.samples = []
@@ -38,17 +33,14 @@ class IntentDataset(Dataset):
 
     def __getitem__(self, idx):
         item = self.samples[idx]
-        
-        # Format with previous context
         prev = item.get("previous", "")
         curr = item["current"]
-        
-        # Simple format - let DeBERTa figure out the pattern
+
         if prev:
             text = f"Previous: {prev} Current: {curr}"
         else:
             text = f"Current: {curr}"
-        
+
         enc = self.tokenizer(
             text,
             truncation=True,
@@ -63,9 +55,17 @@ class IntentDataset(Dataset):
         }
 
 
-# =========================
-# Train
-# =========================
+class_weights = torch.tensor([1.0, 1.0, 1.2]).to(DEVICE)
+
+class WeightedTrainer(Trainer):
+    def compute_loss(self, model, inputs, return_outputs=False, **kwargs):
+        labels = inputs.pop("labels")
+        outputs = model(**inputs)
+        logits = outputs.logits
+        loss = CrossEntropyLoss(weight=class_weights)(logits, labels)
+        return (loss, outputs) if return_outputs else loss
+
+
 def main():
     print("📂 DATA PATH:", DATA_PATH)
     print("💾 FINAL MODEL PATH:", FINAL_DIR)
@@ -82,18 +82,19 @@ def main():
 
     args = TrainingArguments(
         output_dir=OUTPUT_DIR,
-        per_device_train_batch_size=16,  # ✅ Reduced from 32 (safer for memory)
-        num_train_epochs=5,  # ✅ Reduced from 6 (5k examples is enough)
-        learning_rate=3e-5,  # ✅ Standard DeBERTa learning rate
+        per_device_train_batch_size=16,
+        num_train_epochs=2,
+        learning_rate=3e-5,
+        weight_decay=0.01,
         fp16=torch.cuda.is_available(),
         logging_steps=50,
         save_strategy="epoch",
-        save_total_limit=2,  # ✅ Keep only best 2 checkpoints
+        save_total_limit=2,
         report_to="none",
-        warmup_steps=100,  # ✅ Warmup for stable training
+        warmup_steps=100,
     )
 
-    trainer = Trainer(
+    trainer = WeightedTrainer(
         model=model,
         args=args,
         train_dataset=dataset,
@@ -103,9 +104,6 @@ def main():
     print("🚀 Starting training...")
     trainer.train()
 
-    # =========================
-    # SAVE FINAL MODEL
-    # =========================
     os.makedirs(FINAL_DIR, exist_ok=True)
     trainer.save_model(FINAL_DIR)
     tokenizer.save_pretrained(FINAL_DIR)
