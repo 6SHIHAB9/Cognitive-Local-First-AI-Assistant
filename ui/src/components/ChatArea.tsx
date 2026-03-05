@@ -3,7 +3,7 @@ import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import ChatMessage from "./ChatMessage";
-import { sendMessage, syncVault } from "@/lib/backend";
+import { sendMessageStream, syncVault } from "@/lib/backend";
 
 type Message = {
   role: "user" | "assistant";
@@ -19,6 +19,7 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
+  const [streaming, setStreaming] = useState(false);
 
   const handleSend = async () => {
     if (!input.trim() || loading) return;
@@ -26,47 +27,61 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
     const userText = input;
     setInput("");
     setLoading(true);
+    setStreaming(false); // reset streaming state
 
     setMessages((prev) => [
       ...prev,
       { role: "user", content: userText },
     ]);
 
+    let messageAdded = false; // track if assistant message was added
+
     try {
-      const res = await sendMessage(userText);
-      const answer = res?.answer ?? "No response from assistant.";
-
-      // ✅ NEW: Check for auto-sync performed
-      if (res?.sync_performed && setVaultStatus) {
-        console.log("✅ Vault auto-synced:", res.sync_performed);
-        setVaultStatus(res.sync_performed);
-        
-        // Optional: Show a toast/notification to user
-        // You can add a toast library or just log it
-      }
-
-      // ✅ KEEP: Update vault status from manual response (backward compatible)
-      if (res?.vault_status && setVaultStatus) {
-        setVaultStatus(res.vault_status);
-      }
-
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: answer },
-      ]);
+      await sendMessageStream(
+        userText,
+        (token) => {
+          if (!messageAdded) {
+            // Add empty assistant message on FIRST token only
+            messageAdded = true;
+            setStreaming(true);
+            setMessages((prev) => [
+              ...prev,
+              { role: "assistant", content: token },
+            ]);
+          } else {
+            setMessages((prev) => {
+              const updated = [...prev];
+              updated[updated.length - 1] = {
+                role: "assistant",
+                content: updated[updated.length - 1].content + token,
+              };
+              return updated;
+            });
+          }
+        },
+        (metadata, syncInfo) => {
+          if (syncInfo && setVaultStatus) {
+            setVaultStatus(syncInfo);
+          }
+          setStreaming(false);
+          setLoading(false);
+        }
+      );
     } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = {
           role: "assistant",
           content: "Something went wrong talking to the backend.",
-        },
-      ]);
-    } finally {
+        };
+        return updated;
+      });
+      setStreaming(false);
       setLoading(false);
     }
   };
 
+  
   const handleSync = async () => {
     setLoading(true);
     try {
@@ -305,7 +320,7 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
             ))}
 
             {/* Typing indicator */}
-            {loading && (
+            {loading && !streaming && (
               <div className="group relative flex justify-start">
                 <div className="relative max-w-[85%] mr-auto">
                   <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-50" />

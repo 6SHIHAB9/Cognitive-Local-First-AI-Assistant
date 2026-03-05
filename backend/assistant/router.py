@@ -8,7 +8,8 @@ import os
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
 from models.reference_models.reference_ranker.loader import ReferenceRanker
-
+from fastapi.responses import StreamingResponse
+import json
 from vault.ingest import scan_vault, retrieve_relevant_chunks
 from config import VAULT_PATH
 from context_manager import context_manager
@@ -632,9 +633,7 @@ Response:
                         "Explain the MECHANISM or PROCESS.\n"
                     )
 
-        response = ollama.generate(
-            model="qwen2.5:7b",
-            prompt=f"""You are answering a question using ONLY the provided sentences.
+        prompt = f"""You are answering a question using ONLY the provided sentences.
 
 RULES:
 - Use ONLY the allowed sentences below
@@ -656,31 +655,42 @@ ALLOWED SENTENCES:
 QUESTION:
 {question}
 
-ANSWER:""",
-            options={"temperature": 0.0, "top_p": 0.1, "num_predict": 150},
+ANSWER:"""
+
+        metadata = {
+            "chunks_retrieved": len(chunks),
+            "sentences_grounded": len(allowed),
+            "intent": intent
+        }
+
+        def generate():
+            full_answer = ""
+            stream = ollama.generate(
+                model="qwen2.5:7b-instruct-q4_K_M",
+                prompt=prompt,
+                stream=True,
+                options={"temperature": 0.0, "top_p": 0.1, "num_predict": 150},
+            )
+            for chunk in stream:
+                token = chunk.get("response", "")
+                if token:
+                    full_answer += token
+                    print(token, end="", flush=True)
+                    yield f"data: {json.dumps({'token': token})}\n\n"
+
+            print()
+            if full_answer.strip():
+                context_manager.add_turn(question, full_answer.strip())
+
+            yield f"data: {json.dumps({'done': True, 'metadata': metadata, 'sync_info': sync_info})}\n\n"
+
+        return StreamingResponse(
+            generate(),
+            media_type="text/event-stream",
+            headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
         )
 
-        answer = response["response"].strip()
-        print(f"💬 ANSWER: {answer}")
-
-        # 6. Store Q&A in conversation history
-        if answer != "I don't have that information in my vault yet.":
-            context_manager.add_turn(question, answer)
-
-        # 7. Build response
-        response_data = {
-            "answer": answer,
-            "metadata": {
-                "chunks_retrieved": len(chunks),
-                "sentences_grounded": len(allowed),
-                "intent": intent
-            }
-        }
         
-        if sync_info:
-            response_data["sync_performed"] = sync_info
-
-        return response_data
 
     except Exception as e:
         print("ERROR:", e)
