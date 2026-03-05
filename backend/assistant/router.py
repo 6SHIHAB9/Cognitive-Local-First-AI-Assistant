@@ -480,7 +480,7 @@ You: {previous_a[:150]}...
 """
             
             res = ollama.generate(
-                model="qwen2.5:7b",
+                model="gemma2:2b-instruct-q4_K_M",
                 prompt=f"""You are a friendly conversational assistant.
 Keep it casual and short.{context_info}
 
@@ -666,7 +666,7 @@ ANSWER:"""
         def generate():
             full_answer = ""
             stream = ollama.generate(
-                model="qwen2.5:7b-instruct-q4_K_M",
+                model="gemma2:2b-instruct-q4_K_M",
                 prompt=prompt,
                 stream=True,
                 options={"temperature": 0.0, "top_p": 0.1, "num_predict": 150},
