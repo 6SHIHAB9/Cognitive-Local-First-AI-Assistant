@@ -72,7 +72,7 @@ sufficiency_scorer = SufficiencyScorer(
     base_model="sentence-transformers/all-MiniLM-L6-v2"
 )
 
-SUFFICIENCY_THRESHOLD = 0.65
+SUFFICIENCY_THRESHOLD = 0.60
 
 # =========================
 # Model 5: Topic Coherence Scorer
