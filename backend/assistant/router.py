@@ -270,11 +270,11 @@ def classify_intent(question: str, previous_q: str = None) -> str:
 # ML BASED RETRIEVAL
 # =========================
 def retrieve_for_question(question: str, intent: str, vault_data: dict) -> list[str]:
-    results = retrieve_relevant_chunks(question, vault_data, limit=15) 
+    results = retrieve_relevant_chunks(question, vault_data, limit=20) 
     chunks = normalize_chunks(results)
 
 
-    return chunks[:8] 
+    return chunks[:12] 
 
 
 # =========================
