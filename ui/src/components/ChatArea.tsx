@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import ChatMessage from "./ChatMessage";
 import { sendMessageStream, syncVault } from "@/lib/backend";
 
 type Message = {
@@ -10,7 +8,6 @@ type Message = {
   content: string;
 };
 
-// Add this prop type
 type ChatAreaProps = {
   setVaultStatus?: (status: any) => void;
 };
@@ -20,34 +17,32 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [streaming, setStreaming] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const handleSend = async () => {
     if (!input.trim() || loading) return;
-
     const userText = input;
     setInput("");
     setLoading(true);
-    setStreaming(false); // reset streaming state
+    setStreaming(false);
+    if (textareaRef.current) textareaRef.current.style.height = "auto";
 
-    setMessages((prev) => [
-      ...prev,
-      { role: "user", content: userText },
-    ]);
-
-    let messageAdded = false; // track if assistant message was added
+    setMessages((prev) => [...prev, { role: "user", content: userText }]);
+    let messageAdded = false;
 
     try {
       await sendMessageStream(
         userText,
         (token) => {
           if (!messageAdded) {
-            // Add empty assistant message on FIRST token only
             messageAdded = true;
             setStreaming(true);
-            setMessages((prev) => [
-              ...prev,
-              { role: "assistant", content: token },
-            ]);
+            setMessages((prev) => [...prev, { role: "assistant", content: token }]);
           } else {
             setMessages((prev) => {
               const updated = [...prev];
@@ -60,9 +55,7 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
           }
         },
         (metadata, syncInfo) => {
-          if (syncInfo && setVaultStatus) {
-            setVaultStatus(syncInfo);
-          }
+          if (syncInfo && setVaultStatus) setVaultStatus(syncInfo);
           setStreaming(false);
           setLoading(false);
         }
@@ -70,10 +63,11 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
     } catch {
       setMessages((prev) => {
         const updated = [...prev];
-        updated[updated.length - 1] = {
-          role: "assistant",
-          content: "Something went wrong talking to the backend.",
-        };
+        if (updated[updated.length - 1]?.role === "assistant") {
+          updated[updated.length - 1] = { role: "assistant", content: "Connection error. Check backend." };
+        } else {
+          updated.push({ role: "assistant", content: "Connection error. Check backend." });
+        }
         return updated;
       });
       setStreaming(false);
@@ -81,351 +75,248 @@ const ChatArea = ({ setVaultStatus }: ChatAreaProps) => {
     }
   };
 
-  
-  const handleSync = async () => {
-    setLoading(true);
-    try {
-      const data = await syncVault();
-      
-      // ✅ Update vault status from sync
-      if (setVaultStatus) {
-        setVaultStatus(data);
-      }
-      
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Vault synced successfully.",
-        },
-      ]);
-    } catch {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Vault sync failed.",
-        },
-      ]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
-    <div className="flex flex-col h-screen bg-background">
-      {/* Enhanced Header */}
-      <header className="relative flex-shrink-0 border-b border-white/5 bg-gradient-to-b from-slate-900/50 to-slate-950/50 backdrop-blur-xl px-6 py-3 overflow-hidden">
-        {/* Animated gradient mesh background */}
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full mix-blend-screen filter blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '1s' }} />
+    <div className="flex flex-col h-screen bg-[#080c10] font-mono relative overflow-hidden">
+      {/* Cyber grid background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(0,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,255,255,0.03) 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px'
+        }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#080c10]/80" />
+      </div>
+
+      {/* Corner decorations */}
+      <div className="absolute top-0 right-0 w-48 h-48 pointer-events-none">
+        <div className="absolute top-3 right-3 w-24 h-24 border-t border-r border-cyan-500/20" />
+        <div className="absolute top-6 right-6 w-12 h-12 border-t border-r border-cyan-500/10" />
+      </div>
+
+      {/* Header */}
+      <header className="relative flex-shrink-0 border-b border-cyan-500/15 bg-[#080c10]/95 backdrop-blur-xl px-8 py-4 z-10">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div className="absolute inset-0 bg-cyan-500/20 rounded-lg blur-lg animate-pulse" />
+              <div className="relative w-10 h-10 rounded-lg border border-cyan-500/40 bg-cyan-500/8 flex items-center justify-center">
+                <svg className="w-5 h-5 text-cyan-400" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                </svg>
+              </div>
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h1 className="text-lg font-bold text-white tracking-widest uppercase">
+                  Vault<span className="text-cyan-400">AI</span>
+                </h1>
+                <div className="h-4 w-px bg-cyan-500/30" />
+                <span className="text-xs text-cyan-500/80 tracking-widest uppercase">Neural Interface</span>
+              </div>
+              <p className="text-xs text-slate-400 tracking-wider mt-0.5">PRIVATE · LOCAL · SECURE</p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 px-3 py-2 rounded border border-cyan-500/25 bg-cyan-500/8">
+              <div className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-400" />
+              </div>
+              <span className="text-xs font-bold text-cyan-300 tracking-widest uppercase">Online</span>
+            </div>
+            <div className="flex items-center gap-2 px-3 py-2 rounded border border-slate-600/40 bg-slate-800/30">
+              <svg className="w-3.5 h-3.5 text-slate-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
+              </svg>
+              <span className="text-xs font-bold text-slate-400 tracking-widest uppercase">Offline</span>
+            </div>
+          </div>
         </div>
 
-        {/* Subtle scan line effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-emerald-500/5 to-transparent opacity-20 animate-scan" />
-
-        <div className="relative">
-          {/* Main header row */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
-              {/* Premium vault icon */}
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-cyan-500/20 rounded-xl blur-lg group-hover:blur-xl transition-all duration-300" />
-                <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-500/10 to-cyan-500/10 backdrop-blur-sm flex items-center justify-center border border-emerald-500/20 shadow-lg shadow-emerald-500/10">
-                  <svg
-                    className="w-5 h-5 text-emerald-400"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
-                    />
-                  </svg>
-                </div>
-                {/* Animated pulse ring */}
-                <div className="absolute -bottom-1 -right-1">
-                  <div className="relative flex h-3 w-3">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 ring-2 ring-slate-900" />
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent tracking-tight">
-                  Vault Assistant
-                </h1>
-                <p className="text-xs text-slate-400 font-medium flex items-center gap-1.5 mt-0.5">
-                  <span className="inline-block w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                  Private, local AI for your notes
-                </p>
-              </div>
-            </div>
-
-            {/* Status badge */}
-            <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm">
-              <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-              </div>
-              <span className="text-xs font-semibold text-emerald-400">Ready</span>
-            </div>
-          </div>
-
-          {/* Feature highlight bar */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-emerald-500/5 to-cyan-500/5 rounded-xl blur-xl" />
-            <div className="relative flex items-center gap-4 px-4 py-3 rounded-xl bg-slate-800/40 border border-white/5 backdrop-blur-sm">
-              {/* AI Icon */}
-              <div className="flex-shrink-0">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                  <svg
-                    className="w-4 h-4 text-blue-400"
-                    fill="none"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"
-                    />
-                  </svg>
-                </div>
-              </div>
-
-              {/* Main text */}
-              <div className="flex-1">
-                <p className="text-sm text-slate-200 font-medium">
-                  Ask questions and get answers directly from your vault files.
-                </p>
-              </div>
-
-              {/* Privacy badges */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-emerald-500/10 border border-emerald-500/20">
-                  <svg className="w-3 h-3 text-emerald-400" fill="none" strokeWidth="2.5" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9" />
-                  </svg>
-                  <span className="text-xs font-semibold text-emerald-400">Fully offline</span>
-                </div>
-                <div className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-md bg-blue-500/10 border border-blue-500/20">
-                  <svg className="w-3 h-3 text-blue-400" fill="none" strokeWidth="2.5" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
-                  <span className="text-xs font-semibold text-blue-400">Nothing uploaded</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="absolute bottom-0 left-0 right-0 h-px overflow-hidden">
+          <div className="h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent animate-scan-line" />
         </div>
       </header>
 
       <style>{`
-        @keyframes scan {
-          0%, 100% {
-            transform: translateY(-100%);
-          }
-          50% {
-            transform: translateY(100%);
-          }
+        @keyframes scan-line {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
-        .animate-scan {
-          animation: scan 8s ease-in-out infinite;
+        .animate-scan-line { animation: scan-line 3s ease-in-out infinite; }
+        @keyframes flicker {
+          0%, 100% { opacity: 1; }
+          92% { opacity: 1; }
+          93% { opacity: 0.7; }
+          94% { opacity: 1; }
         }
+        .animate-flicker { animation: flicker 5s infinite; }
       `}</style>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-6">
+      <div className="flex-1 overflow-y-auto px-8 py-6 space-y-6 relative z-10">
         {messages.length === 0 ? (
-          /* Empty state */
-          <div className="flex items-center justify-center h-full">
-            <div className="text-center max-w-md space-y-4">
-              <div className="relative inline-block">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-2xl blur-2xl" />
-                <div className="relative w-16 h-16 mx-auto rounded-2xl bg-gradient-to-br from-emerald-500/10 to-blue-500/10 backdrop-blur-sm flex items-center justify-center border border-emerald-500/20">
-                  <svg className="w-8 h-8 text-emerald-400" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+          <div className="flex flex-col items-center justify-center h-full gap-8">
+            {/* Central orb */}
+            <div className="relative">
+              <div className="absolute inset-0 w-32 h-32 rounded-full bg-cyan-500/10 blur-3xl animate-pulse" />
+              <div className="relative w-24 h-24 rounded-full border border-cyan-500/25 bg-gradient-to-br from-cyan-500/10 to-transparent flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full border border-cyan-400/35 bg-gradient-to-br from-cyan-400/10 to-transparent flex items-center justify-center">
+                  <svg className="w-8 h-8 text-cyan-400" fill="none" strokeWidth="1.5" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 2.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
                   </svg>
                 </div>
               </div>
-              <div>
-                <h3 className="text-lg font-semibold text-slate-200 mb-2">Start a conversation</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">Ask me anything about your vault files. I'll search through your notes to find the best answer.</p>
-              </div>
             </div>
+
+            <div className="text-center space-y-2">
+              <h2 className="text-xl font-bold text-white tracking-widest uppercase animate-flicker">
+                Vault <span className="text-cyan-400">Ready</span>
+              </h2>
+              <p className="text-sm text-slate-400 tracking-wider">QUERY YOUR KNOWLEDGE BASE</p>
+            </div>
+
+
           </div>
         ) : (
           <>
             {messages.map((msg, i) => (
-              <div
-                key={i}
-                className={`group relative ${
-                  msg.role === "user" ? "flex justify-end" : "flex justify-start"
-                }`}
-              >
-                {/* Message container */}
-                <div
-                  className={`relative max-w-[85%] ${
-                    msg.role === "user"
-                      ? "ml-auto"
-                      : "mr-auto"
-                  }`}
-                >
-                  <div className="relative flex gap-3">
-                    {/* Avatar */}
-                    {msg.role === "assistant" && (
-                      <div className="flex-shrink-0 mt-1">
-                        <div className="relative">
-                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-lg blur-md" />
-                          <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500/20 to-blue-500/20 backdrop-blur-sm flex items-center justify-center border border-emerald-500/30">
-                            <svg className="w-4 h-4 text-emerald-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                            </svg>
-                          </div>
-                        </div>
+              <div key={i} className={`flex gap-3 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}>
+                {/* Avatar */}
+                <div className="flex-shrink-0 mt-1">
+                  {msg.role === "assistant" ? (
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-cyan-500/20 rounded blur-md" />
+                      <div className="relative w-8 h-8 rounded border border-cyan-500/40 bg-cyan-500/8 flex items-center justify-center">
+                        <svg className="w-4 h-4 text-cyan-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+                        </svg>
                       </div>
-                    )}
-                    
-                    {/* Message content */}
-                    <div
-                      className={`relative flex-1 rounded-2xl px-4 py-3 ${
-                        msg.role === "user"
-                          ? "bg-gradient-to-br from-indigo-500/90 to-purple-500/90 text-white shadow-lg shadow-indigo-500/25"
-                          : "bg-slate-800/60 backdrop-blur-sm border border-slate-700/50 text-slate-200"
-                      }`}
-                    >
-                      <p className="text-sm leading-relaxed whitespace-pre-wrap break-words break-all">{msg.content}</p>
                     </div>
-                    
-                    {/* User avatar */}
-                    {msg.role === "user" && (
-                      <div className="flex-shrink-0 mt-1">
-                        <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center shadow-lg shadow-indigo-500/25">
-                          <svg className="w-4 h-4 text-white" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                          </svg>
-                        </div>
-                      </div>
+                  ) : (
+                    <div className="w-8 h-8 rounded border border-slate-600/50 bg-slate-700/50 flex items-center justify-center">
+                      <svg className="w-4 h-4 text-slate-400" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                      </svg>
+                    </div>
+                  )}
+                </div>
+
+                {/* Bubble */}
+                <div className={`relative max-w-[75%] flex flex-col gap-1 ${msg.role === "user" ? "items-end" : "items-start"}`}>
+                  <span className={`text-xs tracking-widest uppercase px-1 ${msg.role === "assistant" ? "text-cyan-500" : "text-slate-500"}`}>
+                    {msg.role === "assistant" ? "// VAULT.AI" : "// USER"}
+                  </span>
+                  <div className={`relative rounded px-4 py-3 ${
+                    msg.role === "user"
+                      ? "bg-slate-800/80 border border-slate-600/50 text-slate-100"
+                      : "bg-[#0a1520]/90 border border-cyan-500/25 text-white"
+                  }`}>
+                    {msg.role === "assistant" && (
+                      <>
+                        <div className="absolute top-0 left-0 w-2.5 h-2.5 border-t border-l border-cyan-400/60" />
+                        <div className="absolute bottom-0 right-0 w-2.5 h-2.5 border-b border-r border-cyan-400/60" />
+                      </>
                     )}
+                    <p className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+                      {msg.content}
+                      {streaming && i === messages.length - 1 && msg.role === "assistant" && (
+                        <span className="inline-block w-1.5 h-4 bg-cyan-400 ml-0.5 animate-pulse align-middle" />
+                      )}
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
 
-            {/* Typing indicator */}
+            {/* Loading */}
             {loading && !streaming && (
-              <div className="group relative flex justify-start">
-                <div className="relative max-w-[85%] mr-auto">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500/10 via-blue-500/10 to-purple-500/10 rounded-2xl blur-xl opacity-50" />
-                  
-                  <div className="relative flex gap-3">
-                    {/* Avatar */}
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-lg blur-md animate-pulse" />
-                        <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500/20 to-blue-500/20 backdrop-blur-sm flex items-center justify-center border border-emerald-500/30">
-                          <svg className="w-4 h-4 text-emerald-400 animate-pulse" fill="none" strokeWidth="2" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Typing animation */}
-                    <div className="relative flex-1 rounded-2xl px-4 py-3 bg-slate-800/60 backdrop-blur-sm border border-slate-700/50">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-                      </div>
-                    </div>
+              <div className="flex gap-3">
+                <div className="relative flex-shrink-0 mt-1">
+                  <div className="absolute inset-0 bg-cyan-500/20 rounded blur-md animate-pulse" />
+                  <div className="relative w-8 h-8 rounded border border-cyan-500/40 bg-cyan-500/8 flex items-center justify-center">
+                    <svg className="w-4 h-4 text-cyan-400 animate-spin" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="bg-[#0a1520]/90 border border-cyan-500/25 rounded px-4 py-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-cyan-500 tracking-widest uppercase mr-1">Processing</span>
+                    {[0, 1, 2].map((i) => (
+                      <div key={i} className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: `${i * 150}ms` }} />
+                    ))}
                   </div>
                 </div>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </>
         )}
       </div>
 
       {/* Input */}
-      <div className="relative border-t border-white/5 bg-gradient-to-b from-slate-900/50 to-slate-950/80 backdrop-blur-xl">
-        {/* Subtle glow effect */}
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
-        
-        <div className="p-4">
-          <div className="flex gap-3 items-end">
-            <div className="flex-1 relative group">
-              {/* Glow effect on focus */}
-              <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/0 via-emerald-500/5 to-blue-500/0 rounded-xl blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity duration-300" />
-              
+      <div className="relative flex-shrink-0 border-t border-cyan-500/15 bg-[#080c10]/95 backdrop-blur-xl px-8 py-4 z-10">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/35 to-transparent" />
+
+        <div className="flex gap-3 items-end">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-xs text-cyan-500 tracking-widest uppercase font-bold">Input Query</span>
+              <div className="flex-1 h-px bg-cyan-500/15" />
+            </div>
+            <div className="relative group">
               <Textarea
+                ref={textareaRef}
                 value={input}
                 onChange={(e) => {
                   setInput(e.target.value);
-                  // Auto-resize logic
-                  e.target.style.height = 'auto';
-                  e.target.style.height = Math.min(e.target.scrollHeight, 200) + 'px';
+                  e.target.style.height = "auto";
+                  e.target.style.height = Math.min(e.target.scrollHeight, 160) + "px";
                 }}
-                placeholder="Ask something from your vault..."
-                className="relative min-h-[52px] max-h-[200px] resize-none bg-slate-800/50 border-slate-700/50 hover:border-slate-600/50 focus:border-emerald-500/50 rounded-xl px-4 py-3.5 text-slate-200 placeholder:text-slate-500 focus:ring-2 focus:ring-emerald-500/20 transition-all overflow-y-auto"
+                placeholder="> Query vault..."
+                className="min-h-[52px] max-h-[160px] resize-none bg-[#0a1520]/70 border-cyan-500/25 hover:border-cyan-500/40 focus:border-cyan-400/60 rounded text-sm text-white placeholder:text-slate-600 focus:ring-1 focus:ring-cyan-500/25 transition-all font-mono tracking-wide overflow-y-auto px-4 py-3.5"
                 rows={1}
-                disabled={false}
                 onKeyDown={(e) => {
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  handleSend();
-
-                  // Reset height after sending
-                  setTimeout(() => {
-                    const el = e.currentTarget;
-                    el.style.height = "auto";
-                  }, 0);
-                }
+                  if (e.key === "Enter" && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSend();
+                  }
                 }}
               />
             </div>
-            
-            <Button
-              onClick={() => {
-                handleSend();
-                // Reset textarea height
-                const textarea = document.querySelector('textarea');
-                if (textarea) {
-                  textarea.style.height = 'auto';
-                }
-              }}
-              disabled={loading || !input.trim()}
-              className="h-[52px] w-[52px] flex-shrink-0 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 disabled:from-slate-700 disabled:to-slate-800 border-0 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 disabled:shadow-none transition-all duration-200 group"
-            >
-              {loading ? (
-                <svg className="h-5 w-5 animate-spin text-white" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-              ) : (
-                <Send className="h-5 w-5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              )}
-            </Button>
           </div>
-          
-          {/* Helper text */}
-          <div className="flex items-center justify-between mt-2 px-1">
-            <p className="text-xs text-slate-500">
-              Press <kbd className="px-1.5 py-0.5 rounded bg-slate-800/50 border border-slate-700/50 text-slate-400 font-mono text-[10px]">Enter</kbd> to send, <kbd className="px-1.5 py-0.5 rounded bg-slate-800/50 border border-slate-700/50 text-slate-400 font-mono text-[10px]">Shift + Enter</kbd> for new line
-            </p>
-            {input.length > 0 && (
-              <p className="text-xs text-slate-500">
-                {input.length} characters
-              </p>
+
+          <button
+            onClick={handleSend}
+            disabled={loading || !input.trim()}
+            className="h-[52px] w-[52px] flex-shrink-0 rounded border border-cyan-500/35 bg-cyan-500/10 hover:bg-cyan-500/20 hover:border-cyan-400/55 disabled:bg-slate-800/30 disabled:border-slate-700/30 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center group"
+          >
+            {loading ? (
+              <svg className="h-4 w-4 animate-spin text-cyan-400" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            ) : (
+              <Send className="h-4 w-4 text-cyan-400 group-hover:text-cyan-300 group-disabled:text-slate-600 transition-colors" />
             )}
-          </div>
+          </button>
+        </div>
+
+        <div className="flex items-center justify-between mt-2">
+          <p className="text-xs text-slate-500 tracking-wider">
+            <kbd className="px-1.5 py-0.5 rounded bg-slate-800/60 border border-slate-700/40 text-slate-400 font-mono text-xs">ENTER</kbd>
+            {" "}SEND · {" "}
+            <kbd className="px-1.5 py-0.5 rounded bg-slate-800/60 border border-slate-700/40 text-slate-400 font-mono text-xs">SHIFT+ENTER</kbd>
+            {" "}NEW LINE
+          </p>
+          {input.length > 0 && (
+            <span className="text-xs text-cyan-600 tracking-widest">{input.length} CHARS</span>
+          )}
         </div>
       </div>
     </div>
