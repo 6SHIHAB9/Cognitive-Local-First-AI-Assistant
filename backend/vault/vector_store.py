@@ -3,7 +3,7 @@ import ollama
 import numpy as np
 
 class VectorStore:
-    def __init__(self, model_name="bge-large:latest"):
+    def __init__(self, model_name="mxbai-embed-large:latest"):
         self.model_name = model_name
         self.index = None
         self.chunks = []

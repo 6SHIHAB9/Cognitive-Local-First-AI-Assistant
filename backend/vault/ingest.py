@@ -11,28 +11,88 @@ from vault.vector_store import VectorStore
 
 def read_text_file(path: Path) -> str:
     try:
-        return path.read_text(encoding="utf-8", errors="ignore")
+        if path.suffix.lower() == ".pdf":
+            import fitz
+            doc = fitz.open(str(path))
+            text = ""
+            for page in doc:
+                # Extract text with table detection
+                blocks = page.get_text("blocks")
+                blocks.sort(key=lambda b: (b[1], b[0]))  # sort by y then x
+                for block in blocks:
+                    block_text = block[4].strip()
+                    if block_text:
+                        text += block_text + "\n\n"
+            doc.close()
+            return text
+
+        elif path.suffix.lower() == ".docx":
+            from docx import Document
+            from docx.oxml.ns import qn
+            doc = Document(str(path))
+            parts = []
+
+            for block in doc.element.body:
+                # Paragraphs
+                if block.tag == qn('w:p'):
+                    runs = block.findall('.//' + qn('w:t'))
+                    text = " ".join(r.text for r in runs if r.text)
+                    if text.strip():
+                        parts.append(text.strip())
+
+                # Tables
+                elif block.tag == qn('w:tbl'):
+                    from docx.table import Table
+                    table = Table(block, doc)
+                    for row in table.rows:
+                        row_text = " | ".join(
+                            cell.text.strip()
+                            for cell in row.cells
+                            if cell.text.strip()
+                        )
+                        if row_text:
+                            parts.append(row_text)
+
+            return "\n\n".join(parts)
+
+        else:
+            return path.read_text(encoding="utf-8", errors="ignore")
+
     except Exception as e:
+        print(f"  ⚠️ Failed to read {path.name}: {e}")
         return ""
 
-
 def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50):
-    """
-    Chunk by markdown/document sections first, then by word count if sections are too large.
-    """
-    # Split on markdown headers (##, ###) or double newlines
+    # Try markdown header splitting first
     section_pattern = re.compile(r'(?=^#{1,3}\s)', re.MULTILINE)
     sections = section_pattern.split(text)
     sections = [s.strip() for s in sections if s.strip()]
+
+    # If no markdown headers found, split by double newlines (for PDFs)
+    if len(sections) <= 1:
+        sections = re.split(r'\n\s*\n', text)
+        sections = [s.strip() for s in sections if s.strip()]
+
+    # If still one section, split by single newline before title-case headings (PDF)
+    if len(sections) <= 1:
+        sections = re.split(r'\n(?=[A-Z][a-z]+ [A-Z]|[A-Z][a-z]+\n)', text)
+        sections = [s.strip() for s in sections if s.strip()]
+
+    # Last resort: split by word count
+    if len(sections) <= 1:
+        words = text.split()
+        sections = []
+        for i in range(0, len(words), chunk_size - overlap):
+            chunk = " ".join(words[i:i + chunk_size])
+            if chunk.strip():
+                sections.append(chunk)
 
     chunks = []
     for section in sections:
         words = section.split()
         if len(words) <= chunk_size:
-            # Section fits in one chunk
             chunks.append(section)
         else:
-            # Section too large, split by word count with overlap
             for i in range(0, len(words), chunk_size - overlap):
                 chunk = " ".join(words[i:i + chunk_size])
                 if chunk.strip():
@@ -41,7 +101,6 @@ def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50):
                     break
 
     return chunks
-
 
 def normalize(text: str) -> str:
     return re.sub(r"[^a-z0-9\s]", "", text.lower())
@@ -77,7 +136,7 @@ def scan_vault():
         if not path.is_file():
             continue
 
-        if path.suffix.lower() not in [".txt", ".md", ".pdf"]:
+        if path.suffix.lower() not in [".txt", ".md", ".pdf", ".docx"]:
             continue
 
         content = read_text_file(path)

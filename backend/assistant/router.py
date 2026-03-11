@@ -629,7 +629,7 @@ def ask(req: AskRequest):
         ranked = score_evidence_roles(question, allowed)
 
         # Keep top 6 most relevant
-        ranked = ranked[:6]
+        ranked = ranked[:12]
 
         print("🧠 EVIDENCE WEIGHTS:")
         for score, s in ranked:
