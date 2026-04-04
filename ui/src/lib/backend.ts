@@ -1,4 +1,4 @@
-const BACKEND_URL = "http://127.0.0.1:8000";
+const BACKEND_URL = "http://192.168.20.6:8000";
 
 async function post(endpoint: string, body: any) {
   const res = await fetch(`${BACKEND_URL}${endpoint}`, {
