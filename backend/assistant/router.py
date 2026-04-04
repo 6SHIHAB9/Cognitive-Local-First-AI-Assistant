@@ -7,7 +7,7 @@ import time
 import os
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
 import torch
-from models.reference_models.reference_ranker.loader import ReferenceRanker
+
 from fastapi.responses import StreamingResponse
 import json
 from vault.ingest import scan_vault, retrieve_relevant_chunks
@@ -56,9 +56,7 @@ intent_model.eval()
 # =========================
 # Model 2: Reference Ranker
 # =========================
-reference_ranker = ReferenceRanker(
-    "models/reference_models/reference_ranker"
-)
+
 
 # =========================
 # Model 3: Reranker (replaces binary grounding scorer)
@@ -195,17 +193,7 @@ def filter_by_topic_coherence(
     return [s for _, s in scored[:top_k]]
 
 
-def rerank_chunks(question: str, chunks: list[str], top_k: int = 5) -> list[str]:
-    if not chunks:
-        return []
 
-    scored = []
-    for chunk in chunks:
-        score = reference_ranker.score(question, chunk)
-        scored.append((score, chunk))
-
-    scored.sort(key=lambda x: x[0], reverse=True)
-    return [chunk for _, chunk in scored[:top_k]]
 
 
 def split_into_sentences(chunks: list[str]) -> list[str]:
