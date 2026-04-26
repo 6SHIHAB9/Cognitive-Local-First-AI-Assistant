@@ -1,588 +1,616 @@
-{"previous": "", "current": "Tell me the phone number of Aravind Raj", "label": 0}
-{"previous": "", "current": "Thank you?", "label": 2}
-{"previous": "", "current": "You're very helpful", "label": 2}
-{"previous": "", "current": "Okay?", "label": 2}
-{"previous": "", "current": "What is the status of Divya Menon's case", "label": 0}
-{"previous": "", "current": "All good?", "label": 2}
-{"previous": "", "current": "Understood", "label": 2}
-{"previous": "What does the document say about check-in time", "current": "What about check-out?", "label": 1}
-{"previous": "Who has the highest CGPA", "current": "What is their email", "label": 1}
-{"previous": "Who is on academic probation", "current": "What are their CGPAs?", "label": 1}
-{"previous": "What is the case number of Divya Menon's case", "current": "Who is the assigned attorney", "label": 1}
-{"previous": "", "current": "Clear?", "label": 2}
-{"previous": "Look up Umer's CGPA", "current": "What is his registration number?", "label": 1}
-{"previous": "", "current": "Roger that?", "label": 2}
-{"previous": "", "current": "Clear", "label": 2}
-{"previous": "", "current": "What is Aravind Raj's phone number", "label": 0}
-{"previous": "What is the CTC for a senior engineer", "current": "What about a junior developer", "label": 1}
-{"previous": "", "current": "My bad?", "label": 2}
-{"previous": "", "current": "Appreciate it?", "label": 2}
-{"previous": "", "current": "Sup?", "label": 2}
-{"previous": "", "current": "Tell me about the GreenLeaf Exports case", "label": 0}
-{"previous": "What is Gopika Suresh's phone number", "current": "What is her address?", "label": 1}
-{"previous": "Who is the assigned attorney for Anitha Suresh", "current": "What court is handling her case", "label": 1}
-{"previous": "What is the hotel cancellation policy", "current": "What about group bookings", "label": 1}
-{"previous": "", "current": "Agreed", "label": 2}
-{"previous": "", "current": "Hey there?", "label": 2}
-{"previous": "", "current": "Makes sense", "label": 2}
-{"previous": "", "current": "Definitely", "label": 2}
-{"previous": "", "current": "Anytime?", "label": 2}
-{"previous": "", "current": "How often must nursing rounds be done in the HDU", "label": 0}
-{"previous": "", "current": "Pleasure to meet you", "label": 2}
-{"previous": "What is the late check-out charge", "current": "What about after 6 PM", "label": 1}
-{"previous": "", "current": "Yes?", "label": 2}
-{"previous": "", "current": "Much appreciated?", "label": 2}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his phone number?", "label": 1}
-{"previous": "What is the triage time for Priority Two", "current": "What about Priority One?", "label": 1}
-{"previous": "", "current": "Hello?", "label": 2}
-{"previous": "", "current": "Find the expiry date of Azithromycin", "label": 0}
-{"previous": "", "current": "What is the expiry of Levothyroxine 50", "label": 0}
-{"previous": "Who has the highest CGPA", "current": "What is their email", "label": 1}
-{"previous": "", "current": "No problem?", "label": 2}
-{"previous": "Which shelf has Crocin 500", "current": "What is its expiry date", "label": 1}
-{"previous": "", "current": "Take care", "label": 2}
-{"previous": "", "current": "One second?", "label": 2}
-{"previous": "", "current": "What is the standard check-in time", "label": 0}
-{"previous": "", "current": "Hold on?", "label": 2}
-{"previous": "", "current": "Cheers?", "label": 2}
-{"previous": "", "current": "What is the performance improvement plan duration", "label": 0}
-{"previous": "", "current": "Are you an AI?", "label": 2}
-{"previous": "", "current": "Very helpful?", "label": 2}
-{"previous": "What is Shihabutheen's email", "current": "What is his CGPA?", "label": 1}
 {"previous": "", "current": "Look up which medicines are critically low", "label": 0}
-{"previous": "", "current": "Don't mention it", "label": 2}
-{"previous": "What is the stock count of Hydrocortisone Cream", "current": "When does it expire", "label": 1}
-{"previous": "What is the case number of Divya Menon's case", "current": "Who is the assigned attorney?", "label": 1}
-{"previous": "", "current": "What's up?", "label": 2}
-{"previous": "What does the document say about check-in time", "current": "What about check-out", "label": 1}
-{"previous": "", "current": "For sure?", "label": 2}
-{"previous": "", "current": "What is the status of Jithin Mohan", "label": 0}
-{"previous": "", "current": "What is the email of Meera Sivan", "label": 0}
-{"previous": "", "current": "Of course", "label": 2}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his email", "label": 1}
-{"previous": "", "current": "Maybe?", "label": 2}
-{"previous": "", "current": "What is the cancellation policy for group bookings", "label": 0}
-{"previous": "Which shelf has Crocin 500", "current": "Who is the supplier?", "label": 1}
-{"previous": "What is Divya Menon seeking in her case", "current": "When was the petition filed?", "label": 1}
-{"previous": "How much did Rajan Pillai pay", "current": "What is the current status of his case", "label": 1}
-{"previous": "", "current": "Are you an AI", "label": 2}
-{"previous": "Tell me about hand hygiene policy", "current": "Who audits it?", "label": 1}
-{"previous": "", "current": "Awesome?", "label": 2}
-{"previous": "", "current": "Nice to meet you", "label": 2}
-{"previous": "Find the notice period for L5", "current": "What about L4", "label": 1}
-{"previous": "", "current": "I see", "label": 2}
-{"previous": "", "current": "Sure thing", "label": 2}
-{"previous": "What is the stock count of Hydrocortisone Cream", "current": "When does it expire?", "label": 1}
-{"previous": "", "current": "Clear?", "label": 2}
-{"previous": "", "current": "Possibly?", "label": 2}
-{"previous": "What is the case number of the GreenLeaf case", "current": "What is the arbitrator's name", "label": 1}
-{"previous": "", "current": "Sure thing?", "label": 2}
-{"previous": "", "current": "That's all I needed?", "label": 2}
-{"previous": "What is the case number of the GreenLeaf case", "current": "What is the arbitrator's name?", "label": 1}
-{"previous": "", "current": "How many days suspension for fighting", "label": 0}
-{"previous": "", "current": "What is the shelf location of Metformin 500", "label": 0}
-{"previous": "", "current": "Have a great day", "label": 2}
-{"previous": "", "current": "Where is Atorvastatin 10 stored", "label": 0}
-{"previous": "", "current": "What is Umer's CGPA", "label": 0}
-{"previous": "", "current": "Hey", "label": 2}
-{"previous": "", "current": "What is Sneha Thomas's email", "label": 0}
-{"previous": "", "current": "What do you know?", "label": 2}
-{"previous": "What is the notice period for L5", "current": "What about L3", "label": 1}
-{"previous": "", "current": "Sounds good?", "label": 2}
-{"previous": "", "current": "That helps", "label": 2}
-{"previous": "", "current": "Which medicines are low in stock", "label": 0}
-{"previous": "", "current": "Who is the assigned attorney for Faisal Ahmed", "label": 0}
-{"previous": "What is the CTC for a senior engineer", "current": "What about a junior developer?", "label": 1}
-{"previous": "", "current": "Of course?", "label": 2}
-{"previous": "", "current": "See you later?", "label": 2}
-{"previous": "", "current": "What are you?", "label": 2}
-{"previous": "", "current": "Perhaps", "label": 2}
-{"previous": "Which medicines are critically low", "current": "Who supplies them", "label": 1}
-{"previous": "", "current": "That's helpful?", "label": 2}
-{"previous": "", "current": "Anytime", "label": 2}
-{"previous": "", "current": "Many thanks", "label": 2}
-{"previous": "", "current": "Wonderful", "label": 2}
-{"previous": "", "current": "When was Rajan Pillai's complaint filed", "label": 0}
-{"previous": "", "current": "How quickly must grievances be resolved", "label": 0}
-{"previous": "", "current": "Cool right?", "label": 2}
-{"previous": "", "current": "Which medicines are supplied by Cipla", "label": 0}
-{"previous": "", "current": "Look up the notice period for senior employees", "label": 0}
-{"previous": "", "current": "Yep", "label": 2}
-{"previous": "", "current": "What is the early check-in charge before noon", "label": 0}
-{"previous": "How many absences are allowed", "current": "What happens if I exceed that?", "label": 1}
-{"previous": "", "current": "Good night", "label": 2}
-{"previous": "", "current": "Hello there", "label": 2}
-{"previous": "What is the status of the GreenLeaf case", "current": "What is the value of the consignment", "label": 1}
-{"previous": "Who is the assigned attorney for Faisal Ahmed", "current": "When is the next hearing", "label": 1}
-{"previous": "", "current": "That's exactly what I needed", "label": 2}
-{"previous": "", "current": "What is Divya Menon seeking in her case", "label": 0}
-{"previous": "What is the case number of Divya Menon's case", "current": "What is the current status", "label": 1}
-{"previous": "", "current": "What are the five moments for hand hygiene", "label": 0}
-{"previous": "", "current": "You with me?", "label": 2}
-{"previous": "", "current": "Greetings", "label": 2}
-{"previous": "", "current": "How many days of earned leave do employees get", "label": 0}
-{"previous": "What is the rating needed for promotion", "current": "What happens if I score a 1", "label": 1}
-{"previous": "", "current": "How are you?", "label": 2}
-{"previous": "", "current": "How many absences are allowed per semester", "label": 0}
-{"previous": "", "current": "What is Devika Nair's phone number", "label": 0}
-{"previous": "", "current": "Understood?", "label": 2}
-{"previous": "What grade is needed to pass", "current": "What happens if I fail the final exam?", "label": 1}
-{"previous": "", "current": "Make sense?", "label": 2}
-{"previous": "Give me Shihabutheen's email", "current": "What about his CGPA", "label": 1}
-{"previous": "What is Divya Menon seeking in her case", "current": "When was the petition filed", "label": 1}
-{"previous": "", "current": "What happens if room service is delivered late", "label": 0}
-{"previous": "Which shelf has Crocin 500", "current": "Who is the supplier", "label": 1}
-{"previous": "", "current": "What is the current status of the GreenLeaf Exports case", "label": 0}
-{"previous": "", "current": "Much appreciated", "label": 2}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his email?", "label": 1}
-{"previous": "", "current": "Hi there?", "label": 2}
-{"previous": "What happens if room service is late", "current": "What is the normal delivery time", "label": 1}
-{"previous": "", "current": "Excuse me", "label": 2}
-{"previous": "Who has the highest CGPA", "current": "What is their email?", "label": 1}
-{"previous": "Look up Umer's CGPA", "current": "What is his registration number", "label": 1}
-{"previous": "How many earned leave days do employees get", "current": "Can they be carried forward", "label": 1}
-{"previous": "", "current": "Absolutely", "label": 2}
-{"previous": "", "current": "Which shelf has Crocin 500", "label": 0}
-{"previous": "", "current": "What is the status of Rabeprazole 20mg", "label": 0}
-{"previous": "", "current": "Howdy?", "label": 2}
-{"previous": "", "current": "Wait?", "label": 2}
-{"previous": "", "current": "Super?", "label": 2}
-{"previous": "", "current": "Ready?", "label": 2}
-{"previous": "", "current": "Bye?", "label": 2}
-{"previous": "", "current": "Hi there", "label": 2}
-{"previous": "", "current": "What is the address of Rahul Menon", "label": 0}
-{"previous": "", "current": "What is the probation period for new employees", "label": 0}
-{"previous": "", "current": "Still there?", "label": 2}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his phone number", "label": 1}
-{"previous": "What is Shihabutheen's email", "current": "What is his CGPA", "label": 1}
-{"previous": "", "current": "Goodbye?", "label": 2}
-{"previous": "What is the case number of Divya Menon's case", "current": "What is the current status", "label": 1}
-{"previous": "", "current": "What is the supplier of Amoxicillin 250", "label": 0}
-{"previous": "Find the notice period for L5", "current": "What about L4?", "label": 1}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his CGPA?", "label": 1}
-{"previous": "", "current": "Many thanks?", "label": 2}
-{"previous": "", "current": "That's it thanks?", "label": 2}
-{"previous": "", "current": "No big deal?", "label": 2}
-{"previous": "What is Divya Menon seeking in her case", "current": "When was the petition filed", "label": 1}
-{"previous": "", "current": "What is the CTC range for a senior engineer at L4", "label": 0}
-{"previous": "", "current": "Who is the opposing party in Rajan Pillai's case", "label": 0}
-{"previous": "", "current": "How's it going", "label": 2}
-{"previous": "", "current": "Sounds good", "label": 2}
-{"previous": "", "current": "Perhaps?", "label": 2}
-{"previous": "What is Aravind's phone number", "current": "Tell me his email too?", "label": 1}
-{"previous": "", "current": "Hold on", "label": 2}
-{"previous": "", "current": "Super", "label": 2}
-{"previous": "What is Umer's CGPA", "current": "What is his email", "label": 1}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his phone number", "label": 1}
-{"previous": "", "current": "I see?", "label": 2}
-{"previous": "", "current": "Thank you so much", "label": 2}
-{"previous": "", "current": "That makes sense?", "label": 2}
-{"previous": "Which medicines are critically low", "current": "Who supplies them", "label": 1}
-{"previous": "", "current": "Wonderful?", "label": 2}
-{"previous": "", "current": "It's fine?", "label": 2}
-{"previous": "", "current": "Exactly", "label": 2}
-{"previous": "", "current": "Indeed", "label": 2}
-{"previous": "", "current": "How are you doing", "label": 2}
-{"previous": "", "current": "That makes sense", "label": 2}
-{"previous": "", "current": "Who are you?", "label": 2}
-{"previous": "", "current": "Roger that", "label": 2}
-{"previous": "", "current": "Exactly?", "label": 2}
-{"previous": "What is the early check-in charge", "current": "What about early check-in between noon and 3 PM", "label": 1}
-{"previous": "", "current": "That will do", "label": 2}
-{"previous": "", "current": "No?", "label": 2}
-{"previous": "", "current": "Right", "label": 2}
-{"previous": "", "current": "Nice?", "label": 2}
-{"previous": "", "current": "Thanks a lot?", "label": 2}
-{"previous": "", "current": "Let me think?", "label": 2}
-{"previous": "", "current": "Find the registration number of Ahammed Sameer", "label": 0}
-{"previous": "Who is the assigned attorney for Anitha Suresh", "current": "What court is handling her case", "label": 1}
-{"previous": "", "current": "Thanks a lot", "label": 2}
-{"previous": "", "current": "How are you doing?", "label": 2}
-{"previous": "What is Gopika Suresh's phone number", "current": "What is her address", "label": 1}
-{"previous": "", "current": "When must leave be applied for in advance", "label": 0}
-{"previous": "", "current": "What is Ahammed Sameer's register number", "label": 0}
-{"previous": "", "current": "Oops?", "label": 2}
-{"previous": "", "current": "Alright", "label": 2}
-{"previous": "What is the hotel cancellation policy", "current": "What about group bookings?", "label": 1}
-{"previous": "", "current": "Perfect?", "label": 2}
-{"previous": "", "current": "Yes", "label": 2}
-{"previous": "How much did Rajan Pillai pay", "current": "What is the current status of his case", "label": 1}
-{"previous": "", "current": "Where is Insulin Glargine stored", "label": 0}
-{"previous": "", "current": "My pleasure?", "label": 2}
-{"previous": "What is Meera Sivan's email", "current": "What is her CGPA?", "label": 1}
-{"previous": "", "current": "What is the expiry date of Azithromycin 500", "label": 0}
-{"previous": "", "current": "Give me a moment?", "label": 2}
-{"previous": "", "current": "How much did Rajan Pillai pay to Horizon Constructions", "label": 0}
-{"previous": "", "current": "Good to see you", "label": 2}
-{"previous": "", "current": "Have a good day?", "label": 2}
-{"previous": "", "current": "Who supplies Omeprazole 20mg", "label": 0}
-{"previous": "Give me details about the GreenLeaf case", "current": "What is the arbitrator's name", "label": 1}
-{"previous": "", "current": "I appreciate it", "label": 2}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his email", "label": 1}
-{"previous": "Tell me about Faisal Ahmed's case", "current": "What is the next hearing date", "label": 1}
-{"previous": "What is the status of Rabeprazole", "current": "Where is it stored?", "label": 1}
-{"previous": "What is the expiry of Azithromycin 500", "current": "How many units are in stock", "label": 1}
-{"previous": "", "current": "Done thanks?", "label": 2}
-{"previous": "What grade is needed to pass", "current": "What happens if I fail the final exam", "label": 1}
-{"previous": "What are the five moments for hand hygiene", "current": "Who audits compliance", "label": 1}
-{"previous": "Where is Insulin Glargine stored", "current": "What is its stock count", "label": 1}
-{"previous": "", "current": "What is the stock status of Vitamin D3 1000", "label": 0}
-{"previous": "", "current": "Are you a bot", "label": 2}
-{"previous": "What is Shihabutheen's email", "current": "What is his address?", "label": 1}
-{"previous": "", "current": "Which medicines are critically low in stock", "label": 0}
-{"previous": "", "current": "Possibly", "label": 2}
-{"previous": "Show me the shelf for Crocin 500", "current": "What is its expiry", "label": 1}
-{"previous": "", "current": "Greetings?", "label": 2}
-{"previous": "", "current": "Give me Shihabutheen's email", "label": 0}
-{"previous": "", "current": "Don't mention it?", "label": 2}
-{"previous": "", "current": "Show the stock count for Hydrocortisone Cream", "label": 0}
-{"previous": "", "current": "What does the document say about hand hygiene", "label": 0}
-{"previous": "", "current": "My apologies", "label": 2}
-{"previous": "", "current": "How long are lost items kept before disposal", "label": 0}
-{"previous": "What is the shelf location of Metformin 500", "current": "Who supplies it", "label": 1}
-{"previous": "What is the standard check-in time", "current": "What is the check-out time", "label": 1}
-{"previous": "", "current": "Fair enough", "label": 2}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his email", "label": 1}
-{"previous": "", "current": "What happens if attendance falls below 85 percent", "label": 0}
-{"previous": "", "current": "When must discharge planning begin", "label": 0}
-{"previous": "What is the shelf location of Metformin 500", "current": "Who supplies it", "label": 1}
-{"previous": "", "current": "What form is Diclofenac Gel available in", "label": 0}
-{"previous": "", "current": "You're welcome", "label": 2}
-{"previous": "", "current": "Amazing?", "label": 2}
-{"previous": "", "current": "OK?", "label": 2}
-{"previous": "", "current": "Give me details about Faisal Ahmed's case", "label": 0}
-{"previous": "", "current": "Understood?", "label": 2}
-{"previous": "", "current": "Catch you later", "label": 2}
-{"previous": "What is the standard check-in time", "current": "What is the check-out time", "label": 1}
-{"previous": "", "current": "Yeah?", "label": 2}
-{"previous": "", "current": "Tell me about the hotel cancellation policy", "label": 0}
-{"previous": "", "current": "Find me the case number for Divya Menon", "label": 0}
-{"previous": "", "current": "What is the value of the GreenLeaf consignment", "label": 0}
-{"previous": "", "current": "What do you think?", "label": 2}
-{"previous": "", "current": "What are you", "label": 2}
-{"previous": "What is the late check-out charge", "current": "What about after 6 PM", "label": 1}
-{"previous": "What happens if room service is late", "current": "What is the normal delivery time", "label": 1}
-{"previous": "", "current": "Hey?", "label": 2}
-{"previous": "", "current": "Talk to you soon", "label": 2}
-{"previous": "What is Shihabutheen's email", "current": "What is his CGPA", "label": 1}
-{"previous": "Which shelf has Crocin 500", "current": "What is its expiry date", "label": 1}
-{"previous": "", "current": "What is Tharun Kumar's registration number", "label": 0}
-{"previous": "What is Umer's CGPA", "current": "What is his registration number?", "label": 1}
-{"previous": "", "current": "That's okay?", "label": 2}
-{"previous": "What is the hotel cancellation policy", "current": "What about group bookings", "label": 1}
-{"previous": "", "current": "What is the CGPA of Irene Joseph", "label": 0}
-{"previous": "", "current": "How long does the hotel hold unclaimed valuables", "label": 0}
-{"previous": "", "current": "All good", "label": 2}
-{"previous": "", "current": "When must complaints be logged in the system", "label": 0}
-{"previous": "", "current": "Great", "label": 2}
-{"previous": "Give me Shihabutheen's email", "current": "What about his CGPA", "label": 1}
-{"previous": "", "current": "Who is the assigned attorney for Anitha Suresh", "label": 0}
-{"previous": "", "current": "True", "label": 2}
-{"previous": "", "current": "What's up?", "label": 2}
-{"previous": "", "current": "I understand?", "label": 2}
-{"previous": "", "current": "Good morning?", "label": 2}
-{"previous": "", "current": "Good night", "label": 2}
-{"previous": "", "current": "I appreciate it?", "label": 2}
-{"previous": "", "current": "That answers my question?", "label": 2}
-{"previous": "What is the status of Rabeprazole", "current": "Where is it stored", "label": 1}
-{"previous": "", "current": "Indeed?", "label": 2}
-{"previous": "What is Umer's CGPA", "current": "What is his email", "label": 1}
-{"previous": "", "current": "Cheers", "label": 2}
-{"previous": "", "current": "Thanks?", "label": 2}
-{"previous": "", "current": "Alright?", "label": 2}
-{"previous": "", "current": "Nah", "label": 2}
-{"previous": "Which shelf has Crocin 500", "current": "Who is the supplier", "label": 1}
-{"previous": "", "current": "Nice", "label": 2}
-{"previous": "", "current": "No problem", "label": 2}
-{"previous": "", "current": "What branch is Faris Rahman in", "label": 0}
-{"previous": "Who is the assigned attorney for Faisal Ahmed", "current": "When is the next hearing?", "label": 1}
-{"previous": "", "current": "Bye", "label": 2}
-{"previous": "How long are lost items kept", "current": "What about valuables", "label": 1}
-{"previous": "", "current": "What is the maximum wait time for Priority Five patients", "label": 0}
-{"previous": "", "current": "Glad I could help?", "label": 2}
-{"previous": "", "current": "Show me the shelf location of Crocin 500", "label": 0}
-{"previous": "What is the probation period", "current": "What happens after probation", "label": 1}
-{"previous": "What is the probation period", "current": "What happens after probation?", "label": 1}
-{"previous": "What is the late check-out charge", "current": "What about after 6 PM?", "label": 1}
-{"previous": "", "current": "Who is the mediator in the matrimonial case", "label": 0}
-{"previous": "", "current": "What do you know", "label": 2}
-{"previous": "What is the expiry of Azithromycin 500", "current": "How many units are in stock?", "label": 1}
-{"previous": "", "current": "That's helpful", "label": 2}
-{"previous": "Why was Anitha Suresh's PF claim rejected", "current": "What did the High Court say?", "label": 1}
-{"previous": "", "current": "That's all I needed", "label": 2}
-{"previous": "", "current": "Absolutely?", "label": 2}
-{"previous": "", "current": "Excuse me?", "label": 2}
-{"previous": "", "current": "What is the strength of Pantoprazole 40", "label": 0}
-{"previous": "", "current": "Can you hear me?", "label": 2}
-{"previous": "", "current": "How many units of ORS Sachet are in stock", "label": 0}
-{"previous": "What is Umer's CGPA", "current": "What is his email?", "label": 1}
-{"previous": "", "current": "Cool?", "label": 2}
-{"previous": "When must discharge planning begin", "current": "What documents must the patient receive", "label": 1}
-{"previous": "", "current": "What is the address of Gopika Suresh", "label": 0}
-{"previous": "", "current": "That answers my question", "label": 2}
-{"previous": "What is Umer's CGPA", "current": "What is his registration number", "label": 1}
-{"previous": "What is the status of the GreenLeaf case", "current": "What is the value of the consignment?", "label": 1}
-{"previous": "", "current": "Nothing else?", "label": 2}
-{"previous": "", "current": "Neat?", "label": 2}
-{"previous": "", "current": "Good answer?", "label": 2}
-{"previous": "", "current": "Agreed?", "label": 2}
-{"previous": "", "current": "Cool", "label": 2}
-{"previous": "", "current": "Brilliant", "label": 2}
-{"previous": "When must discharge planning begin", "current": "What documents must the patient receive", "label": 1}
-{"previous": "What are the five moments for hand hygiene", "current": "Who audits compliance", "label": 1}
-{"previous": "Tell me about Faisal Ahmed's case", "current": "What is the next hearing date?", "label": 1}
-{"previous": "", "current": "Have a great day?", "label": 2}
-{"previous": "", "current": "Good night?", "label": 2}
-{"previous": "", "current": "See you", "label": 2}
-{"previous": "", "current": "Got it?", "label": 2}
-{"previous": "", "current": "Good point?", "label": 2}
-{"previous": "", "current": "True?", "label": 2}
-{"previous": "What is the standard check-in time", "current": "What is the check-out time?", "label": 1}
-{"previous": "", "current": "Which students have a CGPA above 9", "label": 0}
-{"previous": "How many absences are allowed", "current": "What happens if I exceed that", "label": 1}
-{"previous": "", "current": "Give me the details of Anitha Suresh's case", "label": 0}
-{"previous": "", "current": "What is the late check-out charge after 2 PM", "label": 0}
-{"previous": "What is the probation period", "current": "What happens after probation", "label": 1}
-{"previous": "Who is on academic probation", "current": "What are their CGPAs", "label": 1}
-{"previous": "", "current": "You're welcome?", "label": 2}
-{"previous": "What are the five moments for hand hygiene", "current": "Who audits compliance?", "label": 1}
-{"previous": "", "current": "Talk to you soon?", "label": 2}
-{"previous": "", "current": "How does that sound?", "label": 2}
-{"previous": "", "current": "That helps?", "label": 2}
-{"previous": "What is the CTC range for L4", "current": "What is the notice period", "label": 1}
-{"previous": "Why was Anitha Suresh's PF claim rejected", "current": "What did the High Court say", "label": 1}
-{"previous": "", "current": "Who is on academic probation", "label": 0}
-{"previous": "", "current": "What is written about discharge planning", "label": 0}
-{"previous": "Give me details about the GreenLeaf case", "current": "What is the arbitrator's name?", "label": 1}
-{"previous": "", "current": "Who has the highest CGPA in the batch", "label": 0}
-{"previous": "What is the shelf location of Metformin 500", "current": "Who supplies it?", "label": 1}
-{"previous": "", "current": "Awesome", "label": 2}
-{"previous": "", "current": "Good evening", "label": 2}
-{"previous": "", "current": "What can you do?", "label": 2}
-{"previous": "What is the library borrowing period", "current": "What is the fine for overdue books", "label": 1}
+{"previous": "", "current": "What is the standard check-in time", "label": 0}
+{"previous": "", "current": "What is Meera Sivan's email", "label": 0}
+{"previous": "What is Shihabutheen's email", "current": "What is his phone number", "label": 1}
 {"previous": "", "current": "Good evening?", "label": 2}
-{"previous": "What is Umer's CGPA", "current": "What is his registration number", "label": 1}
-{"previous": "What is the stock count of Hydrocortisone Cream", "current": "When does it expire", "label": 1}
-{"previous": "", "current": "Sound good?", "label": 2}
-{"previous": "Tell me about hand hygiene policy", "current": "Who audits it", "label": 1}
-{"previous": "", "current": "What is your name?", "label": 2}
-{"previous": "Who is the assigned attorney for Anitha Suresh", "current": "What court is handling her case?", "label": 1}
-{"previous": "", "current": "Nothing else", "label": 2}
-{"previous": "", "current": "When is the next hearing for Faisal Ahmed's case", "label": 0}
-{"previous": "", "current": "All good?", "label": 2}
-{"previous": "", "current": "Thanks for the help?", "label": 2}
-{"previous": "", "current": "Have a good day", "label": 2}
-{"previous": "", "current": "One second", "label": 2}
-{"previous": "What is the early check-in charge", "current": "What about early check-in between noon and 3 PM", "label": 1}
-{"previous": "What is the notice period for L5", "current": "What about L3?", "label": 1}
-{"previous": "", "current": "Okay?", "label": 2}
-{"previous": "What is Gopika Suresh's phone number", "current": "What is her address", "label": 1}
-{"previous": "", "current": "It's fine", "label": 2}
-{"previous": "", "current": "What is the case number of the GreenLeaf case", "label": 0}
-{"previous": "Who is the assigned attorney for Faisal Ahmed", "current": "When is the next hearing", "label": 1}
-{"previous": "What is the case number of Divya Menon's case", "current": "Who is the assigned attorney", "label": 1}
-{"previous": "How long are lost items kept", "current": "What about valuables", "label": 1}
-{"previous": "", "current": "Thanks for the help", "label": 2}
-{"previous": "", "current": "Perfect", "label": 2}
-{"previous": "What is Aravind Raj's phone number", "current": "What branch is he in", "label": 1}
-{"previous": "", "current": "Nice to meet you?", "label": 2}
-{"previous": "Tell me about Faisal Ahmed's case", "current": "What is the next hearing date", "label": 1}
-{"previous": "What is Aravind's phone number", "current": "Tell me his email too", "label": 1}
-{"previous": "", "current": "Hi?", "label": 2}
-{"previous": "Give me Shihabutheen's email", "current": "What about his CGPA?", "label": 1}
-{"previous": "", "current": "Pleasure to meet you?", "label": 2}
-{"previous": "What should be done if a medication error occurs", "current": "How quickly must it be reported", "label": 1}
-{"previous": "", "current": "Perfect thanks", "label": 2}
-{"previous": "", "current": "What is the standard check-in deposit at the hospital", "label": 0}
-{"previous": "Show me the shelf for Crocin 500", "current": "What is its expiry?", "label": 1}
-{"previous": "", "current": "How do you work?", "label": 2}
-{"previous": "", "current": "Can you help me?", "label": 2}
-{"previous": "What is the penalty for late assignments", "current": "Can I get an extension?", "label": 1}
-{"previous": "", "current": "Sorry", "label": 2}
-{"previous": "What is the case number of the GreenLeaf case", "current": "What is the arbitrator's name", "label": 1}
-{"previous": "What is the early check-in charge", "current": "What about early check-in between noon and 3 PM?", "label": 1}
-{"previous": "", "current": "What is the stock count of Hydrocortisone Cream", "label": 0}
-{"previous": "How many earned leave days do employees get", "current": "Can they be carried forward?", "label": 1}
-{"previous": "", "current": "Makes sense?", "label": 2}
-{"previous": "", "current": "Are you there?", "label": 2}
-{"previous": "Which shelf has Crocin 500", "current": "What is its expiry date?", "label": 1}
-{"previous": "", "current": "Goodbye", "label": 2}
-{"previous": "What is the notice period for L5", "current": "What about L3", "label": 1}
-{"previous": "", "current": "You there?", "label": 2}
-{"previous": "What is Aravind's phone number", "current": "Tell me his email too", "label": 1}
-{"previous": "", "current": "Fantastic?", "label": 2}
-{"previous": "", "current": "Works for you?", "label": 2}
-{"previous": "How long are lost items kept", "current": "What about valuables?", "label": 1}
-{"previous": "Find the notice period for L5", "current": "What about L4", "label": 1}
-{"previous": "", "current": "What is the rack position of Salbutamol Inhaler", "label": 0}
+{"previous": "", "current": "Yeah?", "label": 2}
 {"previous": "", "current": "Nah?", "label": 2}
-{"previous": "Tell me about hand hygiene policy", "current": "Who audits it", "label": 1}
-{"previous": "", "current": "Fantastic", "label": 2}
-{"previous": "", "current": "What happens if a student fails the final exam", "label": 0}
-{"previous": "", "current": "Later", "label": 2}
-{"previous": "", "current": "Got it?", "label": 2}
-{"previous": "", "current": "Any questions?", "label": 2}
-{"previous": "", "current": "Isn't that right?", "label": 2}
-{"previous": "", "current": "Got it", "label": 2}
-{"previous": "", "current": "Good point", "label": 2}
-{"previous": "", "current": "How long must isolation rooms be prepared in", "label": 0}
-{"previous": "", "current": "You're very helpful?", "label": 2}
-{"previous": "", "current": "Right?", "label": 2}
-{"previous": "", "current": "Yep?", "label": 2}
-{"previous": "", "current": "Later?", "label": 2}
-{"previous": "", "current": "Fair enough?", "label": 2}
-{"previous": "", "current": "What is Nikhil Dev's CGPA", "label": 0}
-{"previous": "", "current": "What is the registration number of Kavya Pillai", "label": 0}
-{"previous": "", "current": "My apologies?", "label": 2}
-{"previous": "When must discharge planning begin", "current": "What documents must the patient receive?", "label": 1}
-{"previous": "What does the document say about check-in time", "current": "What about check-out", "label": 1}
-{"previous": "", "current": "That's okay", "label": 2}
+{"previous": "", "current": "Don't mention it", "label": 2}
+{"previous": "", "current": "What is the case number of the GreenLeaf case?", "label": 0}
+{"previous": "", "current": "Many thanks", "label": 2}
 {"previous": "What should be done if a medication error occurs", "current": "How quickly must it be reported", "label": 1}
-{"previous": "", "current": "Good answer", "label": 2}
-{"previous": "", "current": "What is the fine for overdue library books", "label": 0}
-{"previous": "", "current": "Good morning", "label": 2}
-{"previous": "", "current": "What is the notice period for an L5 employee", "label": 0}
-{"previous": "What happens if room service is late", "current": "What is the normal delivery time?", "label": 1}
-{"previous": "", "current": "Look up the CGPA of Ananya Krishnan", "label": 0}
-{"previous": "", "current": "Nice huh?", "label": 2}
-{"previous": "", "current": "I understand", "label": 2}
-{"previous": "", "current": "My bad", "label": 2}
-{"previous": "", "current": "Good afternoon?", "label": 2}
-{"previous": "", "current": "Catch you later?", "label": 2}
-{"previous": "", "current": "OK", "label": 2}
-{"previous": "", "current": "Glad I could help", "label": 2}
-{"previous": "", "current": "Perfect that's all", "label": 2}
-{"previous": "What is the triage time for Priority Two", "current": "What about Priority One", "label": 1}
-{"previous": "", "current": "Perfect thanks?", "label": 2}
-{"previous": "What is the CTC for a senior engineer", "current": "What about a junior developer", "label": 1}
-{"previous": "", "current": "What is your name", "label": 2}
-{"previous": "Where is Insulin Glargine stored", "current": "What is its stock count?", "label": 1}
-{"previous": "", "current": "What is the daily fine for overdue library books", "label": 0}
-{"previous": "What is the penalty for late assignments", "current": "Can I get an extension", "label": 1}
-{"previous": "", "current": "What is the case number of Divya Menon's case", "label": 0}
-{"previous": "", "current": "What can you do", "label": 2}
-{"previous": "What is Meera Sivan's email", "current": "What is her CGPA", "label": 1}
-{"previous": "", "current": "What is the total number of students in the batch", "label": 0}
-{"previous": "What is the rating needed for promotion", "current": "What happens if I score a 1", "label": 1}
-{"previous": "", "current": "Why was Anitha Suresh's PF claim rejected", "label": 0}
-{"previous": "", "current": "How do you work", "label": 2}
-{"previous": "", "current": "What category is Cetirizine 10mg", "label": 0}
-{"previous": "", "current": "How's it going?", "label": 2}
-{"previous": "", "current": "What is the triage target time for Priority Two patients", "label": 0}
-{"previous": "What is the library borrowing period", "current": "What is the fine for overdue books", "label": 1}
-{"previous": "", "current": "What grade is needed to pass an exam", "label": 0}
-{"previous": "", "current": "You good?", "label": 2}
-{"previous": "", "current": "That's exactly what I needed?", "label": 2}
-{"previous": "", "current": "Thank you so much?", "label": 2}
-{"previous": "", "current": "Thank you", "label": 2}
-{"previous": "", "current": "What documents must a patient receive at discharge", "label": 0}
-{"previous": "", "current": "Who are you", "label": 2}
-{"previous": "", "current": "What is the late night room service surcharge", "label": 0}
-{"previous": "What should be done if a medication error occurs", "current": "How quickly must it be reported?", "label": 1}
-{"previous": "", "current": "How long must tables be reset after a guest leaves", "label": 0}
-{"previous": "What grade is needed to pass", "current": "What happens if I fail the final exam", "label": 1}
-{"previous": "", "current": "Great?", "label": 2}
-{"previous": "", "current": "How many casual leave days are allowed per year", "label": 0}
-{"previous": "", "current": "Howdy", "label": 2}
-{"previous": "", "current": "Tell me Umer's academic standing", "label": 0}
-{"previous": "", "current": "Perfect that's all?", "label": 2}
-{"previous": "Why was Anitha Suresh's PF claim rejected", "current": "What did the High Court say", "label": 1}
-{"previous": "What is the CTC range for L4", "current": "What is the notice period?", "label": 1}
-{"previous": "", "current": "Just a sec?", "label": 2}
-{"previous": "", "current": "Definitely?", "label": 2}
-{"previous": "", "current": "Oops", "label": 2}
-{"previous": "How many absences are allowed", "current": "What happens if I exceed that", "label": 1}
-{"previous": "", "current": "Sup", "label": 2}
-{"previous": "", "current": "Interesting", "label": 2}
-{"previous": "", "current": "No worries?", "label": 2}
-{"previous": "What is Meera Sivan's email", "current": "What is her CGPA", "label": 1}
-{"previous": "", "current": "How are you?", "label": 2}
-{"previous": "What is Aravind Raj's phone number", "current": "What branch is he in?", "label": 1}
-{"previous": "", "current": "What is the expiry of Clopidogrel 75mg", "label": 0}
-{"previous": "What is the rating needed for promotion", "current": "What happens if I score a 1?", "label": 1}
-{"previous": "Find the case number for Divya Menon", "current": "Who is handling it", "label": 1}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his email?", "label": 1}
-{"previous": "", "current": "What happens if an employee scores 1 in appraisal", "label": 0}
-{"previous": "", "current": "When must expense claims be submitted", "label": 0}
-{"previous": "", "current": "That will do?", "label": 2}
-{"previous": "", "current": "That's it thanks", "label": 2}
-{"previous": "", "current": "What court is handling Anitha Suresh's case", "label": 0}
-{"previous": "", "current": "See you?", "label": 2}
-{"previous": "", "current": "I see?", "label": 2}
-{"previous": "", "current": "What does the vault say about late assignments", "label": 0}
-{"previous": "", "current": "No", "label": 2}
-{"previous": "", "current": "Amazing", "label": 2}
-{"previous": "", "current": "What semester is the CSE batch in", "label": 0}
-{"previous": "What is the triage time for Priority Two", "current": "What about Priority One", "label": 1}
-{"previous": "", "current": "Excellent", "label": 2}
-{"previous": "What is the case number of Divya Menon's case", "current": "What is the current status?", "label": 1}
-{"previous": "", "current": "What's up", "label": 2}
-{"previous": "", "current": "Good to see you?", "label": 2}
+{"previous": "", "current": "Oops?", "label": 2}
 {"previous": "", "current": "Hello", "label": 2}
-{"previous": "", "current": "What should be done if a medication error occurs", "label": 0}
 {"previous": "", "current": "Maybe", "label": 2}
-{"previous": "", "current": "Interesting?", "label": 2}
-{"previous": "What is the status of Rabeprazole", "current": "Where is it stored", "label": 1}
-{"previous": "What is the penalty for late assignments", "current": "Can I get an extension", "label": 1}
-{"previous": "", "current": "Hello?", "label": 2}
-{"previous": "What is the status of the GreenLeaf case", "current": "What is the value of the consignment", "label": 1}
-{"previous": "", "current": "Good?", "label": 2}
-{"previous": "", "current": "Brilliant?", "label": 2}
-{"previous": "", "current": "Nope?", "label": 2}
-{"previous": "", "current": "Done thanks", "label": 2}
-{"previous": "", "current": "What is the per diem for domestic travel", "label": 0}
-{"previous": "", "current": "Thanks", "label": 2}
-{"previous": "", "current": "How are you", "label": 2}
-{"previous": "", "current": "What is Shihabutheen's email address", "label": 0}
-{"previous": "", "current": "Good afternoon", "label": 2}
-{"previous": "", "current": "Right?", "label": 2}
-{"previous": "How many earned leave days do employees get", "current": "Can they be carried forward", "label": 1}
-{"previous": "", "current": "What is the library borrowing period", "label": 0}
+{"previous": "", "current": "What is Gopika Suresh's phone number?", "label": 0}
+{"previous": "How many absences are allowed per semester?", "current": "What if I have a medical emergency?", "label": 1}
+{"previous": "", "current": "What happens if an employee scores 1 in appraisal", "label": 0}
+{"previous": "What are the five moments for hand hygiene", "current": "Who audits compliance", "label": 1}
 {"previous": "", "current": "Good night?", "label": 2}
-{"previous": "", "current": "Appreciate it", "label": 2}
-{"previous": "", "current": "For sure", "label": 2}
-{"previous": "", "current": "I see", "label": 2}
-{"previous": "", "current": "Let me think", "label": 2}
-{"previous": "", "current": "What rating is needed for a promotion", "label": 0}
-{"previous": "Find the case number for Divya Menon", "current": "Who is handling it", "label": 1}
-{"previous": "Which medicines are critically low", "current": "Who supplies them?", "label": 1}
-{"previous": "", "current": "Yeah", "label": 2}
-{"previous": "What is the library borrowing period", "current": "What is the fine for overdue books?", "label": 1}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his CGPA", "label": 1}
-{"previous": "What is Aravind Raj's phone number", "current": "What is his CGPA", "label": 1}
-{"previous": "", "current": "Find the CTC for a junior developer", "label": 0}
-{"previous": "", "current": "Nope", "label": 2}
-{"previous": "", "current": "Just a sec", "label": 2}
-{"previous": "Find the case number for Divya Menon", "current": "Who is handling it?", "label": 1}
-{"previous": "What is Shihabutheen's email", "current": "What is his address", "label": 1}
-{"previous": "How much did Rajan Pillai pay", "current": "What is the current status of his case?", "label": 1}
-{"previous": "", "current": "What is written about Rajan Pillai in the document", "label": 0}
-{"previous": "", "current": "No worries", "label": 2}
-{"previous": "What is Shihabutheen's email", "current": "What is his address", "label": 1}
-{"previous": "Show me the shelf for Crocin 500", "current": "What is its expiry", "label": 1}
-{"previous": "", "current": "Neat", "label": 2}
-{"previous": "", "current": "Can you help me", "label": 2}
-{"previous": "What is the expiry of Azithromycin 500", "current": "How many units are in stock", "label": 1}
-{"previous": "Where is Insulin Glargine stored", "current": "What is its stock count", "label": 1}
 {"previous": "Who is on academic probation", "current": "What are their CGPAs", "label": 1}
-{"previous": "", "current": "Hello there?", "label": 2}
-{"previous": "", "current": "My pleasure", "label": 2}
-{"previous": "What is Aravind Raj's phone number", "current": "What branch is he in", "label": 1}
-{"previous": "", "current": "Take care?", "label": 2}
-{"previous": "", "current": "See you later", "label": 2}
-{"previous": "", "current": "Give me a moment", "label": 2}
-{"previous": "", "current": "Sorry?", "label": 2}
-{"previous": "", "current": "Hey there", "label": 2}
+{"previous": "", "current": "Excuse me?", "label": 2}
+{"previous": "", "current": "Sure thing", "label": 2}
+{"previous": "", "current": "Nothing else?", "label": 2}
+{"previous": "What is the CTC range for a senior engineer at L4", "current": "What is the variable pay", "label": 1}
+{"previous": "What is the CTC range for a senior engineer at L4?", "current": "What is the notice period?", "label": 1}
+{"previous": "", "current": "What is Ananya Krishnan's CGPA", "label": 0}
+{"previous": "What is the standard check-in time?", "current": "What is the early check-in charge?", "label": 1}
+{"previous": "", "current": "Glad I could help", "label": 2}
+{"previous": "", "current": "Are you an AI?", "label": 2}
+{"previous": "", "current": "Cool", "label": 2}
+{"previous": "", "current": "Who is the assigned attorney for Anitha Suresh?", "label": 0}
+{"previous": "", "current": "Who are you", "label": 2}
+{"previous": "", "current": "How do you work?", "label": 2}
+{"previous": "", "current": "Yes", "label": 2}
+{"previous": "What is the penalty for a late assignment?", "current": "Can I get an extension?", "label": 1}
+{"previous": "", "current": "Nice?", "label": 2}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "", "current": "Much appreciated?", "label": 2}
+{"previous": "What is Devika Nair's phone number", "current": "What is her email", "label": 1}
+{"previous": "", "current": "What is the notice period for an L5 employee", "label": 0}
+{"previous": "What is the status of Rabeprazole 20mg?", "current": "Who supplies it?", "label": 1}
 {"previous": "", "current": "No big deal", "label": 2}
-{"previous": "", "current": "Amazing isn't it?", "label": 2}
-{"previous": "", "current": "Okay", "label": 2}
-{"previous": "", "current": "Wait", "label": 2}
-{"previous": "What is Ahammed Sameer's register number", "current": "What is his email", "label": 1}
-{"previous": "", "current": "Excellent?", "label": 2}
-{"previous": "Look up Umer's CGPA", "current": "What is his registration number", "label": 1}
-{"previous": "Give me details about the GreenLeaf case", "current": "What is the arbitrator's name", "label": 1}
-{"previous": "", "current": "Very helpful", "label": 2}
+{"previous": "", "current": "Yep", "label": 2}
+{"previous": "", "current": "Good answer?", "label": 2}
+{"previous": "", "current": "What is the strength of Pantoprazole 40?", "label": 0}
+{"previous": "", "current": "Show me the shelf location of Crocin 500", "label": 0}
+{"previous": "What is the current status of the GreenLeaf Exports case?", "current": "Who is the arbitrator?", "label": 1}
+{"previous": "", "current": "Absolutely?", "label": 2}
+{"previous": "", "current": "Greetings", "label": 2}
+{"previous": "What is Mohammed Umer's CGPA?", "current": "What is his phone number?", "label": 1}
+{"previous": "", "current": "Thank you so much", "label": 2}
+{"previous": "What is Shihabutheen's email?", "current": "What is his CGPA?", "label": 1}
+{"previous": "", "current": "Greetings?", "label": 2}
+{"previous": "", "current": "What is the expiry date of Azithromycin 500", "label": 0}
+{"previous": "", "current": "That's all I needed?", "label": 2}
+{"previous": "", "current": "Cheers", "label": 2}
+{"previous": "", "current": "Good afternoon", "label": 2}
+{"previous": "", "current": "Super", "label": 2}
+{"previous": "", "current": "How do you work?", "label": 2}
+{"previous": "What is Mohammed Umer's CGPA?", "current": "What is his register number?", "label": 1}
+{"previous": "", "current": "Take care?", "label": 2}
+{"previous": "", "current": "Which medicines are supplied by Cipla?", "label": 0}
+{"previous": "", "current": "Makes sense?", "label": 2}
+{"previous": "", "current": "Brilliant?", "label": 2}
 {"previous": "", "current": "What is the penalty for a late assignment", "label": 0}
-{"previous": "", "current": "Hi", "label": 2}
+{"previous": "", "current": "What can you do?", "label": 2}
+{"previous": "", "current": "Amazing", "label": 2}
+{"previous": "", "current": "Exactly?", "label": 2}
+{"previous": "", "current": "What is the registration number of Kavya Pillai?", "label": 0}
+{"previous": "", "current": "What semester is the CSE batch in", "label": 0}
+{"previous": "", "current": "When must expense claims be submitted", "label": 0}
+{"previous": "", "current": "What is Faris Rahman's register number?", "label": 0}
+{"previous": "", "current": "Nah", "label": 2}
+{"previous": "", "current": "See you later", "label": 2}
+{"previous": "", "current": "That's okay?", "label": 2}
+{"previous": "", "current": "Thanks?", "label": 2}
+{"previous": "", "current": "Excellent", "label": 2}
+{"previous": "", "current": "What is Nikhil Dev's CGPA", "label": 0}
+{"previous": "", "current": "Makes sense", "label": 2}
+{"previous": "", "current": "What is Shihabutheen's email address", "label": 0}
+{"previous": "", "current": "What is the late check-out charge after 2 PM", "label": 0}
+{"previous": "Where is Insulin Glargine stored", "current": "What is its stock count", "label": 1}
+{"previous": "", "current": "Why was Anitha Suresh's PF claim rejected?", "label": 0}
+{"previous": "", "current": "Very helpful?", "label": 2}
+{"previous": "", "current": "What is the library borrowing period?", "label": 0}
+{"previous": "", "current": "What is Faris Rahman's register number", "label": 0}
+{"previous": "", "current": "That helps?", "label": 2}
+{"previous": "What is Ananya Krishnan's CGPA?", "current": "What is her email?", "label": 1}
+{"previous": "What is Mohammed Umer's CGPA?", "current": "What is his address?", "label": 1}
+{"previous": "", "current": "When is the next hearing for Faisal Ahmed's case?", "label": 0}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "", "current": "Understood?", "label": 2}
+{"previous": "How long are lost items kept before disposal", "current": "What about valuables", "label": 1}
+{"previous": "", "current": "See you?", "label": 2}
+{"previous": "Who has the highest CGPA in the batch", "current": "What is their email", "label": 1}
+{"previous": "", "current": "Appreciate it?", "label": 2}
+{"previous": "", "current": "Anytime?", "label": 2}
+{"previous": "", "current": "Who has the highest CGPA in the CSE batch", "label": 0}
+{"previous": "What is Aravind Raj's phone number?", "current": "What is his CGPA?", "label": 1}
+{"previous": "", "current": "What is the case number of Divya Menon's case", "label": 0}
+{"previous": "", "current": "No big deal?", "label": 2}
+{"previous": "", "current": "What is Sneha Thomas's email?", "label": 0}
+{"previous": "", "current": "Which medicines are low in stock", "label": 0}
+{"previous": "What is the shelf location of Metformin 500?", "current": "Who supplies it?", "label": 1}
+{"previous": "", "current": "Perfect", "label": 2}
+{"previous": "", "current": "Thank you?", "label": 2}
+{"previous": "What is Gopika Suresh's phone number?", "current": "What is her address?", "label": 1}
+{"previous": "", "current": "Definitely", "label": 2}
+{"previous": "", "current": "Much appreciated", "label": 2}
+{"previous": "What is the case number of the GreenLeaf case?", "current": "What is the arbitrator's name?", "label": 1}
+{"previous": "What is Meera Sivan's email", "current": "What is her CGPA", "label": 1}
+{"previous": "", "current": "What can you do", "label": 2}
+{"previous": "", "current": "What is the stock count of Hydrocortisone Cream", "label": 0}
+{"previous": "", "current": "What is the status of Divya Menon's case?", "label": 0}
+{"previous": "What is the case number of Divya Menon's case?", "current": "What is the current status?", "label": 1}
+{"previous": "", "current": "That's exactly what I needed", "label": 2}
+{"previous": "", "current": "What are the five moments for hand hygiene?", "label": 0}
+{"previous": "What is Mohammed Umer's CGPA?", "current": "What is his email?", "label": 1}
+{"previous": "", "current": "What is the current status of the GreenLeaf Exports case", "label": 0}
+{"previous": "", "current": "What is the supplier of Amoxicillin 250", "label": 0}
+{"previous": "", "current": "That makes sense", "label": 2}
+{"previous": "What category is Cetirizine 10mg?", "current": "What is its strength?", "label": 1}
+{"previous": "", "current": "Agreed", "label": 2}
+{"previous": "", "current": "Fantastic?", "label": 2}
+{"previous": "What is the stock count of Hydrocortisone Cream?", "current": "When does it expire?", "label": 1}
+{"previous": "", "current": "Amazing?", "label": 2}
+{"previous": "How many days of earned leave do employees get", "current": "Can they be carried forward", "label": 1}
+{"previous": "", "current": "What happens if an employee scores 1 in appraisal?", "label": 0}
+{"previous": "What is Devika Nair's phone number?", "current": "What is her CGPA?", "label": 1}
+{"previous": "What is Gopika Suresh's phone number", "current": "What is her email", "label": 1}
+{"previous": "", "current": "Interesting?", "label": 2}
+{"previous": "", "current": "Tell me the phone number of Aravind Raj", "label": 0}
+{"previous": "What is the penalty for a late assignment", "current": "Can I get an extension", "label": 1}
+{"previous": "", "current": "What are you?", "label": 2}
+{"previous": "What is Devika Nair's phone number?", "current": "What is her email?", "label": 1}
+{"previous": "", "current": "You're welcome", "label": 2}
+{"previous": "What is the case number of Divya Menon's case", "current": "Who is the assigned attorney", "label": 1}
+{"previous": "What is the current status of the GreenLeaf Exports case?", "current": "What is the case number?", "label": 1}
+{"previous": "", "current": "True?", "label": 2}
+{"previous": "", "current": "Are you there?", "label": 2}
+{"previous": "", "current": "When must discharge planning begin?", "label": 0}
+{"previous": "What is the notice period for an L5 employee", "current": "What about L4", "label": 1}
+{"previous": "", "current": "How do you work", "label": 2}
+{"previous": "", "current": "No worries?", "label": 2}
+{"previous": "", "current": "Hi there", "label": 2}
+{"previous": "", "current": "What is the CTC range for a senior engineer at L4?", "label": 0}
+{"previous": "Which medicines are critically low in stock", "current": "Who supplies them", "label": 1}
+{"previous": "What is Aravind Raj's phone number", "current": "What is his CGPA", "label": 1}
+{"previous": "", "current": "Which medicines are critically low in stock", "label": 0}
+{"previous": "", "current": "Interesting?", "label": 2}
+{"previous": "", "current": "Where is Atorvastatin 10 stored", "label": 0}
+{"previous": "What is Gopika Suresh's phone number?", "current": "What is her CGPA?", "label": 1}
+{"previous": "", "current": "Much appreciated?", "label": 2}
+{"previous": "", "current": "True?", "label": 2}
+{"previous": "", "current": "It's fine", "label": 2}
+{"previous": "", "current": "Have a good day", "label": 2}
+{"previous": "", "current": "How are you?", "label": 2}
+{"previous": "", "current": "For sure?", "label": 2}
+{"previous": "What is the case number of Divya Menon's case?", "current": "Who is the assigned attorney?", "label": 1}
+{"previous": "", "current": "What happens if room service is delivered late?", "label": 0}
+{"previous": "What is the per diem for domestic travel?", "current": "What about international travel?", "label": 1}
+{"previous": "", "current": "Thanks a lot?", "label": 2}
+{"previous": "", "current": "Very helpful", "label": 2}
+{"previous": "What is Shihabutheen's email?", "current": "What is his register number?", "label": 1}
+{"previous": "", "current": "That's helpful", "label": 2}
+{"previous": "", "current": "That helps", "label": 2}
+{"previous": "Why was Anitha Suresh's PF claim rejected?", "current": "What did the High Court say?", "label": 1}
+{"previous": "", "current": "See you", "label": 2}
+{"previous": "", "current": "What is the supplier of Amoxicillin 250?", "label": 0}
+{"previous": "What court is handling Anitha Suresh's case?", "current": "What is the case number?", "label": 1}
+{"previous": "", "current": "What is the address of Rahul Menon?", "label": 0}
+{"previous": "", "current": "What is Divya Menon seeking in her case", "label": 0}
+{"previous": "", "current": "Good to see you?", "label": 2}
+{"previous": "What is Mohammed Umer's CGPA", "current": "What is his email", "label": 1}
+{"previous": "", "current": "That's helpful?", "label": 2}
+{"previous": "How much did Rajan Pillai pay to Horizon Constructions", "current": "What is the current status", "label": 1}
+{"previous": "", "current": "Sound good?", "label": 2}
+{"previous": "", "current": "I understand?", "label": 2}
+{"previous": "", "current": "OK", "label": 2}
+{"previous": "", "current": "Got it", "label": 2}
+{"previous": "", "current": "What is the strength of Pantoprazole 40", "label": 0}
+{"previous": "", "current": "Done thanks?", "label": 2}
+{"previous": "", "current": "Good afternoon?", "label": 2}
+{"previous": "", "current": "Take care", "label": 2}
+{"previous": "", "current": "Bye", "label": 2}
+{"previous": "", "current": "Cheers?", "label": 2}
+{"previous": "", "current": "No problem", "label": 2}
+{"previous": "", "current": "Awesome?", "label": 2}
+{"previous": "", "current": "Nice?", "label": 2}
+{"previous": "How long are lost items kept before disposal?", "current": "What happens to unclaimed items?", "label": 1}
+{"previous": "", "current": "Roger that?", "label": 2}
+{"previous": "", "current": "What can you do?", "label": 2}
+{"previous": "", "current": "See you later?", "label": 2}
+{"previous": "What is the supplier of Amoxicillin 250", "current": "What is its stock count", "label": 1}
+{"previous": "", "current": "What is Aravind Raj's phone number?", "label": 0}
+{"previous": "Which shelf has Crocin 500", "current": "What is its expiry date", "label": 1}
+{"previous": "", "current": "Nothing else", "label": 2}
+{"previous": "", "current": "How many casual leave days are allowed per year", "label": 0}
+{"previous": "", "current": "Which students have a CGPA above 9?", "label": 0}
+{"previous": "", "current": "What is Devika Nair's phone number", "label": 0}
+{"previous": "", "current": "Okay?", "label": 2}
+{"previous": "", "current": "What happens if room service is delivered late", "label": 0}
+{"previous": "", "current": "Good to see you", "label": 2}
+{"previous": "", "current": "Later?", "label": 2}
+{"previous": "", "current": "What is your name?", "label": 2}
+{"previous": "", "current": "Howdy", "label": 2}
+{"previous": "", "current": "Hello there", "label": 2}
+{"previous": "What is Aravind Raj's phone number?", "current": "What is his address?", "label": 1}
+{"previous": "", "current": "Talk to you soon?", "label": 2}
+{"previous": "How often must nursing rounds be done in the HDU?", "current": "What about general ward?", "label": 1}
+{"previous": "", "current": "What form is Diclofenac Gel available in?", "label": 0}
+{"previous": "", "current": "Are you a bot", "label": 2}
+{"previous": "", "current": "What is Jithin Mohan's status?", "label": 0}
+{"previous": "", "current": "Give me details about the GreenLeaf Exports case", "label": 0}
+{"previous": "", "current": "For sure", "label": 2}
+{"previous": "", "current": "What is the CTC range for a senior engineer at L4", "label": 0}
+{"previous": "Why was Anitha Suresh's PF claim rejected?", "current": "Who is her attorney?", "label": 1}
+{"previous": "What is the stock count of Hydrocortisone Cream?", "current": "Where is it stored?", "label": 1}
+{"previous": "", "current": "What branch is Faris Rahman in", "label": 0}
+{"previous": "", "current": "When was Rajan Pillai's complaint filed", "label": 0}
+{"previous": "", "current": "Where is Insulin Glargine stored", "label": 0}
+{"previous": "How much did Rajan Pillai pay to Horizon Constructions?", "current": "Who is his attorney?", "label": 1}
+{"previous": "", "current": "What is the probation period for new employees?", "label": 0}
+{"previous": "", "current": "Glad I could help?", "label": 2}
+{"previous": "", "current": "Have a great day?", "label": 2}
+{"previous": "", "current": "Of course?", "label": 2}
+{"previous": "", "current": "You good?", "label": 2}
+{"previous": "", "current": "Alright", "label": 2}
+{"previous": "", "current": "When was Rajan Pillai's complaint filed?", "label": 0}
+{"previous": "", "current": "See you?", "label": 2}
+{"previous": "What rating is needed for a promotion?", "current": "How often are reviews conducted?", "label": 1}
+{"previous": "", "current": "Which shelf has Crocin 500?", "label": 0}
+{"previous": "What is Aravind Raj's phone number?", "current": "What is his email?", "label": 1}
+{"previous": "", "current": "It's fine?", "label": 2}
+{"previous": "", "current": "That's helpful?", "label": 2}
+{"previous": "", "current": "Have a great day", "label": 2}
+{"previous": "", "current": "Perfect that's all", "label": 2}
+{"previous": "", "current": "Awesome?", "label": 2}
+{"previous": "", "current": "How many days of earned leave do employees get", "label": 0}
+{"previous": "", "current": "That helps?", "label": 2}
+{"previous": "What is the current status of the GreenLeaf Exports case?", "current": "What is the value of the consignment?", "label": 1}
+{"previous": "", "current": "Oops", "label": 2}
+{"previous": "", "current": "What is the penalty for a late assignment?", "label": 0}
+{"previous": "What is Ahammed Sameer's register number", "current": "What is his phone number", "label": 1}
+{"previous": "", "current": "Take care?", "label": 2}
+{"previous": "", "current": "What is the fine for overdue library books", "label": 0}
+{"previous": "", "current": "What is Ananya Krishnan's CGPA?", "label": 0}
+{"previous": "What is Aravind Raj's phone number", "current": "What is his email", "label": 1}
+{"previous": "", "current": "Sure thing?", "label": 2}
+{"previous": "", "current": "Great", "label": 2}
+{"previous": "", "current": "Yeah?", "label": 2}
+{"previous": "Which shelf has Crocin 500?", "current": "What is the stock count?", "label": 1}
+{"previous": "", "current": "Which medicines are critically low in stock?", "label": 0}
+{"previous": "What is the library borrowing period", "current": "What is the fine for overdue books", "label": 1}
+{"previous": "", "current": "What is the status of Divya Menon's case", "label": 0}
+{"previous": "Who is the assigned attorney for Faisal Ahmed?", "current": "When is the next hearing?", "label": 1}
+{"previous": "", "current": "Nope", "label": 2}
+{"previous": "Where is Insulin Glargine stored?", "current": "When does it expire?", "label": 1}
+{"previous": "What is Aravind Raj's phone number", "current": "What branch is he in", "label": 1}
+{"previous": "", "current": "What is Gopika Suresh's phone number", "label": 0}
+{"previous": "", "current": "That answers my question?", "label": 2}
+{"previous": "Who is the assigned attorney for Faisal Ahmed", "current": "What is the case number", "label": 1}
+{"previous": "What is the stock count of Hydrocortisone Cream", "current": "When does it expire", "label": 1}
+{"previous": "", "current": "Excellent?", "label": 2}
+{"previous": "How long are lost items kept before disposal?", "current": "What about valuables?", "label": 1}
+{"previous": "", "current": "What is the expiry of Levothyroxine 50", "label": 0}
+{"previous": "", "current": "Sounds good?", "label": 2}
+{"previous": "What is the late check-out charge after 2 PM?", "current": "What about after 6 PM?", "label": 1}
+{"previous": "", "current": "I understand", "label": 2}
+{"previous": "", "current": "What is the stock status of Vitamin D3 1000?", "label": 0}
+{"previous": "", "current": "Right?", "label": 2}
+{"previous": "How many days of earned leave do employees get?", "current": "Can they be carried forward?", "label": 1}
+{"previous": "What is the notice period for an L5 employee?", "current": "What about L3?", "label": 1}
+{"previous": "", "current": "Find the expiry date of Azithromycin", "label": 0}
+{"previous": "What is the expiry date of Azithromycin 500?", "current": "How many units are in stock?", "label": 1}
+{"previous": "Who is the assigned attorney for Faisal Ahmed?", "current": "What is the case number?", "label": 1}
+{"previous": "Who has the highest CGPA in the batch?", "current": "What is their email?", "label": 1}
+{"previous": "", "current": "What is the status of Rabeprazole 20mg?", "label": 0}
+{"previous": "What happens if room service is delivered late", "current": "What is the normal delivery time", "label": 1}
+{"previous": "", "current": "How long are lost items kept before disposal", "label": 0}
+{"previous": "", "current": "What is the per diem for domestic travel?", "label": 0}
+{"previous": "What is the standard check-in time?", "current": "What is the check-out time?", "label": 1}
+{"previous": "", "current": "Find the case number for Divya Menon", "label": 0}
+{"previous": "", "current": "What rating is needed for a promotion", "label": 0}
+{"previous": "Why was Anitha Suresh's PF claim rejected", "current": "What did the High Court say", "label": 1}
+{"previous": "", "current": "Maybe?", "label": 2}
+{"previous": "", "current": "Thank you", "label": 2}
+{"previous": "", "current": "Definitely?", "label": 2}
+{"previous": "", "current": "How are you doing?", "label": 2}
+{"previous": "", "current": "Sorry?", "label": 2}
+{"previous": "", "current": "Indeed?", "label": 2}
+{"previous": "", "current": "Hey", "label": 2}
+{"previous": "", "current": "Anytime", "label": 2}
+{"previous": "", "current": "What is Aravind Raj's phone number", "label": 0}
+{"previous": "How often must nursing rounds be done in the HDU", "current": "What about general ward", "label": 1}
+{"previous": "", "current": "OK?", "label": 2}
+{"previous": "", "current": "Show me Umer's CGPA", "label": 0}
+{"previous": "", "current": "Excuse me", "label": 2}
+{"previous": "", "current": "What is the case number of Divya Menon's case?", "label": 0}
+{"previous": "What is Shihabutheen's email", "current": "What is his address", "label": 1}
+{"previous": "", "current": "Hello?", "label": 2}
+{"previous": "", "current": "What are you?", "label": 2}
+{"previous": "Where is Atorvastatin 10 stored?", "current": "Who is the supplier?", "label": 1}
+{"previous": "", "current": "What is the per diem for domestic travel", "label": 0}
+{"previous": "", "current": "Sorry?", "label": 2}
+{"previous": "", "current": "Right?", "label": 2}
+{"previous": "Which shelf has Crocin 500", "current": "What is the stock count", "label": 1}
+{"previous": "", "current": "Good morning?", "label": 2}
+{"previous": "What is the probation period for new employees?", "current": "What is assessed during probation?", "label": 1}
+{"previous": "", "current": "What is the value of the GreenLeaf consignment?", "label": 0}
+{"previous": "", "current": "Interesting", "label": 2}
+{"previous": "", "current": "Good morning", "label": 2}
+{"previous": "", "current": "What branch is Faris Rahman in?", "label": 0}
+{"previous": "", "current": "Nice", "label": 2}
+{"previous": "", "current": "Hi there?", "label": 2}
+{"previous": "", "current": "Hi?", "label": 2}
+{"previous": "When must discharge planning begin", "current": "What documents must the patient receive", "label": 1}
+{"previous": "What is Ananya Krishnan's CGPA", "current": "What is her email", "label": 1}
+{"previous": "", "current": "Which shelf has Crocin 500", "label": 0}
+{"previous": "", "current": "I appreciate it", "label": 2}
+{"previous": "What is the expiry date of Azithromycin 500", "current": "How many units are in stock", "label": 1}
+{"previous": "", "current": "Which medicines are supplied by Cipla", "label": 0}
+{"previous": "", "current": "My pleasure?", "label": 2}
+{"previous": "", "current": "Hello?", "label": 2}
+{"previous": "", "current": "I see?", "label": 2}
+{"previous": "", "current": "Oops?", "label": 2}
+{"previous": "", "current": "Goodbye", "label": 2}
+{"previous": "", "current": "Still there?", "label": 2}
+{"previous": "", "current": "What is your name?", "label": 2}
+{"previous": "", "current": "Talk to you soon?", "label": 2}
+{"previous": "", "current": "What is the total number of students in the batch", "label": 0}
+{"previous": "What is the penalty for a late assignment?", "current": "What is the maximum deduction?", "label": 1}
+{"previous": "", "current": "Great?", "label": 2}
+{"previous": "", "current": "All good?", "label": 2}
+{"previous": "", "current": "How long are lost items kept before disposal?", "label": 0}
+{"previous": "", "current": "All good", "label": 2}
+{"previous": "", "current": "I appreciate it?", "label": 2}
+{"previous": "", "current": "True", "label": 2}
+{"previous": "", "current": "What is the total number of students in the batch?", "label": 0}
+{"previous": "", "current": "Awesome", "label": 2}
+{"previous": "Which shelf has Crocin 500?", "current": "Who is the supplier?", "label": 1}
+{"previous": "Which shelf has Crocin 500?", "current": "What is its expiry date?", "label": 1}
+{"previous": "", "current": "What's up?", "label": 2}
+{"previous": "", "current": "Nice to meet you?", "label": 2}
+{"previous": "", "current": "What is the expiry date of Azithromycin 500?", "label": 0}
+{"previous": "What is the probation period for new employees?", "current": "What happens after probation?", "label": 1}
+{"previous": "", "current": "Done thanks?", "label": 2}
+{"previous": "", "current": "Who is the assigned attorney for Anitha Suresh", "label": 0}
+{"previous": "", "current": "Who is on academic probation", "label": 0}
+{"previous": "", "current": "Great?", "label": 2}
+{"previous": "", "current": "Indeed", "label": 2}
+{"previous": "What is the shelf location of Metformin 500?", "current": "What is the expiry?", "label": 1}
+{"previous": "", "current": "Good night", "label": 2}
+{"previous": "", "current": "Pleasure to meet you?", "label": 2}
+{"previous": "", "current": "My apologies?", "label": 2}
+{"previous": "What is Ahammed Sameer's register number?", "current": "What is his phone number?", "label": 1}
+{"previous": "", "current": "My bad?", "label": 2}
+{"previous": "", "current": "Hey there", "label": 2}
+{"previous": "", "current": "Catch you later?", "label": 2}
+{"previous": "", "current": "What is Tharun Kumar's registration number?", "label": 0}
+{"previous": "", "current": "How much did Rajan Pillai pay to Horizon Constructions?", "label": 0}
+{"previous": "", "current": "No worries", "label": 2}
+{"previous": "", "current": "How often must nursing rounds be done in the HDU?", "label": 0}
+{"previous": "", "current": "What is the performance improvement plan duration?", "label": 0}
+{"previous": "What is Ananya Krishnan's CGPA?", "current": "What is her phone number?", "label": 1}
+{"previous": "", "current": "What should be done if a medication error occurs?", "label": 0}
+{"previous": "", "current": "No", "label": 2}
+{"previous": "What is Ahammed Sameer's register number?", "current": "What is his email?", "label": 1}
+{"previous": "", "current": "How much did Rajan Pillai pay to Horizon Constructions", "label": 0}
+{"previous": "What is the late check-out charge after 2 PM", "current": "What about after 6 PM", "label": 1}
+{"previous": "", "current": "What is Irene Joseph's CGPA?", "label": 0}
+{"previous": "", "current": "No problem?", "label": 2}
+{"previous": "", "current": "Perfect that's all?", "label": 2}
+{"previous": "", "current": "That's all I needed?", "label": 2}
+{"previous": "", "current": "Fair enough", "label": 2}
+{"previous": "", "current": "How many casual leave days are allowed per year?", "label": 0}
+{"previous": "", "current": "What is Meera Sivan's email?", "label": 0}
+{"previous": "", "current": "How's it going?", "label": 2}
+{"previous": "What is Gopika Suresh's phone number?", "current": "What is her email?", "label": 1}
+{"previous": "Where is Atorvastatin 10 stored", "current": "Who is the supplier", "label": 1}
+{"previous": "What happens if room service is delivered late?", "current": "What is the normal delivery time?", "label": 1}
+{"previous": "", "current": "How are you", "label": 2}
+{"previous": "", "current": "Good?", "label": 2}
+{"previous": "", "current": "Are you an AI?", "label": 2}
+{"previous": "", "current": "Have a good day?", "label": 2}
+{"previous": "What is Shihabutheen's email?", "current": "What is his address?", "label": 1}
+{"previous": "", "current": "Yes?", "label": 2}
+{"previous": "", "current": "Fantastic", "label": 2}
+{"previous": "", "current": "Brilliant", "label": 2}
+{"previous": "", "current": "Clear?", "label": 2}
+{"previous": "", "current": "Why was Anitha Suresh's PF claim rejected", "label": 0}
+{"previous": "", "current": "Don't mention it?", "label": 2}
+{"previous": "", "current": "You're welcome?", "label": 2}
+{"previous": "", "current": "What is the address of Rahul Menon", "label": 0}
+{"previous": "", "current": "What is your name", "label": 2}
+{"previous": "", "current": "Cool?", "label": 2}
+{"previous": "", "current": "What is Jithin Mohan's status", "label": 0}
+{"previous": "", "current": "Good evening", "label": 2}
+{"previous": "", "current": "Ready?", "label": 2}
+{"previous": "", "current": "Right", "label": 2}
+{"previous": "", "current": "What semester is the CSE batch in?", "label": 0}
+{"previous": "", "current": "Thanks a lot", "label": 2}
+{"previous": "", "current": "What is Tharun Kumar's registration number", "label": 0}
+{"previous": "", "current": "What's up?", "label": 2}
+{"previous": "", "current": "What is the shelf location of Metformin 500?", "label": 0}
+{"previous": "", "current": "Excuse me?", "label": 2}
+{"previous": "", "current": "Are you an AI", "label": 2}
+{"previous": "", "current": "How many absences are allowed per semester", "label": 0}
+{"previous": "", "current": "Who is the opposing party in Rajan Pillai's case", "label": 0}
+{"previous": "", "current": "Clear?", "label": 2}
+{"previous": "", "current": "How many units of ORS Sachet are in stock", "label": 0}
+{"previous": "", "current": "What should be done if a medication error occurs", "label": 0}
+{"previous": "", "current": "What is Divya Menon seeking in her case?", "label": 0}
+{"previous": "How often must nursing rounds be done in the HDU?", "current": "What must be checked each round?", "label": 1}
+{"previous": "", "current": "Wonderful?", "label": 2}
+{"previous": "", "current": "Who supplies Omeprazole 20mg?", "label": 0}
+{"previous": "", "current": "What is the registration number of Kavya Pillai", "label": 0}
+{"previous": "", "current": "Hey?", "label": 2}
+{"previous": "Who is the assigned attorney for Faisal Ahmed?", "current": "What is he charged with?", "label": 1}
+{"previous": "", "current": "That answers my question", "label": 2}
+{"previous": "", "current": "Of course", "label": 2}
+{"previous": "What is the notice period for an L5 employee?", "current": "What about L4?", "label": 1}
+{"previous": "", "current": "Sup", "label": 2}
+{"previous": "", "current": "Yep?", "label": 2}
+{"previous": "Why was Anitha Suresh's PF claim rejected?", "current": "What is the case number?", "label": 1}
+{"previous": "What is the status of Rabeprazole 20mg", "current": "Where is it stored", "label": 1}
+{"previous": "What is Mohammed Umer's CGPA", "current": "What is his phone number", "label": 1}
 {"previous": "", "current": "Are you a bot?", "label": 2}
-{"previous": "What is the CTC range for L4", "current": "What is the notice period", "label": 1}
+{"previous": "", "current": "What is the performance improvement plan duration", "label": 0}
+{"previous": "", "current": "Who are you?", "label": 2}
+{"previous": "", "current": "What is Sneha Thomas's email", "label": 0}
+{"previous": "", "current": "Good answer", "label": 2}
+{"previous": "", "current": "What is the notice period for an L5 employee?", "label": 0}
+{"previous": "", "current": "Fair enough?", "label": 2}
+{"previous": "", "current": "What are the five moments for hand hygiene", "label": 0}
+{"previous": "What is the current status of the GreenLeaf Exports case", "current": "What is the value of the consignment", "label": 1}
+{"previous": "What is the notice period for an L5 employee?", "current": "Can it be bought out?", "label": 1}
+{"previous": "", "current": "Roger that", "label": 2}
+{"previous": "", "current": "How many units of ORS Sachet are in stock?", "label": 0}
+{"previous": "", "current": "What is the library borrowing period", "label": 0}
+{"previous": "What is Meera Sivan's email", "current": "What is her phone number", "label": 1}
+{"previous": "", "current": "My bad", "label": 2}
+{"previous": "", "current": "Give me Shihabutheen's email", "label": 0}
+{"previous": "", "current": "Goodbye?", "label": 2}
+{"previous": "", "current": "That's exactly what I needed?", "label": 2}
+{"previous": "", "current": "Amazing?", "label": 2}
+{"previous": "What is Ahammed Sameer's register number?", "current": "What is his CGPA?", "label": 1}
+{"previous": "", "current": "Can you help me?", "label": 2}
+{"previous": "", "current": "What is Ahammed Sameer's register number", "label": 0}
+{"previous": "Where is Insulin Glargine stored?", "current": "What is its stock count?", "label": 1}
+{"previous": "", "current": "Got it?", "label": 2}
+{"previous": "", "current": "What is the stock count of Hydrocortisone Cream?", "label": 0}
+{"previous": "", "current": "Appreciate it", "label": 2}
+{"previous": "", "current": "Perfect?", "label": 2}
+{"previous": "", "current": "What is the late check-out charge after 2 PM?", "label": 0}
+{"previous": "", "current": "Later?", "label": 2}
+{"previous": "", "current": "What is Mohammed Umer's CGPA", "label": 0}
+{"previous": "", "current": "What is the probation period for new employees", "label": 0}
+{"previous": "", "current": "Good night?", "label": 2}
+{"previous": "", "current": "What category is Cetirizine 10mg", "label": 0}
+{"previous": "", "current": "Who supplies Omeprazole 20mg", "label": 0}
+{"previous": "How much did Rajan Pillai pay to Horizon Constructions?", "current": "What is the current status?", "label": 1}
+{"previous": "Who is on academic probation?", "current": "What are their CGPAs?", "label": 1}
+{"previous": "Who is the assigned attorney for Faisal Ahmed", "current": "When is the next hearing", "label": 1}
+{"previous": "", "current": "Look up Gopika Suresh's phone number", "label": 0}
+{"previous": "", "current": "That will do?", "label": 2}
+{"previous": "", "current": "What is the shelf location of Metformin 500", "label": 0}
+{"previous": "What is the case number of Divya Menon's case?", "current": "What is she seeking?", "label": 1}
+{"previous": "", "current": "Thanks", "label": 2}
+{"previous": "", "current": "Yeah", "label": 2}
+{"previous": "What is Ahammed Sameer's register number", "current": "What is his email", "label": 1}
+{"previous": "", "current": "Perfect?", "label": 2}
+{"previous": "", "current": "How are you doing", "label": 2}
+{"previous": "What is the case number of the GreenLeaf case", "current": "What is the arbitrator's name", "label": 1}
+{"previous": "", "current": "How are you doing?", "label": 2}
+{"previous": "", "current": "You there?", "label": 2}
+{"previous": "", "current": "What category is Cetirizine 10mg?", "label": 0}
+{"previous": "What rating is needed for a promotion", "current": "What happens if I score a 1", "label": 1}
+{"previous": "", "current": "That answers my question?", "label": 2}
+{"previous": "What is Shihabutheen's email?", "current": "What is his phone number?", "label": 1}
+{"previous": "Which shelf has Crocin 500", "current": "Who is the supplier", "label": 1}
+{"previous": "What should be done if a medication error occurs?", "current": "How quickly must it be reported?", "label": 1}
+{"previous": "", "current": "That's all I needed", "label": 2}
+{"previous": "", "current": "Clear", "label": 2}
+{"previous": "", "current": "Bye?", "label": 2}
+{"previous": "", "current": "When must expense claims be submitted?", "label": 0}
+{"previous": "", "current": "That will do", "label": 2}
+{"previous": "", "current": "What rating is needed for a promotion?", "label": 0}
+{"previous": "", "current": "My pleasure", "label": 2}
+{"previous": "", "current": "Alright?", "label": 2}
+{"previous": "", "current": "Pleasure to meet you", "label": 2}
+{"previous": "What is the status of Rabeprazole 20mg", "current": "What is its expiry", "label": 1}
+{"previous": "", "current": "Nice to meet you", "label": 2}
+{"previous": "", "current": "That makes sense?", "label": 2}
+{"previous": "", "current": "What court is handling Anitha Suresh's case", "label": 0}
+{"previous": "", "current": "Cool?", "label": 2}
+{"previous": "", "current": "What is the fine for overdue library books?", "label": 0}
+{"previous": "", "current": "What is the rack position of Salbutamol Inhaler", "label": 0}
+{"previous": "", "current": "I see", "label": 2}
+{"previous": "", "current": "What form is Diclofenac Gel available in", "label": 0}
+{"previous": "What is the shelf location of Metformin 500", "current": "Who supplies it", "label": 1}
+{"previous": "What is the supplier of Amoxicillin 250?", "current": "Where is it stored?", "label": 1}
+{"previous": "What is the status of Rabeprazole 20mg?", "current": "What is its expiry?", "label": 1}
+{"previous": "What are the five moments for hand hygiene?", "current": "Who audits compliance?", "label": 1}
+{"previous": "", "current": "How often must nursing rounds be done in the HDU", "label": 0}
+{"previous": "", "current": "That's okay", "label": 2}
+{"previous": "", "current": "Thanks for the help", "label": 2}
+{"previous": "Who is on academic probation?", "current": "What are their emails?", "label": 1}
+{"previous": "", "current": "Who has the highest CGPA in the CSE batch?", "label": 0}
+{"previous": "", "current": "Good point", "label": 2}
+{"previous": "What is the case number of Divya Menon's case", "current": "What is the current status", "label": 1}
+{"previous": "", "current": "What are you", "label": 2}
+{"previous": "How many absences are allowed per semester?", "current": "What happens if I exceed that?", "label": 1}
+{"previous": "", "current": "Makes sense?", "label": 2}
+{"previous": "", "current": "What is the expiry of Levothyroxine 50?", "label": 0}
+{"previous": "", "current": "Talk to you soon", "label": 2}
+{"previous": "", "current": "What is the stock status of Vitamin D3 1000", "label": 0}
+{"previous": "", "current": "What is the expiry of Clopidogrel 75mg", "label": 0}
+{"previous": "", "current": "Wonderful", "label": 2}
+{"previous": "When must discharge planning begin?", "current": "What must the nurse assess on discharge day?", "label": 1}
+{"previous": "", "current": "Can you help me?", "label": 2}
+{"previous": "What is the probation period for new employees", "current": "What happens after probation", "label": 1}
+{"previous": "", "current": "What is the case number of the GreenLeaf case", "label": 0}
+{"previous": "", "current": "When must discharge planning begin", "label": 0}
+{"previous": "", "current": "Howdy?", "label": 2}
+{"previous": "What category is Cetirizine 10mg", "current": "What is its strength", "label": 1}
+{"previous": "What is Shihabutheen's email", "current": "What is his CGPA", "label": 1}
+{"previous": "", "current": "Good night", "label": 2}
+{"previous": "How many days of earned leave do employees get?", "current": "Can they be encashed?", "label": 1}
+{"previous": "", "current": "Which students have a CGPA above 9", "label": 0}
+{"previous": "", "current": "Catch you later?", "label": 2}
+{"previous": "", "current": "Indeed?", "label": 2}
+{"previous": "", "current": "Later", "label": 2}
+{"previous": "", "current": "Nope?", "label": 2}
+{"previous": "", "current": "What is the standard check-in time?", "label": 0}
+{"previous": "", "current": "Sorry", "label": 2}
+{"previous": "", "current": "What is the current status of the GreenLeaf Exports case?", "label": 0}
+{"previous": "", "current": "Who is on academic probation?", "label": 0}
+{"previous": "", "current": "Maybe?", "label": 2}
+{"previous": "", "current": "Agreed?", "label": 2}
+{"previous": "", "current": "Who is the assigned attorney for Faisal Ahmed?", "label": 0}
+{"previous": "", "current": "Who is the assigned attorney for Faisal Ahmed", "label": 0}
+{"previous": "", "current": "What's up", "label": 2}
+{"previous": "What is the CTC range for a senior engineer at L4?", "current": "What is the variable pay?", "label": 1}
+{"previous": "", "current": "What is Devika Nair's phone number?", "label": 0}
+{"previous": "", "current": "Hey there?", "label": 2}
+{"previous": "", "current": "Understood?", "label": 2}
+{"previous": "Who is the opposing party in Rajan Pillai's case?", "current": "What is the case number?", "label": 1}
+{"previous": "", "current": "Understood", "label": 2}
+{"previous": "", "current": "Super?", "label": 2}
+{"previous": "", "current": "Thanks for the help?", "label": 2}
+{"previous": "", "current": "Many thanks?", "label": 2}
+{"previous": "What happens if room service is delivered late?", "current": "What is the late night surcharge?", "label": 1}
+{"previous": "", "current": "How many days of earned leave do employees get?", "label": 0}
+{"previous": "What is the performance improvement plan duration?", "current": "What happens if I fail the PIP?", "label": 1}
+{"previous": "", "current": "Nothing else?", "label": 2}
+{"previous": "What is the standard check-in time", "current": "What is the check-out time", "label": 1}
+{"previous": "What is the library borrowing period?", "current": "What is the fine for overdue books?", "label": 1}
+{"previous": "", "current": "Exactly", "label": 2}
+{"previous": "What is Aravind Raj's phone number?", "current": "What is his register number?", "label": 1}
+{"previous": "", "current": "Thanks for the help?", "label": 2}
+{"previous": "What rating is needed for a promotion?", "current": "What happens if I score a 1?", "label": 1}
+{"previous": "", "current": "Good point?", "label": 2}
+{"previous": "What is Meera Sivan's email?", "current": "What is her CGPA?", "label": 1}
+{"previous": "", "current": "Hi", "label": 2}
+{"previous": "What is Divya Menon seeking in her case?", "current": "When was the petition filed?", "label": 1}
+{"previous": "", "current": "What is the status of Rabeprazole 20mg", "label": 0}
+{"previous": "", "current": "Are you a bot?", "label": 2}
+{"previous": "", "current": "Who are you?", "label": 2}
+{"previous": "", "current": "No?", "label": 2}
+{"previous": "", "current": "What is the rack position of Salbutamol Inhaler?", "label": 0}
+{"previous": "", "current": "How many absences are allowed per semester?", "label": 0}
+{"previous": "", "current": "Where is Atorvastatin 10 stored?", "label": 0}
+{"previous": "When must expense claims be submitted?", "current": "What happens after 30 days?", "label": 1}
+{"previous": "", "current": "Find Ahammed Sameer's register number", "label": 0}
+{"previous": "What is the library borrowing period?", "current": "How many books can I borrow?", "label": 1}
+{"previous": "How many absences are allowed per semester", "current": "What happens if I exceed that", "label": 1}
+{"previous": "", "current": "Thanks?", "label": 2}
+{"previous": "What is the supplier of Amoxicillin 250?", "current": "What is its stock count?", "label": 1}
+{"previous": "", "current": "When is the next hearing for Faisal Ahmed's case", "label": 0}
+{"previous": "", "current": "What is Nikhil Dev's CGPA?", "label": 0}
+{"previous": "", "current": "Thanks a lot?", "label": 2}
+{"previous": "", "current": "Hello there?", "label": 2}
+{"previous": "Who has the highest CGPA in the batch?", "current": "What is their phone number?", "label": 1}
+{"previous": "What is the status of Faisal Ahmed's case?", "current": "When is the next hearing?", "label": 1}
+{"previous": "", "current": "What is Shihabutheen's email address?", "label": 0}
+{"previous": "", "current": "Can you help me", "label": 2}
+{"previous": "What is Aravind Raj's phone number?", "current": "What branch is he in?", "label": 1}
+{"previous": "", "current": "Got it?", "label": 2}
+{"previous": "", "current": "Tell me about Faisal Ahmed's case", "label": 0}
+{"previous": "What is the expiry date of Azithromycin 500?", "current": "Who is the supplier?", "label": 1}
+{"previous": "When must discharge planning begin?", "current": "What documents must the patient receive?", "label": 1}
+{"previous": "", "current": "Thank you so much?", "label": 2}
+{"previous": "", "current": "Where is Insulin Glargine stored?", "label": 0}
+{"previous": "", "current": "What is Mohammed Umer's CGPA?", "label": 0}
+{"previous": "What is Meera Sivan's email?", "current": "What is her phone number?", "label": 1}
+{"previous": "What is the status of Rabeprazole 20mg?", "current": "Where is it stored?", "label": 1}
+{"previous": "", "current": "Absolutely", "label": 2}
+{"previous": "", "current": "What is Ahammed Sameer's register number?", "label": 0}
+{"previous": "", "current": "Sounds good", "label": 2}
+{"previous": "", "current": "What court is handling Anitha Suresh's case?", "label": 0}
+{"previous": "", "current": "Thank you?", "label": 2}
+{"previous": "", "current": "Right?", "label": 2}
+{"previous": "", "current": "Catch you later", "label": 2}
+{"previous": "Which medicines are critically low in stock?", "current": "Who supplies them?", "label": 1}
+{"previous": "", "current": "Hi there?", "label": 2}
+{"previous": "", "current": "Who is the opposing party in Rajan Pillai's case?", "label": 0}
+{"previous": "", "current": "What is the value of the GreenLeaf consignment", "label": 0}
+{"previous": "", "current": "My apologies", "label": 2}
+{"previous": "", "current": "What is the expiry of Clopidogrel 75mg?", "label": 0}
+{"previous": "", "current": "What is Irene Joseph's CGPA", "label": 0}
+{"previous": "", "current": "Which medicines are low in stock?", "label": 0}
+{"previous": "", "current": "Okay?", "label": 2}
+{"previous": "", "current": "Okay", "label": 2}
+{"previous": "", "current": "Hello?", "label": 2}
+{"previous": "", "current": "Done thanks", "label": 2}

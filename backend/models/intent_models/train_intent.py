@@ -83,7 +83,7 @@ def main():
     args = TrainingArguments(
         output_dir=OUTPUT_DIR,
         per_device_train_batch_size=16,
-        num_train_epochs=2,
+        num_train_epochs=6,
         learning_rate=3e-5,
         weight_decay=0.01,
         fp16=torch.cuda.is_available(),
