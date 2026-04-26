@@ -63,45 +63,84 @@ def read_text_file(path: Path) -> str:
         return ""
 
 def chunk_text(text: str, chunk_size: int = 300, overlap: int = 50):
-    # Try markdown header splitting first
-    section_pattern = re.compile(r'(?=^#{1,3}\s)', re.MULTILINE)
-    sections = section_pattern.split(text)
-    sections = [s.strip() for s in sections if s.strip()]
+    """
+    Smarter chunker:
+    1. Protects abbreviations (Mr. Mrs. Dr. Adv. Smt. Pvt. Ltd. etc.)
+    2. Splits into sentences properly
+    3. Groups sentences into chunks of ~chunk_size words with overlap
+    4. Never splits mid-sentence
+    """
+    import re
 
-    # If no markdown headers found, split by double newlines (for PDFs)
-    if len(sections) <= 1:
-        sections = re.split(r'\n\s*\n', text)
-        sections = [s.strip() for s in sections if s.strip()]
+    # ---- Step 1: Protect abbreviations from being treated as sentence ends ----
+    abbreviations = [
+        'Mr', 'Mrs', 'Ms', 'Dr', 'Prof', 'Adv', 'Smt', 'Shri',
+        'Pvt', 'Ltd', 'Inc', 'Corp', 'Co', 'St', 'Ave', 'Dept',
+        'vs', 'etc', 'approx', 'govt', 'Govt', 'No', 'Fig', 'Jan',
+        'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct',
+        'Nov', 'Dec', 'approx', 'est', 'ref', 'vol', 'pg'
+    ]
+    protected = text
+    for abbr in abbreviations:
+        protected = re.sub(rf'\b{abbr}\.', f'{abbr}<P>', protected)
 
-    # If still one section, split by single newline before title-case headings (PDF)
-    if len(sections) <= 1:
-        sections = re.split(r'\n(?=[A-Z][a-z]+ [A-Z]|[A-Z][a-z]+\n)', text)
-        sections = [s.strip() for s in sections if s.strip()]
+    # ---- Step 2: Split into sentences ----
+    sentence_endings = re.compile(r'(?<=[.!?])\s+(?=[A-Z])')
+    raw_sentences = sentence_endings.split(protected)
 
-    # Last resort: split by word count
-    if len(sections) <= 1:
-        words = text.split()
-        sections = []
-        for i in range(0, len(words), chunk_size - overlap):
-            chunk = " ".join(words[i:i + chunk_size])
-            if chunk.strip():
-                sections.append(chunk)
+    # Restore abbreviations
+    sentences = []
+    for s in raw_sentences:
+        s = s.strip()
+        for abbr in abbreviations:
+            s = s.replace(f'{abbr}<P>', f'{abbr}.')
+        if len(s.split()) >= 4:  # skip very short fragments
+            sentences.append(s)
 
+    if not sentences:
+        # fallback: return whole text as one chunk if nothing parsed
+        return [text.strip()] if text.strip() else []
+
+    # ---- Step 3: Group sentences into chunks ----
     chunks = []
-    for section in sections:
-        words = section.split()
-        if len(words) <= chunk_size:
-            chunks.append(section)
-        else:
-            for i in range(0, len(words), chunk_size - overlap):
-                chunk = " ".join(words[i:i + chunk_size])
-                if chunk.strip():
-                    chunks.append(chunk)
-                if i + chunk_size >= len(words):
+    current_sentences = []
+    current_word_count = 0
+
+    for sentence in sentences:
+        word_count = len(sentence.split())
+
+        # If adding this sentence exceeds chunk size, save current chunk and start new
+        if current_word_count + word_count > chunk_size and current_sentences:
+            chunk_text_str = ' '.join(current_sentences)
+            if chunk_text_str.strip():
+                chunks.append(chunk_text_str.strip())
+
+            # Overlap: keep last N words worth of sentences
+            overlap_sentences = []
+            overlap_words = 0
+            for s in reversed(current_sentences):
+                w = len(s.split())
+                if overlap_words + w <= overlap:
+                    overlap_sentences.insert(0, s)
+                    overlap_words += w
+                else:
                     break
 
-    return chunks
+            current_sentences = overlap_sentences
+            current_word_count = overlap_words
 
+        current_sentences.append(sentence)
+        current_word_count += word_count
+
+    # Save last chunk
+    if current_sentences:
+        chunk_text_str = ' '.join(current_sentences)
+        if chunk_text_str.strip():
+            chunks.append(chunk_text_str.strip())
+
+    return chunks if chunks else [text.strip()]
+
+    
 def normalize(text: str) -> str:
     return re.sub(r"[^a-z0-9\s]", "", text.lower())
 
