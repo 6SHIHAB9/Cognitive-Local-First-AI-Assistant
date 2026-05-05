@@ -422,6 +422,9 @@ def ask(req: AskRequest):
         # =========================
         # Topic + Explanation Continuity
         # =========================
+        # =========================
+        # Topic Continuity Check
+        # =========================
         if intent == "continuation" and previous_q:
             # Use cosine similarity for question-to-question comparison
             prev_embed = topic_embedder.encode(previous_q, convert_to_tensor=True)
@@ -430,25 +433,17 @@ def ask(req: AskRequest):
             # Topic similarity: how similar are the two questions?
             topic_score = float(util.cos_sim(prev_embed, curr_embed)[0][0])
             
-            # Explanation similarity: does current question expand on previous?
-            combined = previous_q + " " + question
-            combined_embed = topic_embedder.encode(combined, convert_to_tensor=True)
-            explanation_score = float(util.cos_sim(prev_embed, combined_embed)[0][0])
-
             print(f"🧠 TOPIC SCORE: {topic_score:.4f}")
-            print(f"🧠 EXPLANATION SCORE: {explanation_score:.4f}")
 
-            if topic_score >= 0.30:
-                use_previous_context = True
-            elif explanation_score >= 0.80:
-                # Only allow explanation-style continuation if it's VERY strong
+            # If the score is below 0.35, it is a brand new topic. Period.
+            if topic_score >= 0.35:
                 use_previous_context = True
             else:
                 print("🔁 Topic drift detected → re-anchoring topic")
                 use_previous_context = False
                 context_manager.clear_session()
                 context_manager.set_topic_anchor(question)
-                intent = "factual"
+                intent = "factual" # <--- This fixes the intent!
         print(f"🎯 INTENT: {intent}")
         # Continuation without history is invalid
         # Force factual if continuation but no history
@@ -523,107 +518,94 @@ def ask(req: AskRequest):
                 response_data["sync_performed"] = sync_info
             return response_data
 
-        # 4. SENTENCE-LEVEL PIPELINE
+# =========================
+        # 4. CHUNK-LEVEL ML PIPELINE
+        # =========================
+        
+        # We start with the 75-word chunks from ingest.py
+        small_chunks = chunks 
+        print(f"🧪 SMALL CHUNKS BEFORE RERANKING: {len(small_chunks)}")
 
-        ground_min_score = 0.35 if intent == "factual" else 0.25
+        # Build relevance query for your reranker
+        relevance_query = question
+        if intent == "continuation" and use_previous_context:
+            relevance_query = previous_q + " " + question
 
-        # 4a. Split chunks into sentences
-        sentences = split_into_sentences(chunks)
-        sentences = deduplicate_sentences(sentences)  # ← ADD THIS LINE
-        print(f"🧪 SENTENCES AFTER DEDUP & BEFORE TOPIC FILTER: {len(sentences)}")
+        # -> Run YOUR Cross-Encoder Reranker on the small chunks! <-
+        ranked_small_chunks = reranker.rerank(relevance_query, small_chunks)
+        
+        print(f"📊 ML RERANKED CHUNKS:")
+        for s, score in ranked_small_chunks[:5]:
+            print(f"  ({score:.3f}): {s[:80].replace(chr(10), ' ')}...")
 
-        # STEP 1: Topic anchor
-        topic_anchor = (
-            context_manager.get_topic_anchor()
-            if intent == "continuation"
-            else question
-        )
+        # =========================
+        # THE PIVOT: Swap top ML-ranked small chunks for Massive Blocks
+        # =========================
+        try:
+            with open("parent_docs.json", "r", encoding="utf-8") as f:
+                PARENT_STORE = json.load(f)
+        except Exception as e:
+            print(f"⚠️ Could not load parent_docs.json: {e}")
+            PARENT_STORE = {}
 
-        topic_k = 20 if intent == "continuation" else 15
+        allowed_blocks = []
+        seen_parents = set()
 
-        # 4b. Topic coherence filtering
-        sentences = filter_by_topic_coherence(
-            question=topic_anchor,
-            sentences=sentences,
-            top_k=topic_k
-        )
+        for chunk_text, ml_score in ranked_small_chunks:
+ 
+                
+            # Find the hidden Parent ID
+            match = re.search(r'\[PARENT_ID:(parent_[a-f0-9]+)\]', chunk_text)
+            if match:
+                pid = match.group(1)
+                if pid not in seen_parents:
+                    seen_parents.add(pid)
+                    # Fetch the massive 800-word block
+                    big_text = PARENT_STORE.get(pid, chunk_text)
+                    allowed_blocks.append(big_text)
+            else:
+                if chunk_text not in seen_parents:
+                    seen_parents.add(chunk_text)
+                    allowed_blocks.append(chunk_text)
 
-        print(f"🎯 SENTENCES AFTER TOPIC FILTER: {len(sentences)}")
+            # We only need the top 3 massive blocks (that's 2400 words of perfect context)
+            if len(allowed_blocks) >= 3:
+                break
 
-        # 4c. ML-based grounding
-        allowed = ml_ground_sentences(
-            question=question,
-            sentences=sentences,
-            intent=intent,
-            top_k=12,
-            min_relevance=0.25,
-        )
+        print(f"✅ PARENT BLOCKS READY: {len(allowed_blocks)}")
 
-        print(f"✅ SENTENCES GROUNDED: {len(allowed)}")
-
-        # HARD REFUSAL - no grounded sentences
-        if not allowed:
-            print("❌ NO GROUNDED SENTENCES - REFUSING")
+        if not allowed_blocks:
+            print("❌ NO ML-APPROVED BLOCKS - REFUSING")
             response_data = {"answer": "I don't have that information in my vault yet."}
             if sync_info:
                 response_data["sync_performed"] = sync_info
             return response_data
 
         # =========================
-        # SUFFICIENCY CHECK (only for continuation)
+        # SUFFICIENCY CHECK (Run your model on the final massive blocks)
         # =========================
-
         suff_score = None
-
         if intent == "continuation":
             suff_score = sufficiency_scorer.score(
                 question=question,
-                sentences=allowed,
+                sentences=allowed_blocks, # Passing the big blocks to your scorer
                 intent=intent
             )
-
             print(f"🧪 SUFFICIENCY SCORE: {suff_score:.4f} (threshold: {SUFFICIENCY_THRESHOLD})")
-
             if suff_score < SUFFICIENCY_THRESHOLD:
                 print("🚫 INSUFFICIENT EVIDENCE — REFUSING")
                 response_data = {
                     "answer": "I don't have enough information in my vault to answer that confidently.",
-                    "metadata": {
-                        "intent": intent,
-                        "sentences_grounded": len(allowed),
-                        "sufficiency_score": suff_score
-                    }
+                    "metadata": {"intent": intent, "sentences_grounded": len(allowed_blocks), "sufficiency_score": suff_score}
                 }
                 if sync_info:
                     response_data["sync_performed"] = sync_info
                 return response_data
 
-        # =========================
-        # 🔥 TOPIC CLUSTERING DISABLED
-        # =========================
-        # Topic clustering was deleting correct answers that were in the minority cluster
-        # Example: "What does jitha teacher do?" - the correct sentence was deleted 
-        # because it didn't match the dominant "distributed systems" cluster
-        
-        print(f"🧠 SKIPPED TOPIC CLUSTERING (keeps all {len(allowed)} sentences)")
+        # Combine the massive blocks for the final LLM prompt
+        allowed_text = "\n\n---\n\n".join(allowed_blocks)
 
-        print("📄 FINAL SENTENCES:")
-        for i, s in enumerate(allowed, 1):
-            print(f"  {i}. {s}")
-
-        # =========================
-        # Evidence weighting
-        # =========================
-        ranked = score_evidence_roles(question, allowed)
-
-        # Keep top 6 most relevant
-        ranked = ranked[:12]
-
-        print("🧠 EVIDENCE WEIGHTS:")
-        for score, s in ranked:
-            print(f"  {score:.3f} → {s}")
-
-        allowed_text = "\n".join(f"- {s}" for _, s in ranked)
+  
 
         # 5. ANSWER GENERATION
         # Build context for continuation
@@ -670,7 +652,7 @@ ANSWER:"""
 
         metadata = {
             "chunks_retrieved": len(chunks),
-            "sentences_grounded": len(allowed),
+            "sentences_grounded": len(allowed_blocks),
             "intent": intent
         }
 
