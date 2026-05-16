@@ -21,7 +21,6 @@ The system is designed to:
 - Refuse out-of-scope questions that are not covered by vault documents
 - Preserve intent across follow-up questions using a context manager
 - Provide deterministic, explainable, fully offline behavior
- 
 ---
  
 ## How It Works
@@ -32,17 +31,17 @@ Users place files (`.txt`, `.md`, `.pdf`, `.docx`) inside a local `vault/` direc
  
 - Scans the vault for new or modified files
 - Reads and parses each file including PDF text extraction and DOCX table parsing
-- Chunks content into segments of approximately 600 words preserving paragraph context
-- Embeds each chunk using `mxbai-embed-large` via Ollama
-- Stores all embeddings in a FAISS vector index
- 
-The vault syncs automatically — drop a file in the folder and it is indexed on the next query.
+- Chunks content into **800-word parent blocks** stored in a global `PARENT_STORE` dictionary in RAM, each assigned a unique `PARENT_ID`
+- Further splits each parent block into **75-word child chunks** with a hidden `[PARENT_ID:xxx]` tag injected into each chunk
+- Embeds only the child chunks using `mxbai-embed-large` via Ollama
+- Stores child chunk embeddings in a FAISS vector index
+The vault syncs automatically — drop a file in the folder and it is indexed on the next query. Parent blocks are persisted to `parent_docs.json` and loaded into RAM at server startup for zero disk I/O during queries.
  
 ---
  
 ## Internal Question Processing Pipeline
  
-Every user question passes through a **5-stage ML pipeline** before an answer is generated.
+Every user question passes through a **multi-stage ML pipeline** before an answer is generated.
  
 ### Stage 1 — Intent Classification
  
@@ -51,45 +50,40 @@ A custom-trained **DeBERTa-v3-base** transformer classifies each question into o
 - **Factual** — a standalone question requiring vault retrieval
 - **Continuation** — a follow-up referencing a previous question
 - **Casual** — a greeting or conversational input
- 
-The model uses a two-pass classification strategy. The first pass checks casual confidence against a threshold of 0.6. The second pass runs with conversation context to distinguish factual from continuation. The model was trained on a custom dataset of 5,623 labeled examples across all three classes.
+The model uses a two-pass classification strategy. The first pass checks casual confidence against a threshold of 0.6. The second pass runs with conversation context to distinguish factual from continuation. The model was trained on a custom dataset of domain-specific examples covering student records, pharmacy inventory, legal case files, HR policies, and general conversation.
  
 Casual questions are answered directly by the LLM without touching the vault. Factual and continuation questions proceed through retrieval.
  
 ### Stage 2 — Context Resolution (Continuation Only)
  
-For continuation queries, the `ContextManager` retrieves the previous question from a rolling 3-turn history and merges it with the current question to form an explicit combined query. This resolved query is used for retrieval instead of the ambiguous follow-up.
+For continuation queries, the `ContextManager` checks the cosine similarity between the current question and the previous question. If similarity is above 0.35, the previous question is merged with the current question to form a combined retrieval query. If similarity drops below 0.35, topic drift is detected and the query is treated as a new factual question.
  
 ### Stage 3 — Semantic Retrieval
  
-The query is embedded using `mxbai-embed-large` via Ollama. FAISS performs a nearest-neighbour search across all stored chunk embeddings and returns the top 20 most similar chunks. Retrieved chunks are limited to the top 12 for downstream processing.
+The query is embedded using `mxbai-embed-large` via Ollama. FAISS performs a nearest-neighbour search across all stored child chunk embeddings and returns the top-K most similar 75-word chunks.
  
-### Stage 4 — Multi-Stage Filtering Pipeline
+### Stage 4 — Cross-Encoder Reranking
  
-Retrieved chunks pass through four sequential filters:
+Retrieved child chunks are passed to `cross-encoder/ms-marco-MiniLM-L-6-v2`. Unlike embedding-based retrieval which compares vectors independently, the cross-encoder reads the question and each chunk together and produces a precise relevance score. Chunks are sorted by score with **no hard cutoff threshold** — this ensures tabular data such as phone numbers and CGPAs is not penalized for lacking natural language fluency.
  
-1. **Sentence splitter** — chunks are split into individual sentences, each tagged with its source chunk ID
-2. **Deduplication** — repeated sentences across chunks are removed
-3. **Topic coherence filter + sibling rescue** — a custom topic scorer keeps the most relevant sentences. Any sentence that passes the filter pulls in all sibling sentences from the same source chunk, preserving context around retrieved facts
-4. **Cosine relevance pre-filter** — sentences below a minimum relevance score of 0.25 are dropped before the expensive reranker runs
+### Stage 5 — Parent Block Lookup (The Pivot)
  
-### Stage 5 — Cross-Encoder Reranking
+The `[PARENT_ID:xxx]` tag is parsed from each winning child chunk using regex. The corresponding 800-word parent block is fetched instantly from `PARENT_STORE` in RAM. Up to 3 unique parent blocks are retrieved, providing up to 2400 words of rich, unbroken context to the LLM including surrounding sentences, table headers, and related facts.
  
-Surviving sentences are passed to `cross-encoder/ms-marco-MiniLM-L-6-v2`. Unlike embedding-based retrieval which compares vectors independently, the cross-encoder reads the question and each sentence together and produces a precise relevance score. The top 15 sentences are reranked and the top 8 by evidence weight are selected as the final allowed sentences.
+### Stage 6 — Sufficiency Check
+ 
+The sufficiency scorer grades the top 3 child chunks to verify that relevant evidence exists before proceeding to answer generation. If the score falls below 0.60 for continuation queries, the system refuses to answer rather than generating a low-confidence response.
  
 ---
  
 ## Answer Generation
  
-The top 8 sentences are passed to `gemma2:2b-instruct` via Ollama with a strict grounding prompt:
+The retrieved parent blocks are passed to `gemma2:2b-instruct` via Ollama with a strict grounding prompt:
  
-- The LLM may only use the provided sentences
-- Rephrasing and combining sentences is permitted
+- The LLM may only use the provided context
+- Rephrasing and combining information is permitted
 - No new information may be introduced
-- Every fact must be directly present in the allowed sentences
- 
-If the sufficiency scorer determines that the retrieved evidence is insufficient (score below 0.60), the system refuses to answer rather than generating a low-confidence response.
- 
+- Every fact must be directly present in the retrieved parent blocks
 Answers are streamed token-by-token to the frontend via Server-Sent Events (SSE).
  
 ---
@@ -100,10 +94,8 @@ Answers are streamed token-by-token to the frontend via Server-Sent Events (SSE)
 |---|---|---|
 | DeBERTa-v3-base | Intent classification | Custom trained transformer |
 | mxbai-embed-large | Query and chunk embedding | Local via Ollama |
-| cross-encoder/ms-marco-MiniLM-L-6-v2 | Sentence reranking | HuggingFace cross-encoder |
+| cross-encoder/ms-marco-MiniLM-L-6-v2 | Chunk reranking | HuggingFace cross-encoder |
 | Custom sufficiency scorer | Evidence adequacy check | Custom trained |
-| Custom topic coherence filter | Sentence relevance scoring | Custom trained |
-| Custom reference ranker | Evidence weighting | Custom trained |
 | gemma2:2b-instruct-q4_K_M | Answer generation | Local via Ollama |
  
 ---
@@ -112,12 +104,14 @@ Answers are streamed token-by-token to the frontend via Server-Sent Events (SSE)
  
 - **Strict grounding** — answers are generated only from vault content, never from model training data
 - **Out-of-scope refusal** — questions not covered by the vault are explicitly rejected
-- **No hallucinations** — the LLM is prohibited from introducing any information not present in retrieved sentences
-- **Intent-aware follow-ups** — continuation queries resolve pronouns and context before retrieval
-- **Multi-format support** — txt, md, pdf, and docx files are all supported including table extraction
+- **No hallucinations** — the LLM is prohibited from introducing any information not present in retrieved context
+- **Parent-document retrieval** — small chunks for precise search, large parent blocks for rich LLM context
+- **No reranking cutoff** — tabular data is never penalized for lacking natural language fluency
+- **Intent-aware follow-ups** — continuation queries use cosine similarity for topic drift detection
+- **Multi-format support** — txt, md, pdf, and docx files including table extraction
 - **Fully offline** — no internet connection required after initial model download
+- **Zero disk I/O during queries** — parent blocks loaded into RAM at startup for instant lookup
 - **Auto-sync** — vault changes are detected and indexed automatically
- 
 ---
  
 ## Tech Stack
@@ -132,7 +126,6 @@ Answers are streamed token-by-token to the frontend via Server-Sent Events (SSE)
 - **Reranker:** cross-encoder/ms-marco-MiniLM-L-6-v2
 - **PDF parsing:** PyMuPDF (fitz)
 - **DOCX parsing:** python-docx
- 
 ---
  
 ## Why Local-First?
@@ -141,4 +134,4 @@ Answers are streamed token-by-token to the frontend via Server-Sent Events (SSE)
 - Works fully offline after setup
 - No API costs or rate limits
 - No cloud dependency or vendor lock-in
-- Suitable for sensitive institutional data
+- Suitable for sensitive institutional data including hospitals, law firms, and educational institutions
